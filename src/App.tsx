@@ -21,8 +21,6 @@ const App = () => {
     id: "",
     createdAt: "",
     updatedAt: "",
-    _version: 0,
-    _lastChangedAt: 0,
     name: ""
   }  
   const [formState, setFormState] = useState(initialState)
@@ -54,8 +52,6 @@ const App = () => {
         id: "",
         createdAt: "",
         updatedAt: "",
-        _version: 0,
-        _lastChangedAt: 0
       }
       setBlogs([...blogs, blog])
       setFormState(initialState)

@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "timetracker38edaca3_identitypool_38edaca3",
+    "identityPoolName": "timetracker8fe81cf6_identitypool_8fe81cf6",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "timetr38edaca3",
-    "userPoolName": "timetracker38edaca3_userpool_38edaca3",
+    "resourceNameTruncated": "timetr8fe81cf6",
+    "userPoolName": "timetracker8fe81cf6_userpool_8fe81cf6",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,10 +31,10 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "timetr38edaca3_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "timetr8fe81cf6_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "38edaca3",
-    "resourceName": "timetracker38edaca3",
+    "sharedId": "8fe81cf6",
+    "resourceName": "timetracker8fe81cf6",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "userPoolGroupList": [],

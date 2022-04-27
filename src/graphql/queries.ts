@@ -13,19 +13,12 @@ export const getBlog = /* GraphQL */ `
           title
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           blogPostsId
         }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
     }
   }
 `;
@@ -41,47 +34,11 @@ export const listBlogs = /* GraphQL */ `
         name
         posts {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncBlogs = /* GraphQL */ `
-  query SyncBlogs(
-    $filter: ModelBlogFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncBlogs(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        posts {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -95,13 +52,9 @@ export const getPost = /* GraphQL */ `
         name
         posts {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
       }
       comments {
         items {
@@ -109,19 +62,12 @@ export const getPost = /* GraphQL */ `
           content
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           postCommentsId
         }
         nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       blogPostsId
     }
   }
@@ -141,64 +87,15 @@ export const listPosts = /* GraphQL */ `
           name
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         comments {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         blogPostsId
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncPosts = /* GraphQL */ `
-  query SyncPosts(
-    $filter: ModelPostFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncPosts(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        comments {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        blogPostsId
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -214,27 +111,17 @@ export const getComment = /* GraphQL */ `
           name
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
         }
         comments {
           nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         blogPostsId
       }
       content
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
       postCommentsId
     }
   }
@@ -253,59 +140,14 @@ export const listComments = /* GraphQL */ `
           title
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
           blogPostsId
         }
         content
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
         postCommentsId
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncComments = /* GraphQL */ `
-  query SyncComments(
-    $filter: ModelCommentFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncComments(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        post {
-          id
-          title
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          blogPostsId
-        }
-        content
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        postCommentsId
-      }
-      nextToken
-      startedAt
     }
   }
 `;

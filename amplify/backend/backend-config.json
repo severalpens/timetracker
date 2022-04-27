@@ -9,9 +9,7 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2023-04-27T02:31:00.525Z",
-              "description": "timetracker"
+              "apiKeyExpirationDays": 7
             }
           },
           "additionalAuthenticationProviders": []
@@ -20,7 +18,7 @@
     }
   },
   "auth": {
-    "timetracker38edaca3": {
+    "timetracker8fe81cf6": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
