@@ -1,18 +1,29 @@
 /* src/App.js */
-import React, { useEffect, useState } from 'react'
+import "reflect-metadata";
+import React, { CSSProperties, DetailedHTMLProps, useEffect, useState } from 'react'
 import Amplify, { API, graphqlOperation } from 'aws-amplify'
 import { createBlog } from './graphql/mutations'
 import { listBlogs } from './graphql/queries'
 
 import awsExports from "./aws-exports";
-import { ListBlogsQuery } from './API';
+import { Blog, ListBlogsQuery } from './API';
+import { GraphQLResult } from "@aws-amplify/api-graphql";
 Amplify.configure(awsExports);
 
-const initialState = { name: '', description: '' }
+// const initialState = { name: '', description: '' }
 
 const App = () => {
+  const initialState: Blog = {
+    __typename: "Blog",
+    id: "",
+    createdAt: "",
+    updatedAt: "",
+    _version: 0,
+    _lastChangedAt: 0,
+    name: ""
+  }  
   const [formState, setFormState] = useState(initialState)
-  const [blogs, setBlogs] = useState([])
+  const [blogs, setBlogs] = useState<Blog[]>([])
 
   useEffect(() => {
     fetchBlogs()
@@ -24,7 +35,7 @@ const App = () => {
 
   async function fetchBlogs() {
     try {
-      const blogData: Lis = await API.graphql(graphqlOperation(listBlogs))
+      const blogData: GraphQLResult<any> = await API.graphql(graphqlOperation(listBlogs))
       const blogs = blogData.data.listBlogs.items
       setBlogs(blogs)
     } catch (err) { console.log('error fetching blogs') }
@@ -32,8 +43,16 @@ const App = () => {
 
   async function addBlog() {
     try {
-      if (!formState.name || !formState.description) return
-      const blog = { ...formState }
+      if (!formState.name) return
+      const blog:Blog = {
+        ...formState,
+        __typename: "Blog",
+        id: "",
+        createdAt: "",
+        updatedAt: "",
+        _version: 0,
+        _lastChangedAt: 0
+      }
       setBlogs([...blogs, blog])
       setFormState(initialState)
       await API.graphql(graphqlOperation(createBlog, {input: blog}))
@@ -43,7 +62,7 @@ const App = () => {
   }
 
   return (
-    <div style={styles.container}>
+    <div style={container}>
       <h2>Amplify Blogs</h2>
       <input
         onChange={event => setInput('name', event.target.value)}
@@ -51,27 +70,20 @@ const App = () => {
         value={formState.name}
         placeholder="Name"
       />
-      <input
-        onChange={event => setInput('description', event.target.value)}
-        style={styles.input}
-        value={formState.description}
-        placeholder="Description"
-      />
       <button style={styles.button} onClick={addBlog}>Create Blog</button>
       {
         blogs.map((blog, index) => (
           <div key={blog.id ? blog.id : index} style={styles.blog}>
             <p style={styles.blogName}>{blog.name}</p>
-            <p style={styles.blogDescription}>{blog.description}</p>
           </div>
         ))
       }
     </div>
   )
 }
+const container:any = { width: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 20 }
 
 const styles = {
-  container: { width: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 20 },
   blog: {  marginBottom: 15 },
   input: { border: 'none', backgroundColor: '#ddd', marginBottom: 10, padding: 8, fontSize: 18 },
   blogName: { fontSize: 20, fontWeight: 'bold' },
