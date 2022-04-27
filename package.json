@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+<<<<<<< HEAD
     "@aws-amplify/ui-react": "^2.15.6",
+=======
+    "@aws-amplify/ui-react": "^2.15.5",
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
@@ -12,8 +16,11 @@
     "@types/react": "^18.0.7",
     "@types/react-dom": "^18.0.0",
     "aws-amplify": "^4.3.20",
+<<<<<<< HEAD
     "class-validator": "^0.13.2",
     "graphql": "^15.8.0",
+=======
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.1",

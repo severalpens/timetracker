@@ -6,6 +6,7 @@
     "gqlSchemaPath": "C:\\Users\\ZZ0598616\\Documents\\GitHub\\javascript\\timetracker\\amplify\\backend\\api\\timetracker\\schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
+<<<<<<< HEAD
       "expirationTime": 365,
       "apiKeyExpirationDate": "2023-04-27T02:31:00.525Z",
       "keyDescription": "timetracker"
@@ -14,6 +15,9 @@
       "defaultResolutionStrategy": {
         "type": "AUTOMERGE"
       }
+=======
+      "expirationTime": 7
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
     }
   }
 }
