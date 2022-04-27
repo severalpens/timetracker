@@ -14,6 +14,12 @@
     "categories": {
       "auth": {
         "timetracker8fe81cf6": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2s8o25jfk2qs7",
+          "type": "cicd"
+        }
       }
     }
   }

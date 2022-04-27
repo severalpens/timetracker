@@ -1,12 +1,12 @@
 /* src/App.js */
 import "reflect-metadata";
-import React, { CSSProperties, DetailedHTMLProps, useEffect, useState } from 'react'
-import Amplify, { API, graphqlOperation } from 'aws-amplify'
-import { createBlog } from './graphql/mutations'
-import { listBlogs } from './graphql/queries'
+import React, { CSSProperties, DetailedHTMLProps, useEffect, useState } from 'react';
+import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import { createBlog } from './graphql/mutations';
+import { listBlogs } from './graphql/queries';
 
 import awsExports from "./aws-exports";
-import { Blog, ListBlogsQuery } from './API';
+import { Blog, CreateBlogInput, ListBlogsQuery } from './API';
 import { GraphQLResult } from "@aws-amplify/api-graphql";
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
@@ -16,15 +16,15 @@ Amplify.configure(awsExports);
 // const initialState = { name: '', description: '' }
 
 const App = () => {
-  const initialState: Blog = {
-    __typename: "Blog",
-    id: "",
-    createdAt: "",
-    updatedAt: "",
+  const initialState: CreateBlogInput = {
+    //__typename: "Blog",
+    //id: "",
+    //createdAt: "",
+   // updatedAt: "",
     name: ""
   }  
   const [formState, setFormState] = useState(initialState)
-  const [blogs, setBlogs] = useState<Blog[]>([])
+  const [blogs, setBlogs] = useState<CreateBlogInput[]>([])
 
   
   useEffect(() => {
@@ -46,12 +46,12 @@ const App = () => {
   async function addBlog() {
     try {
       if (!formState.name) return
-      const blog:Blog = {
+      const blog:CreateBlogInput = {
         ...formState,
-        __typename: "Blog",
-        id: "",
-        createdAt: "",
-        updatedAt: "",
+        //__typename: "Blog",
+        //id: "",
+       // createdAt: "",
+       // updatedAt: "",
       }
       setBlogs([...blogs, blog])
       setFormState(initialState)
