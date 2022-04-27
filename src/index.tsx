@@ -5,10 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
-<<<<<<< HEAD
-=======
-
->>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
 Amplify.configure(awsExports);
 
 const root = ReactDOM.createRoot(
