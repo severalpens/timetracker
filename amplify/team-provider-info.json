@@ -10,6 +10,11 @@
       "StackName": "amplify-timetracker-dev-122653",
       "StackId": "arn:aws:cloudformation:ap-southeast-2:105565668989:stack/amplify-timetracker-dev-122653/8189c810-c5d1-11ec-be75-06b1add9fd8c",
       "AmplifyAppId": "d2iddhybtng84v"
+    },
+    "categories": {
+      "auth": {
+        "timetracker38edaca3": {}
+      }
     }
   }
 }

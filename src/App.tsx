@@ -8,6 +8,9 @@ import { listBlogs } from './graphql/queries'
 import awsExports from "./aws-exports";
 import { Blog, ListBlogsQuery } from './API';
 import { GraphQLResult } from "@aws-amplify/api-graphql";
+import { Authenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+
 Amplify.configure(awsExports);
 
 // const initialState = { name: '', description: '' }
@@ -62,6 +65,7 @@ const App = () => {
   }
 
   return (
+    <Authenticator>
     <div style={container}>
       <h2>Amplify Blogs</h2>
       <input
@@ -79,6 +83,7 @@ const App = () => {
         ))
       }
     </div>
+    </Authenticator>
   )
 }
 const container:any = { width: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 20 }
