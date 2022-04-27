@@ -28,6 +28,7 @@ const App = () => {
   const [formState, setFormState] = useState(initialState)
   const [blogs, setBlogs] = useState<Blog[]>([])
 
+  
   useEffect(() => {
     fetchBlogs()
   }, [])
