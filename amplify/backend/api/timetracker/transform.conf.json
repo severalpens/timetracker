@@ -1,5 +1,6 @@
 {
     "Version": 5,
+<<<<<<< HEAD
     "ElasticsearchWarning": true,
     "ResolverConfig": {
         "project": {
@@ -7,4 +8,7 @@
             "ConflictDetection": "VERSION"
         }
     }
+=======
+    "ElasticsearchWarning": true
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
 }

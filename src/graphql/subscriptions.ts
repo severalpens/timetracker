@@ -13,6 +13,7 @@ export const onCreateBlog = /* GraphQL */ `
           title
           createdAt
           updatedAt
+<<<<<<< HEAD
           _version
           _deleted
           _lastChangedAt
@@ -26,6 +27,14 @@ export const onCreateBlog = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+=======
+          blogPostsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
     }
   }
 `;
@@ -40,6 +49,7 @@ export const onUpdateBlog = /* GraphQL */ `
           title
           createdAt
           updatedAt
+<<<<<<< HEAD
           _version
           _deleted
           _lastChangedAt
@@ -53,6 +63,14 @@ export const onUpdateBlog = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+=======
+          blogPostsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
     }
   }
 `;
@@ -67,6 +85,7 @@ export const onDeleteBlog = /* GraphQL */ `
           title
           createdAt
           updatedAt
+<<<<<<< HEAD
           _version
           _deleted
           _lastChangedAt
@@ -80,6 +99,14 @@ export const onDeleteBlog = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+=======
+          blogPostsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
     }
   }
 `;
@@ -93,6 +120,7 @@ export const onCreatePost = /* GraphQL */ `
         name
         posts {
           nextToken
+<<<<<<< HEAD
           startedAt
         }
         createdAt
@@ -100,6 +128,11 @@ export const onCreatePost = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+=======
+        }
+        createdAt
+        updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
       }
       comments {
         items {
@@ -107,6 +140,7 @@ export const onCreatePost = /* GraphQL */ `
           content
           createdAt
           updatedAt
+<<<<<<< HEAD
           _version
           _deleted
           _lastChangedAt
@@ -120,6 +154,14 @@ export const onCreatePost = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+=======
+          postCommentsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
       blogPostsId
     }
   }
@@ -134,6 +176,7 @@ export const onUpdatePost = /* GraphQL */ `
         name
         posts {
           nextToken
+<<<<<<< HEAD
           startedAt
         }
         createdAt
@@ -141,6 +184,11 @@ export const onUpdatePost = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+=======
+        }
+        createdAt
+        updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
       }
       comments {
         items {
@@ -148,6 +196,7 @@ export const onUpdatePost = /* GraphQL */ `
           content
           createdAt
           updatedAt
+<<<<<<< HEAD
           _version
           _deleted
           _lastChangedAt
@@ -161,6 +210,14 @@ export const onUpdatePost = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+=======
+          postCommentsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
       blogPostsId
     }
   }
@@ -175,6 +232,7 @@ export const onDeletePost = /* GraphQL */ `
         name
         posts {
           nextToken
+<<<<<<< HEAD
           startedAt
         }
         createdAt
@@ -182,6 +240,11 @@ export const onDeletePost = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+=======
+        }
+        createdAt
+        updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
       }
       comments {
         items {
@@ -189,6 +252,7 @@ export const onDeletePost = /* GraphQL */ `
           content
           createdAt
           updatedAt
+<<<<<<< HEAD
           _version
           _deleted
           _lastChangedAt
@@ -202,6 +266,14 @@ export const onDeletePost = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+=======
+          postCommentsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
       blogPostsId
     }
   }
@@ -218,6 +290,7 @@ export const onCreateComment = /* GraphQL */ `
           name
           createdAt
           updatedAt
+<<<<<<< HEAD
           _version
           _deleted
           _lastChangedAt
@@ -231,14 +304,25 @@ export const onCreateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+=======
+        }
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
         blogPostsId
       }
       content
       createdAt
       updatedAt
+<<<<<<< HEAD
       _version
       _deleted
       _lastChangedAt
+=======
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
       postCommentsId
     }
   }
@@ -255,6 +339,7 @@ export const onUpdateComment = /* GraphQL */ `
           name
           createdAt
           updatedAt
+<<<<<<< HEAD
           _version
           _deleted
           _lastChangedAt
@@ -268,14 +353,25 @@ export const onUpdateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+=======
+        }
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
         blogPostsId
       }
       content
       createdAt
       updatedAt
+<<<<<<< HEAD
       _version
       _deleted
       _lastChangedAt
+=======
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
       postCommentsId
     }
   }
@@ -292,6 +388,7 @@ export const onDeleteComment = /* GraphQL */ `
           name
           createdAt
           updatedAt
+<<<<<<< HEAD
           _version
           _deleted
           _lastChangedAt
@@ -305,14 +402,25 @@ export const onDeleteComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
+=======
+        }
+        comments {
+          nextToken
+        }
+        createdAt
+        updatedAt
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
         blogPostsId
       }
       content
       createdAt
       updatedAt
+<<<<<<< HEAD
       _version
       _deleted
       _lastChangedAt
+=======
+>>>>>>> 055a1a70132d43e15e33ccaf8f2074aa948401e6
       postCommentsId
     }
   }
