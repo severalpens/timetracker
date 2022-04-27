@@ -1,26 +1,82 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/* src/App.js */
+import React, { useEffect, useState } from 'react'
+import Amplify, { API, graphqlOperation } from 'aws-amplify'
+import { createBlog } from './graphql/mutations'
+import { listBlogs } from './graphql/queries'
 
-function App() {
+import awsExports from "./aws-exports";
+import { ListBlogsQuery } from './API';
+Amplify.configure(awsExports);
+
+const initialState = { name: '', description: '' }
+
+const App = () => {
+  const [formState, setFormState] = useState(initialState)
+  const [blogs, setBlogs] = useState([])
+
+  useEffect(() => {
+    fetchBlogs()
+  }, [])
+
+  function setInput(key:any, value:any) {
+    setFormState({ ...formState, [key]: value })
+  }
+
+  async function fetchBlogs() {
+    try {
+      const blogData: Lis = await API.graphql(graphqlOperation(listBlogs))
+      const blogs = blogData.data.listBlogs.items
+      setBlogs(blogs)
+    } catch (err) { console.log('error fetching blogs') }
+  }
+
+  async function addBlog() {
+    try {
+      if (!formState.name || !formState.description) return
+      const blog = { ...formState }
+      setBlogs([...blogs, blog])
+      setFormState(initialState)
+      await API.graphql(graphqlOperation(createBlog, {input: blog}))
+    } catch (err) {
+      console.log('error creating blog:', err)
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={styles.container}>
+      <h2>Amplify Blogs</h2>
+      <input
+        onChange={event => setInput('name', event.target.value)}
+        style={styles.input}
+        value={formState.name}
+        placeholder="Name"
+      />
+      <input
+        onChange={event => setInput('description', event.target.value)}
+        style={styles.input}
+        value={formState.description}
+        placeholder="Description"
+      />
+      <button style={styles.button} onClick={addBlog}>Create Blog</button>
+      {
+        blogs.map((blog, index) => (
+          <div key={blog.id ? blog.id : index} style={styles.blog}>
+            <p style={styles.blogName}>{blog.name}</p>
+            <p style={styles.blogDescription}>{blog.description}</p>
+          </div>
+        ))
+      }
     </div>
-  );
+  )
 }
 
-export default App;
+const styles = {
+  container: { width: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 20 },
+  blog: {  marginBottom: 15 },
+  input: { border: 'none', backgroundColor: '#ddd', marginBottom: 10, padding: 8, fontSize: 18 },
+  blogName: { fontSize: 20, fontWeight: 'bold' },
+  blogDescription: { marginBottom: 0 },
+  button: { backgroundColor: 'black', color: 'white', outline: 'none', fontSize: 18, padding: '12px 0px' }
+}
+
+export default App

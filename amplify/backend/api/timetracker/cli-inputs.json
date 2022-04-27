@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "timetracker",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\Users\\ZZ0598616\\Documents\\GitHub\\javascript\\timetracker\\amplify\\backend\\api\\timetracker\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 365,
+      "apiKeyExpirationDate": "2023-04-27T02:31:00.525Z",
+      "keyDescription": "timetracker"
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    }
+  }
+}
