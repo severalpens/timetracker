@@ -1,10 +1,13 @@
 import React from 'react'
+import './Notes.css';
 
 export default function Notes() {
     return (
         <div className='p-4'>
+                            <h1 className='text-3xl text-gray-700'>Security</h1>
+
             <div className='p-4'>
-                <h1 className='text-3xl text-gray-700'>Benefits of Cloud Computing</h1>
+                <h1 className='text-3xl text-gray-700'>Shared Responsibility</h1>
                 <ul className="p-4 list-disc list-outside">
                     <li>Trade upfront expense for variable expense</li>
                     <li>Stop spending money to run and maintain datacentres</li>
@@ -34,10 +37,37 @@ export default function Notes() {
                     <li>Spot Instances</li>
                     <li>Dedicated Hosts</li>
                 </ul>
-Classless Interdomain routing
             </div>
 
-
+            <div className='p-4'>
+                <h1 className="text-3xl text-gray-700">Networking</h1>
+                <div className="vpc">vpc
+                    <div className="igw">igw</div>
+                    <div className="elastic-load-balancer">elastic-load-balancer</div>
+                    <div className="autoscale-group">asg</div>
+                    <div className='az1'>
+                        <div className='public-subnet'>
+                            <div className='ec2'></div>
+                        </div>
+                        <div className='private-subnet'>
+                            <div className='ec2'></div>
+                        </div>
+                    </div>
+                </div>
+                <div className="nat-gateway"></div>
+                <div className='az2'>
+                    <div className='public-subnet'>
+                        <div className='ec2'></div>
+                    </div>
+                    <div className='private-subnet'>
+                        <div className='ec2'></div>
+                    </div>
+                </div>
+            </div>
+            <div className='p-4'>
+                <h1 className="text-3xl text-gray-700">Databases</h1>
+                <div className=""></div>
+            </div>
         </div>
     )
 }

@@ -1,0 +1,45 @@
+.pc {
+  border: solid;
+}
+
+.igw {
+  border: solid;
+  background-color: pink;
+}
+
+.elastic-load-balancer {
+  border: solid;
+  background-color: pink;
+}
+
+.gateway-load-balancer {
+  border: solid;
+}
+
+.autoscale-group {
+  border: solid;
+}
+
+.az1 {
+  border: solid;
+}
+
+.az2 {
+  border: solid;
+}
+
+.public-subment {
+  border: solid;
+}
+
+.private-subnet {
+  border: solid;
+}
+
+.ec2 {
+  border: solid;
+}
+
+.nat-gateway {
+  border: solid;
+}

@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
+import Notes from './components/Notes'
 Amplify.configure(awsExports);
 
 const root = ReactDOM.createRoot(
@@ -13,7 +14,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <App />
+    <Notes />
   </React.StrictMode>
 );
 
