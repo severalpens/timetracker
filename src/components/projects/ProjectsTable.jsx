@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { API } from 'aws-amplify';
-import * as queries from '../graphql/queries';
-import * as mutations from '../graphql/mutations';
-import CategoryRow from './CategoryRow';
+import * as queries from '../../graphql/queries';
+import * as mutations from '../../graphql/mutations';
+import ProjectRow from './ProjectRow';
 
-export default function TableCategories(props) {
-  const [categories, setCategories] = useState([]);
-  const [category, setCategory] = useState('');
-  const [categoryName, setCategoryName] = useState('');
+export default function ProjectsTable(props) {
+  const [projects, setProjects] = useState([]);
+  const [project, setProject] = useState('');
+  const [projectName, setProjectName] = useState('');
   const [description, setDescription] = useState('');
 
 
@@ -16,19 +16,19 @@ export default function TableCategories(props) {
   }, [])
   
   async function fetchData(){
-    let graphqlResult = await API.graphql({ query: queries.listCategories });
-    let ts = graphqlResult.data.listCategories.items.filter(x => !x._deleted);
-    setCategories(ts);
+    let graphqlResult = await API.graphql({ query: queries.listProjects });
+    let ts = graphqlResult.data.listProjects.items.filter(x => !x._deleted);
+    setProjects(ts);
   }
 
 
   const editTask = async (t)  => {
-    await API.graphql({ query: mutations.updateCategories, variables: {input:t}});
+    await API.graphql({ query: mutations.updateProject, variables: {input:t}});
     await fetchData();
   }
 
 
-  const saveCategory = (t)  => {
+  const saveProject = (t)  => {
     
   }
 
@@ -40,10 +40,10 @@ export default function TableCategories(props) {
     event.preventDefault();
 
     let input = {
-      name:categoryName
+      name:projectName
     };
 
-    await API.graphql({ query: mutations.createCategories, variables: { input } });
+    await API.graphql({ query: mutations.createProject, variables: { input } });
    // navigate("/elements/accounts", { replace: true });
   }
 
@@ -69,9 +69,9 @@ export default function TableCategories(props) {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {categories.map((task) => {
+            {projects.map((project) => {
               return (
-              <CategoryRow key={task.id} categoryName={categoryName} setCategoryName={setCategoryName} setCategory={setCategory} setDescription={setDescription} category={category} description={description}/>
+              <ProjectRow key={project.id} project={project} setProject={setProject}/>
             )})}
           </tbody>
         </table>

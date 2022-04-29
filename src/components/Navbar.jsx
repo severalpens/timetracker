@@ -1,17 +1,8 @@
 import { useState, useEffect } from 'react';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
 import { NavLink } from 'react-router-dom';
 
 function Navbar(props) {
-  const [accounts, setAccounts] = useState(null);
-  const [network, setNetwork] = useState(null);
-  let contract = [];
-  let currentContract = props.currentContract;
 
-  try{
-    contract =  JSON.parse(window.localStorage.contract);
-  }
-  catch{}
 
   useEffect(() => {
     async function fetchData() {
@@ -26,6 +17,11 @@ function Navbar(props) {
           <div className="p-6 ">
             <NavLink className="font-bold" to="/">
               Time Tracker
+            </NavLink>
+          </div>
+          <div className="p-6">
+            <NavLink className="" to="/projects">
+              Projects
             </NavLink>
           </div>
           <div className="p-6">
@@ -45,7 +41,6 @@ function Navbar(props) {
           </div>
         </div>
         <div className="p-6 columns-2">
-          <AmplifySignOut />
         </div>
       </div>
       <div className="container flex mx-auto">
@@ -60,4 +55,4 @@ function Navbar(props) {
        );
 }
 
-export default withAuthenticator(Navbar);
+export default Navbar;

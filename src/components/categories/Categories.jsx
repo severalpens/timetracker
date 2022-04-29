@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { API } from 'aws-amplify';
-import * as queries from '../graphql/queries';
-import * as mutations from '../graphql/mutations';
-import TaskRow from './TaskRow';
+import * as queries from '../../graphql/queries';
+import * as mutations from '../../graphql/mutations';
+import TaskRow from '../TaskRow';
 import CategoryRow from './CategoryRow';
-import TableCategories from './TableCategories';
-import FormCategory from './FormCategory';
+import TableCategories from './CategoriesTable';
+import FormCategory from './CategoryForm';
 
 export default function Categories(props) {
   const [categories, setCategories] = useState([]);
@@ -27,7 +27,7 @@ export default function Categories(props) {
 
 
   const editTask = async (t) => {
-    await API.graphql({ query: mutations.updateCategories, variables: { input: t } });
+    await API.graphql({ query: mutations.updateCategory, variables: { input: t } });
     await fetchData();
   }
 
@@ -47,7 +47,7 @@ export default function Categories(props) {
       name: categoryName
     };
 
-    await API.graphql({ query: mutations.createCategories, variables: { input } });
+    await API.graphql({ query: mutations.createCategory, variables: { input } });
     // navigate("/elements/accounts", { replace: true });
   }
 

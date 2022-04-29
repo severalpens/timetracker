@@ -1,6 +1,5 @@
 import React from 'react'
-import InputCategory from './InputCategory';
-import InputDescription from './InputDescription';
+import InputCategory from './CategoryInput';
 import InputText from './InputText';
 
 export default function CategoryRowEditMode(props) {

@@ -83,6 +83,45 @@ export const onDeleteProject = /* GraphQL */ `
     }
   }
 `;
+export const onCreateCategory = /* GraphQL */ `
+  subscription OnCreateCategory {
+    onCreateCategory {
+      id
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateCategory = /* GraphQL */ `
+  subscription OnUpdateCategory {
+    onUpdateCategory {
+      id
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteCategory = /* GraphQL */ `
+  subscription OnDeleteCategory {
+    onDeleteCategory {
+      id
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
 export const onCreateTask = /* GraphQL */ `
   subscription OnCreateTask {
     onCreateTask {

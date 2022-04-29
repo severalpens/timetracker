@@ -1,15 +1,19 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
+import Navbar from './components/Navbar';
+import Projects from './components/projects/Projects';
+import Categories from './components/categories/Categories';
 Amplify.configure(awsExports);
 
-// @ts-ignore
-const root = ReactDOM.createRoot(
+
+const root = createRoot(
   document.getElementById('root') as HTMLElement
 );
 
@@ -17,7 +21,8 @@ root.render(
   <BrowserRouter>
   <Routes>
   <Route path="/" element={<App />}>
-
+  <Route path="/projects" element={<Projects/>}/>
+  <Route path="/categories" element={<Categories/>}/>
       <Route
         path="*"
         element={

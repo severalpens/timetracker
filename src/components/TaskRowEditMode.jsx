@@ -1,6 +1,5 @@
 import React from 'react'
-import InputCategory from './InputCategory';
-import InputDescription from './InputDescription';
+import InputCategory from './categories/CategoryInput';
 
 export default function TaskRowEditMode(props) {
 const {task, setInEditMode,setCategory, setDescription,tasks, category, description} = props;
@@ -15,9 +14,6 @@ const cancelEdit = (t) => {
             <tr key={task.id}>
                 <td  className="px-6 py-4 whitespace-nowrap">
                 <InputCategory task={task} tasks={tasks} setCategory={setCategory} category={category}/>
-                </td>
-                <td  className="px-6 py-4 whitespace-nowrap">
-                  <InputDescription task={task}  tasks={tasks}  setDescription={setDescription} description={description}/>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {task.total}

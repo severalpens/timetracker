@@ -16,6 +16,10 @@ type EntryMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+type CategoryMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 export declare class Project {
   readonly id: string;
   readonly name: string;
@@ -46,4 +50,13 @@ export declare class Entry {
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Entry, EntryMetaData>);
   static copyOf(source: Entry, mutator: (draft: MutableModel<Entry, EntryMetaData>) => MutableModel<Entry, EntryMetaData> | void): Entry;
+}
+
+export declare class Category {
+  readonly id: string;
+  readonly name: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Category, CategoryMetaData>);
+  static copyOf(source: Category, mutator: (draft: MutableModel<Category, CategoryMetaData>) => MutableModel<Category, CategoryMetaData> | void): Category;
 }

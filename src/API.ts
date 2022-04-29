@@ -120,6 +120,41 @@ export type DeleteProjectInput = {
   _version?: number | null,
 };
 
+export type CreateCategoryInput = {
+  id?: string | null,
+  name: string,
+  _version?: number | null,
+};
+
+export type ModelCategoryConditionInput = {
+  name?: ModelStringInput | null,
+  and?: Array< ModelCategoryConditionInput | null > | null,
+  or?: Array< ModelCategoryConditionInput | null > | null,
+  not?: ModelCategoryConditionInput | null,
+};
+
+export type Category = {
+  __typename: "Category",
+  id: string,
+  name: string,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type UpdateCategoryInput = {
+  id: string,
+  name?: string | null,
+  _version?: number | null,
+};
+
+export type DeleteCategoryInput = {
+  id: string,
+  _version?: number | null,
+};
+
 export type CreateTaskInput = {
   id?: string | null,
   name: string,
@@ -216,6 +251,21 @@ export type ModelProjectFilterInput = {
 export type ModelProjectConnection = {
   __typename: "ModelProjectConnection",
   items:  Array<Project | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type ModelCategoryFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  and?: Array< ModelCategoryFilterInput | null > | null,
+  or?: Array< ModelCategoryFilterInput | null > | null,
+  not?: ModelCategoryFilterInput | null,
+};
+
+export type ModelCategoryConnection = {
+  __typename: "ModelCategoryConnection",
+  items:  Array<Category | null >,
   nextToken?: string | null,
   startedAt?: number | null,
 };
@@ -333,6 +383,60 @@ export type DeleteProjectMutation = {
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type CreateCategoryMutationVariables = {
+  input: CreateCategoryInput,
+  condition?: ModelCategoryConditionInput | null,
+};
+
+export type CreateCategoryMutation = {
+  createCategory?:  {
+    __typename: "Category",
+    id: string,
+    name: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type UpdateCategoryMutationVariables = {
+  input: UpdateCategoryInput,
+  condition?: ModelCategoryConditionInput | null,
+};
+
+export type UpdateCategoryMutation = {
+  updateCategory?:  {
+    __typename: "Category",
+    id: string,
+    name: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type DeleteCategoryMutationVariables = {
+  input: DeleteCategoryInput,
+  condition?: ModelCategoryConditionInput | null,
+};
+
+export type DeleteCategoryMutation = {
+  deleteCategory?:  {
+    __typename: "Category",
+    id: string,
+    name: string,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -724,6 +828,72 @@ export type SyncProjectsQuery = {
   } | null,
 };
 
+export type GetCategoryQueryVariables = {
+  id: string,
+};
+
+export type GetCategoryQuery = {
+  getCategory?:  {
+    __typename: "Category",
+    id: string,
+    name: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type ListCategoriesQueryVariables = {
+  filter?: ModelCategoryFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListCategoriesQuery = {
+  listCategories?:  {
+    __typename: "ModelCategoryConnection",
+    items:  Array< {
+      __typename: "Category",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type SyncCategoriesQueryVariables = {
+  filter?: ModelCategoryFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncCategoriesQuery = {
+  syncCategories?:  {
+    __typename: "ModelCategoryConnection",
+    items:  Array< {
+      __typename: "Category",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
 export type GetTaskQueryVariables = {
   id: string,
 };
@@ -1054,6 +1224,45 @@ export type OnDeleteProjectSubscription = {
       nextToken?: string | null,
       startedAt?: number | null,
     } | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnCreateCategorySubscription = {
+  onCreateCategory?:  {
+    __typename: "Category",
+    id: string,
+    name: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnUpdateCategorySubscription = {
+  onUpdateCategory?:  {
+    __typename: "Category",
+    id: string,
+    name: string,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnDeleteCategorySubscription = {
+  onDeleteCategory?:  {
+    __typename: "Category",
+    id: string,
+    name: string,
     createdAt: string,
     updatedAt: string,
     _version: number,
