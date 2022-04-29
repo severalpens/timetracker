@@ -2,21 +2,21 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBlog = /* GraphQL */ `
-  subscription OnCreateBlog {
-    onCreateBlog {
+export const onCreateProject = /* GraphQL */ `
+  subscription OnCreateProject {
+    onCreateProject {
       id
       name
-      posts {
+      tasks {
         items {
           id
-          title
+          name
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          blogPostsId
+          projectTasksId
         }
         nextToken
         startedAt
@@ -29,21 +29,21 @@ export const onCreateBlog = /* GraphQL */ `
     }
   }
 `;
-export const onUpdateBlog = /* GraphQL */ `
-  subscription OnUpdateBlog {
-    onUpdateBlog {
+export const onUpdateProject = /* GraphQL */ `
+  subscription OnUpdateProject {
+    onUpdateProject {
       id
       name
-      posts {
+      tasks {
         items {
           id
-          title
+          name
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          blogPostsId
+          projectTasksId
         }
         nextToken
         startedAt
@@ -56,21 +56,21 @@ export const onUpdateBlog = /* GraphQL */ `
     }
   }
 `;
-export const onDeleteBlog = /* GraphQL */ `
-  subscription OnDeleteBlog {
-    onDeleteBlog {
+export const onDeleteProject = /* GraphQL */ `
+  subscription OnDeleteProject {
+    onDeleteProject {
       id
       name
-      posts {
+      tasks {
         items {
           id
-          title
+          name
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          blogPostsId
+          projectTasksId
         }
         nextToken
         startedAt
@@ -83,15 +83,15 @@ export const onDeleteBlog = /* GraphQL */ `
     }
   }
 `;
-export const onCreatePost = /* GraphQL */ `
-  subscription OnCreatePost {
-    onCreatePost {
+export const onCreateTask = /* GraphQL */ `
+  subscription OnCreateTask {
+    onCreateTask {
       id
-      title
-      blog {
+      name
+      project {
         id
         name
-        posts {
+        tasks {
           nextToken
           startedAt
         }
@@ -101,16 +101,17 @@ export const onCreatePost = /* GraphQL */ `
         _deleted
         _lastChangedAt
       }
-      comments {
+      entries {
         items {
           id
-          content
+          startTime
+          stopTime
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
+          taskEntriesId
         }
         nextToken
         startedAt
@@ -120,19 +121,19 @@ export const onCreatePost = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      blogPostsId
+      projectTasksId
     }
   }
 `;
-export const onUpdatePost = /* GraphQL */ `
-  subscription OnUpdatePost {
-    onUpdatePost {
+export const onUpdateTask = /* GraphQL */ `
+  subscription OnUpdateTask {
+    onUpdateTask {
       id
-      title
-      blog {
+      name
+      project {
         id
         name
-        posts {
+        tasks {
           nextToken
           startedAt
         }
@@ -142,16 +143,17 @@ export const onUpdatePost = /* GraphQL */ `
         _deleted
         _lastChangedAt
       }
-      comments {
+      entries {
         items {
           id
-          content
+          startTime
+          stopTime
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
+          taskEntriesId
         }
         nextToken
         startedAt
@@ -161,19 +163,19 @@ export const onUpdatePost = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      blogPostsId
+      projectTasksId
     }
   }
 `;
-export const onDeletePost = /* GraphQL */ `
-  subscription OnDeletePost {
-    onDeletePost {
+export const onDeleteTask = /* GraphQL */ `
+  subscription OnDeleteTask {
+    onDeleteTask {
       id
-      title
-      blog {
+      name
+      project {
         id
         name
-        posts {
+        tasks {
           nextToken
           startedAt
         }
@@ -183,16 +185,17 @@ export const onDeletePost = /* GraphQL */ `
         _deleted
         _lastChangedAt
       }
-      comments {
+      entries {
         items {
           id
-          content
+          startTime
+          stopTime
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
+          taskEntriesId
         }
         nextToken
         startedAt
@@ -202,18 +205,18 @@ export const onDeletePost = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      blogPostsId
+      projectTasksId
     }
   }
 `;
-export const onCreateComment = /* GraphQL */ `
-  subscription OnCreateComment {
-    onCreateComment {
+export const onCreateEntry = /* GraphQL */ `
+  subscription OnCreateEntry {
+    onCreateEntry {
       id
-      post {
+      task {
         id
-        title
-        blog {
+        name
+        project {
           id
           name
           createdAt
@@ -222,7 +225,7 @@ export const onCreateComment = /* GraphQL */ `
           _deleted
           _lastChangedAt
         }
-        comments {
+        entries {
           nextToken
           startedAt
         }
@@ -231,26 +234,27 @@ export const onCreateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        blogPostsId
+        projectTasksId
       }
-      content
+      startTime
+      stopTime
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      postCommentsId
+      taskEntriesId
     }
   }
 `;
-export const onUpdateComment = /* GraphQL */ `
-  subscription OnUpdateComment {
-    onUpdateComment {
+export const onUpdateEntry = /* GraphQL */ `
+  subscription OnUpdateEntry {
+    onUpdateEntry {
       id
-      post {
+      task {
         id
-        title
-        blog {
+        name
+        project {
           id
           name
           createdAt
@@ -259,7 +263,7 @@ export const onUpdateComment = /* GraphQL */ `
           _deleted
           _lastChangedAt
         }
-        comments {
+        entries {
           nextToken
           startedAt
         }
@@ -268,26 +272,27 @@ export const onUpdateComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        blogPostsId
+        projectTasksId
       }
-      content
+      startTime
+      stopTime
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      postCommentsId
+      taskEntriesId
     }
   }
 `;
-export const onDeleteComment = /* GraphQL */ `
-  subscription OnDeleteComment {
-    onDeleteComment {
+export const onDeleteEntry = /* GraphQL */ `
+  subscription OnDeleteEntry {
+    onDeleteEntry {
       id
-      post {
+      task {
         id
-        title
-        blog {
+        name
+        project {
           id
           name
           createdAt
@@ -296,7 +301,7 @@ export const onDeleteComment = /* GraphQL */ `
           _deleted
           _lastChangedAt
         }
-        comments {
+        entries {
           nextToken
           startedAt
         }
@@ -305,15 +310,16 @@ export const onDeleteComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        blogPostsId
+        projectTasksId
       }
-      content
+      startTime
+      stopTime
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      postCommentsId
+      taskEntriesId
     }
   }
 `;

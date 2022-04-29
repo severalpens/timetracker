@@ -2,21 +2,21 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getBlog = /* GraphQL */ `
-  query GetBlog($id: ID!) {
-    getBlog(id: $id) {
+export const getProject = /* GraphQL */ `
+  query GetProject($id: ID!) {
+    getProject(id: $id) {
       id
       name
-      posts {
+      tasks {
         items {
           id
-          title
+          name
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          blogPostsId
+          projectTasksId
         }
         nextToken
         startedAt
@@ -29,17 +29,17 @@ export const getBlog = /* GraphQL */ `
     }
   }
 `;
-export const listBlogs = /* GraphQL */ `
-  query ListBlogs(
-    $filter: ModelBlogFilterInput
+export const listProjects = /* GraphQL */ `
+  query ListProjects(
+    $filter: ModelProjectFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listBlogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listProjects(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         name
-        posts {
+        tasks {
           nextToken
           startedAt
         }
@@ -54,14 +54,14 @@ export const listBlogs = /* GraphQL */ `
     }
   }
 `;
-export const syncBlogs = /* GraphQL */ `
-  query SyncBlogs(
-    $filter: ModelBlogFilterInput
+export const syncProjects = /* GraphQL */ `
+  query SyncProjects(
+    $filter: ModelProjectFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncBlogs(
+    syncProjects(
       filter: $filter
       limit: $limit
       nextToken: $nextToken
@@ -70,7 +70,7 @@ export const syncBlogs = /* GraphQL */ `
       items {
         id
         name
-        posts {
+        tasks {
           nextToken
           startedAt
         }
@@ -85,15 +85,15 @@ export const syncBlogs = /* GraphQL */ `
     }
   }
 `;
-export const getPost = /* GraphQL */ `
-  query GetPost($id: ID!) {
-    getPost(id: $id) {
+export const getTask = /* GraphQL */ `
+  query GetTask($id: ID!) {
+    getTask(id: $id) {
       id
-      title
-      blog {
+      name
+      project {
         id
         name
-        posts {
+        tasks {
           nextToken
           startedAt
         }
@@ -103,16 +103,17 @@ export const getPost = /* GraphQL */ `
         _deleted
         _lastChangedAt
       }
-      comments {
+      entries {
         items {
           id
-          content
+          startTime
+          stopTime
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          postCommentsId
+          taskEntriesId
         }
         nextToken
         startedAt
@@ -122,21 +123,21 @@ export const getPost = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
-      blogPostsId
+      projectTasksId
     }
   }
 `;
-export const listPosts = /* GraphQL */ `
-  query ListPosts(
-    $filter: ModelPostFilterInput
+export const listTasks = /* GraphQL */ `
+  query ListTasks(
+    $filter: ModelTaskFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listTasks(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        title
-        blog {
+        name
+        project {
           id
           name
           createdAt
@@ -145,7 +146,7 @@ export const listPosts = /* GraphQL */ `
           _deleted
           _lastChangedAt
         }
-        comments {
+        entries {
           nextToken
           startedAt
         }
@@ -154,21 +155,21 @@ export const listPosts = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        blogPostsId
+        projectTasksId
       }
       nextToken
       startedAt
     }
   }
 `;
-export const syncPosts = /* GraphQL */ `
-  query SyncPosts(
-    $filter: ModelPostFilterInput
+export const syncTasks = /* GraphQL */ `
+  query SyncTasks(
+    $filter: ModelTaskFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncPosts(
+    syncTasks(
       filter: $filter
       limit: $limit
       nextToken: $nextToken
@@ -176,8 +177,8 @@ export const syncPosts = /* GraphQL */ `
     ) {
       items {
         id
-        title
-        blog {
+        name
+        project {
           id
           name
           createdAt
@@ -186,7 +187,7 @@ export const syncPosts = /* GraphQL */ `
           _deleted
           _lastChangedAt
         }
-        comments {
+        entries {
           nextToken
           startedAt
         }
@@ -195,21 +196,21 @@ export const syncPosts = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        blogPostsId
+        projectTasksId
       }
       nextToken
       startedAt
     }
   }
 `;
-export const getComment = /* GraphQL */ `
-  query GetComment($id: ID!) {
-    getComment(id: $id) {
+export const getEntry = /* GraphQL */ `
+  query GetEntry($id: ID!) {
+    getEntry(id: $id) {
       id
-      post {
+      task {
         id
-        title
-        blog {
+        name
+        project {
           id
           name
           createdAt
@@ -218,7 +219,7 @@ export const getComment = /* GraphQL */ `
           _deleted
           _lastChangedAt
         }
-        comments {
+        entries {
           nextToken
           startedAt
         }
@@ -227,58 +228,60 @@ export const getComment = /* GraphQL */ `
         _version
         _deleted
         _lastChangedAt
-        blogPostsId
+        projectTasksId
       }
-      content
+      startTime
+      stopTime
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      postCommentsId
+      taskEntriesId
     }
   }
 `;
-export const listComments = /* GraphQL */ `
-  query ListComments(
-    $filter: ModelCommentFilterInput
+export const listEntries = /* GraphQL */ `
+  query ListEntries(
+    $filter: ModelEntryFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listEntries(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        post {
+        task {
           id
-          title
+          name
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          blogPostsId
+          projectTasksId
         }
-        content
+        startTime
+        stopTime
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
+        taskEntriesId
       }
       nextToken
       startedAt
     }
   }
 `;
-export const syncComments = /* GraphQL */ `
-  query SyncComments(
-    $filter: ModelCommentFilterInput
+export const syncEntries = /* GraphQL */ `
+  query SyncEntries(
+    $filter: ModelEntryFilterInput
     $limit: Int
     $nextToken: String
     $lastSync: AWSTimestamp
   ) {
-    syncComments(
+    syncEntries(
       filter: $filter
       limit: $limit
       nextToken: $nextToken
@@ -286,23 +289,24 @@ export const syncComments = /* GraphQL */ `
     ) {
       items {
         id
-        post {
+        task {
           id
-          title
+          name
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          blogPostsId
+          projectTasksId
         }
-        content
+        startTime
+        stopTime
         createdAt
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        postCommentsId
+        taskEntriesId
       }
       nextToken
       startedAt

@@ -2,17 +2,17 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateBlogInput = {
+export type CreateProjectInput = {
   id?: string | null,
   name: string,
   _version?: number | null,
 };
 
-export type ModelBlogConditionInput = {
+export type ModelProjectConditionInput = {
   name?: ModelStringInput | null,
-  and?: Array< ModelBlogConditionInput | null > | null,
-  or?: Array< ModelBlogConditionInput | null > | null,
-  not?: ModelBlogConditionInput | null,
+  and?: Array< ModelProjectConditionInput | null > | null,
+  or?: Array< ModelProjectConditionInput | null > | null,
+  not?: ModelProjectConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -55,11 +55,11 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type Blog = {
-  __typename: "Blog",
+export type Project = {
+  __typename: "Project",
   id: string,
   name: string,
-  posts?: ModelPostConnection | null,
+  tasks?: ModelTaskConnection | null,
   createdAt: string,
   updatedAt: string,
   _version: number,
@@ -67,71 +67,72 @@ export type Blog = {
   _lastChangedAt: number,
 };
 
-export type ModelPostConnection = {
-  __typename: "ModelPostConnection",
-  items:  Array<Post | null >,
+export type ModelTaskConnection = {
+  __typename: "ModelTaskConnection",
+  items:  Array<Task | null >,
   nextToken?: string | null,
   startedAt?: number | null,
 };
 
-export type Post = {
-  __typename: "Post",
+export type Task = {
+  __typename: "Task",
   id: string,
-  title: string,
-  blog?: Blog | null,
-  comments?: ModelCommentConnection | null,
+  name: string,
+  project?: Project | null,
+  entries?: ModelEntryConnection | null,
   createdAt: string,
   updatedAt: string,
   _version: number,
   _deleted?: boolean | null,
   _lastChangedAt: number,
-  blogPostsId?: string | null,
+  projectTasksId?: string | null,
 };
 
-export type ModelCommentConnection = {
-  __typename: "ModelCommentConnection",
-  items:  Array<Comment | null >,
+export type ModelEntryConnection = {
+  __typename: "ModelEntryConnection",
+  items:  Array<Entry | null >,
   nextToken?: string | null,
   startedAt?: number | null,
 };
 
-export type Comment = {
-  __typename: "Comment",
+export type Entry = {
+  __typename: "Entry",
   id: string,
-  post?: Post | null,
-  content: string,
+  task?: Task | null,
+  startTime: number,
+  stopTime: number,
   createdAt: string,
   updatedAt: string,
   _version: number,
   _deleted?: boolean | null,
   _lastChangedAt: number,
-  postCommentsId?: string | null,
+  taskEntriesId?: string | null,
 };
 
-export type UpdateBlogInput = {
+export type UpdateProjectInput = {
   id: string,
   name?: string | null,
   _version?: number | null,
 };
 
-export type DeleteBlogInput = {
+export type DeleteProjectInput = {
   id: string,
   _version?: number | null,
 };
 
-export type CreatePostInput = {
+export type CreateTaskInput = {
   id?: string | null,
-  title: string,
+  name: string,
   _version?: number | null,
-  blogPostsId?: string | null,
+  projectTasksId?: string | null,
 };
 
-export type ModelPostConditionInput = {
-  title?: ModelStringInput | null,
-  and?: Array< ModelPostConditionInput | null > | null,
-  or?: Array< ModelPostConditionInput | null > | null,
-  not?: ModelPostConditionInput | null,
-  blogPostsId?: ModelIDInput | null,
+export type ModelTaskConditionInput = {
+  name?: ModelStringInput | null,
+  and?: Array< ModelTaskConditionInput | null > | null,
+  or?: Array< ModelTaskConditionInput | null > | null,
+  not?: ModelTaskConditionInput | null,
+  projectTasksId?: ModelIDInput | null,
 };
 
 export type ModelIDInput = {
@@ -150,100 +151,116 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type UpdatePostInput = {
+export type UpdateTaskInput = {
   id: string,
-  title?: string | null,
+  name?: string | null,
   _version?: number | null,
-  blogPostsId?: string | null,
+  projectTasksId?: string | null,
 };
 
-export type DeletePostInput = {
+export type DeleteTaskInput = {
   id: string,
   _version?: number | null,
 };
 
-export type CreateCommentInput = {
+export type CreateEntryInput = {
   id?: string | null,
-  content: string,
+  startTime: number,
+  stopTime: number,
   _version?: number | null,
-  postCommentsId?: string | null,
+  taskEntriesId?: string | null,
 };
 
-export type ModelCommentConditionInput = {
-  content?: ModelStringInput | null,
-  and?: Array< ModelCommentConditionInput | null > | null,
-  or?: Array< ModelCommentConditionInput | null > | null,
-  not?: ModelCommentConditionInput | null,
-  postCommentsId?: ModelIDInput | null,
+export type ModelEntryConditionInput = {
+  startTime?: ModelIntInput | null,
+  stopTime?: ModelIntInput | null,
+  and?: Array< ModelEntryConditionInput | null > | null,
+  or?: Array< ModelEntryConditionInput | null > | null,
+  not?: ModelEntryConditionInput | null,
+  taskEntriesId?: ModelIDInput | null,
 };
 
-export type UpdateCommentInput = {
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type UpdateEntryInput = {
   id: string,
-  content?: string | null,
+  startTime?: number | null,
+  stopTime?: number | null,
   _version?: number | null,
-  postCommentsId?: string | null,
+  taskEntriesId?: string | null,
 };
 
-export type DeleteCommentInput = {
+export type DeleteEntryInput = {
   id: string,
   _version?: number | null,
 };
 
-export type ModelBlogFilterInput = {
+export type ModelProjectFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
-  and?: Array< ModelBlogFilterInput | null > | null,
-  or?: Array< ModelBlogFilterInput | null > | null,
-  not?: ModelBlogFilterInput | null,
+  and?: Array< ModelProjectFilterInput | null > | null,
+  or?: Array< ModelProjectFilterInput | null > | null,
+  not?: ModelProjectFilterInput | null,
 };
 
-export type ModelBlogConnection = {
-  __typename: "ModelBlogConnection",
-  items:  Array<Blog | null >,
+export type ModelProjectConnection = {
+  __typename: "ModelProjectConnection",
+  items:  Array<Project | null >,
   nextToken?: string | null,
   startedAt?: number | null,
 };
 
-export type ModelPostFilterInput = {
+export type ModelTaskFilterInput = {
   id?: ModelIDInput | null,
-  title?: ModelStringInput | null,
-  and?: Array< ModelPostFilterInput | null > | null,
-  or?: Array< ModelPostFilterInput | null > | null,
-  not?: ModelPostFilterInput | null,
-  blogPostsId?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  and?: Array< ModelTaskFilterInput | null > | null,
+  or?: Array< ModelTaskFilterInput | null > | null,
+  not?: ModelTaskFilterInput | null,
+  projectTasksId?: ModelIDInput | null,
 };
 
-export type ModelCommentFilterInput = {
+export type ModelEntryFilterInput = {
   id?: ModelIDInput | null,
-  content?: ModelStringInput | null,
-  and?: Array< ModelCommentFilterInput | null > | null,
-  or?: Array< ModelCommentFilterInput | null > | null,
-  not?: ModelCommentFilterInput | null,
-  postCommentsId?: ModelIDInput | null,
+  startTime?: ModelIntInput | null,
+  stopTime?: ModelIntInput | null,
+  and?: Array< ModelEntryFilterInput | null > | null,
+  or?: Array< ModelEntryFilterInput | null > | null,
+  not?: ModelEntryFilterInput | null,
+  taskEntriesId?: ModelIDInput | null,
 };
 
-export type CreateBlogMutationVariables = {
-  input: CreateBlogInput,
-  condition?: ModelBlogConditionInput | null,
+export type CreateProjectMutationVariables = {
+  input: CreateProjectInput,
+  condition?: ModelProjectConditionInput | null,
 };
 
-export type CreateBlogMutation = {
-  createBlog?:  {
-    __typename: "Blog",
+export type CreateProjectMutation = {
+  createProject?:  {
+    __typename: "Project",
     id: string,
     name: string,
-    posts?:  {
-      __typename: "ModelPostConnection",
+    tasks?:  {
+      __typename: "ModelTaskConnection",
       items:  Array< {
-        __typename: "Post",
+        __typename: "Task",
         id: string,
-        title: string,
+        name: string,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        blogPostsId?: string | null,
+        projectTasksId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -256,28 +273,28 @@ export type CreateBlogMutation = {
   } | null,
 };
 
-export type UpdateBlogMutationVariables = {
-  input: UpdateBlogInput,
-  condition?: ModelBlogConditionInput | null,
+export type UpdateProjectMutationVariables = {
+  input: UpdateProjectInput,
+  condition?: ModelProjectConditionInput | null,
 };
 
-export type UpdateBlogMutation = {
-  updateBlog?:  {
-    __typename: "Blog",
+export type UpdateProjectMutation = {
+  updateProject?:  {
+    __typename: "Project",
     id: string,
     name: string,
-    posts?:  {
-      __typename: "ModelPostConnection",
+    tasks?:  {
+      __typename: "ModelTaskConnection",
       items:  Array< {
-        __typename: "Post",
+        __typename: "Task",
         id: string,
-        title: string,
+        name: string,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        blogPostsId?: string | null,
+        projectTasksId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -290,28 +307,28 @@ export type UpdateBlogMutation = {
   } | null,
 };
 
-export type DeleteBlogMutationVariables = {
-  input: DeleteBlogInput,
-  condition?: ModelBlogConditionInput | null,
+export type DeleteProjectMutationVariables = {
+  input: DeleteProjectInput,
+  condition?: ModelProjectConditionInput | null,
 };
 
-export type DeleteBlogMutation = {
-  deleteBlog?:  {
-    __typename: "Blog",
+export type DeleteProjectMutation = {
+  deleteProject?:  {
+    __typename: "Project",
     id: string,
     name: string,
-    posts?:  {
-      __typename: "ModelPostConnection",
+    tasks?:  {
+      __typename: "ModelTaskConnection",
       items:  Array< {
-        __typename: "Post",
+        __typename: "Task",
         id: string,
-        title: string,
+        name: string,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        blogPostsId?: string | null,
+        projectTasksId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -324,22 +341,22 @@ export type DeleteBlogMutation = {
   } | null,
 };
 
-export type CreatePostMutationVariables = {
-  input: CreatePostInput,
-  condition?: ModelPostConditionInput | null,
+export type CreateTaskMutationVariables = {
+  input: CreateTaskInput,
+  condition?: ModelTaskConditionInput | null,
 };
 
-export type CreatePostMutation = {
-  createPost?:  {
-    __typename: "Post",
+export type CreateTaskMutation = {
+  createTask?:  {
+    __typename: "Task",
     id: string,
-    title: string,
-    blog?:  {
-      __typename: "Blog",
+    name: string,
+    project?:  {
+      __typename: "Project",
       id: string,
       name: string,
-      posts?:  {
-        __typename: "ModelPostConnection",
+      tasks?:  {
+        __typename: "ModelTaskConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -349,18 +366,19 @@ export type CreatePostMutation = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    comments?:  {
-      __typename: "ModelCommentConnection",
+    entries?:  {
+      __typename: "ModelEntryConnection",
       items:  Array< {
-        __typename: "Comment",
+        __typename: "Entry",
         id: string,
-        content: string,
+        startTime: number,
+        stopTime: number,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
+        taskEntriesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -370,26 +388,26 @@ export type CreatePostMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    blogPostsId?: string | null,
+    projectTasksId?: string | null,
   } | null,
 };
 
-export type UpdatePostMutationVariables = {
-  input: UpdatePostInput,
-  condition?: ModelPostConditionInput | null,
+export type UpdateTaskMutationVariables = {
+  input: UpdateTaskInput,
+  condition?: ModelTaskConditionInput | null,
 };
 
-export type UpdatePostMutation = {
-  updatePost?:  {
-    __typename: "Post",
+export type UpdateTaskMutation = {
+  updateTask?:  {
+    __typename: "Task",
     id: string,
-    title: string,
-    blog?:  {
-      __typename: "Blog",
+    name: string,
+    project?:  {
+      __typename: "Project",
       id: string,
       name: string,
-      posts?:  {
-        __typename: "ModelPostConnection",
+      tasks?:  {
+        __typename: "ModelTaskConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -399,18 +417,19 @@ export type UpdatePostMutation = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    comments?:  {
-      __typename: "ModelCommentConnection",
+    entries?:  {
+      __typename: "ModelEntryConnection",
       items:  Array< {
-        __typename: "Comment",
+        __typename: "Entry",
         id: string,
-        content: string,
+        startTime: number,
+        stopTime: number,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
+        taskEntriesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -420,26 +439,26 @@ export type UpdatePostMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    blogPostsId?: string | null,
+    projectTasksId?: string | null,
   } | null,
 };
 
-export type DeletePostMutationVariables = {
-  input: DeletePostInput,
-  condition?: ModelPostConditionInput | null,
+export type DeleteTaskMutationVariables = {
+  input: DeleteTaskInput,
+  condition?: ModelTaskConditionInput | null,
 };
 
-export type DeletePostMutation = {
-  deletePost?:  {
-    __typename: "Post",
+export type DeleteTaskMutation = {
+  deleteTask?:  {
+    __typename: "Task",
     id: string,
-    title: string,
-    blog?:  {
-      __typename: "Blog",
+    name: string,
+    project?:  {
+      __typename: "Project",
       id: string,
       name: string,
-      posts?:  {
-        __typename: "ModelPostConnection",
+      tasks?:  {
+        __typename: "ModelTaskConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -449,18 +468,19 @@ export type DeletePostMutation = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    comments?:  {
-      __typename: "ModelCommentConnection",
+    entries?:  {
+      __typename: "ModelEntryConnection",
       items:  Array< {
-        __typename: "Comment",
+        __typename: "Entry",
         id: string,
-        content: string,
+        startTime: number,
+        stopTime: number,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
+        taskEntriesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -470,25 +490,25 @@ export type DeletePostMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    blogPostsId?: string | null,
+    projectTasksId?: string | null,
   } | null,
 };
 
-export type CreateCommentMutationVariables = {
-  input: CreateCommentInput,
-  condition?: ModelCommentConditionInput | null,
+export type CreateEntryMutationVariables = {
+  input: CreateEntryInput,
+  condition?: ModelEntryConditionInput | null,
 };
 
-export type CreateCommentMutation = {
-  createComment?:  {
-    __typename: "Comment",
+export type CreateEntryMutation = {
+  createEntry?:  {
+    __typename: "Entry",
     id: string,
-    post?:  {
-      __typename: "Post",
+    task?:  {
+      __typename: "Task",
       id: string,
-      title: string,
-      blog?:  {
-        __typename: "Blog",
+      name: string,
+      project?:  {
+        __typename: "Project",
         id: string,
         name: string,
         createdAt: string,
@@ -497,8 +517,8 @@ export type CreateCommentMutation = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      comments?:  {
-        __typename: "ModelCommentConnection",
+      entries?:  {
+        __typename: "ModelEntryConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -507,33 +527,34 @@ export type CreateCommentMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      blogPostsId?: string | null,
+      projectTasksId?: string | null,
     } | null,
-    content: string,
+    startTime: number,
+    stopTime: number,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
+    taskEntriesId?: string | null,
   } | null,
 };
 
-export type UpdateCommentMutationVariables = {
-  input: UpdateCommentInput,
-  condition?: ModelCommentConditionInput | null,
+export type UpdateEntryMutationVariables = {
+  input: UpdateEntryInput,
+  condition?: ModelEntryConditionInput | null,
 };
 
-export type UpdateCommentMutation = {
-  updateComment?:  {
-    __typename: "Comment",
+export type UpdateEntryMutation = {
+  updateEntry?:  {
+    __typename: "Entry",
     id: string,
-    post?:  {
-      __typename: "Post",
+    task?:  {
+      __typename: "Task",
       id: string,
-      title: string,
-      blog?:  {
-        __typename: "Blog",
+      name: string,
+      project?:  {
+        __typename: "Project",
         id: string,
         name: string,
         createdAt: string,
@@ -542,8 +563,8 @@ export type UpdateCommentMutation = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      comments?:  {
-        __typename: "ModelCommentConnection",
+      entries?:  {
+        __typename: "ModelEntryConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -552,33 +573,34 @@ export type UpdateCommentMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      blogPostsId?: string | null,
+      projectTasksId?: string | null,
     } | null,
-    content: string,
+    startTime: number,
+    stopTime: number,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
+    taskEntriesId?: string | null,
   } | null,
 };
 
-export type DeleteCommentMutationVariables = {
-  input: DeleteCommentInput,
-  condition?: ModelCommentConditionInput | null,
+export type DeleteEntryMutationVariables = {
+  input: DeleteEntryInput,
+  condition?: ModelEntryConditionInput | null,
 };
 
-export type DeleteCommentMutation = {
-  deleteComment?:  {
-    __typename: "Comment",
+export type DeleteEntryMutation = {
+  deleteEntry?:  {
+    __typename: "Entry",
     id: string,
-    post?:  {
-      __typename: "Post",
+    task?:  {
+      __typename: "Task",
       id: string,
-      title: string,
-      blog?:  {
-        __typename: "Blog",
+      name: string,
+      project?:  {
+        __typename: "Project",
         id: string,
         name: string,
         createdAt: string,
@@ -587,8 +609,8 @@ export type DeleteCommentMutation = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      comments?:  {
-        __typename: "ModelCommentConnection",
+      entries?:  {
+        __typename: "ModelEntryConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -597,39 +619,40 @@ export type DeleteCommentMutation = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      blogPostsId?: string | null,
+      projectTasksId?: string | null,
     } | null,
-    content: string,
+    startTime: number,
+    stopTime: number,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
+    taskEntriesId?: string | null,
   } | null,
 };
 
-export type GetBlogQueryVariables = {
+export type GetProjectQueryVariables = {
   id: string,
 };
 
-export type GetBlogQuery = {
-  getBlog?:  {
-    __typename: "Blog",
+export type GetProjectQuery = {
+  getProject?:  {
+    __typename: "Project",
     id: string,
     name: string,
-    posts?:  {
-      __typename: "ModelPostConnection",
+    tasks?:  {
+      __typename: "ModelTaskConnection",
       items:  Array< {
-        __typename: "Post",
+        __typename: "Task",
         id: string,
-        title: string,
+        name: string,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        blogPostsId?: string | null,
+        projectTasksId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -642,21 +665,21 @@ export type GetBlogQuery = {
   } | null,
 };
 
-export type ListBlogsQueryVariables = {
-  filter?: ModelBlogFilterInput | null,
+export type ListProjectsQueryVariables = {
+  filter?: ModelProjectFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListBlogsQuery = {
-  listBlogs?:  {
-    __typename: "ModelBlogConnection",
+export type ListProjectsQuery = {
+  listProjects?:  {
+    __typename: "ModelProjectConnection",
     items:  Array< {
-      __typename: "Blog",
+      __typename: "Project",
       id: string,
       name: string,
-      posts?:  {
-        __typename: "ModelPostConnection",
+      tasks?:  {
+        __typename: "ModelTaskConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -671,22 +694,22 @@ export type ListBlogsQuery = {
   } | null,
 };
 
-export type SyncBlogsQueryVariables = {
-  filter?: ModelBlogFilterInput | null,
+export type SyncProjectsQueryVariables = {
+  filter?: ModelProjectFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
   lastSync?: number | null,
 };
 
-export type SyncBlogsQuery = {
-  syncBlogs?:  {
-    __typename: "ModelBlogConnection",
+export type SyncProjectsQuery = {
+  syncProjects?:  {
+    __typename: "ModelProjectConnection",
     items:  Array< {
-      __typename: "Blog",
+      __typename: "Project",
       id: string,
       name: string,
-      posts?:  {
-        __typename: "ModelPostConnection",
+      tasks?:  {
+        __typename: "ModelTaskConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -701,21 +724,21 @@ export type SyncBlogsQuery = {
   } | null,
 };
 
-export type GetPostQueryVariables = {
+export type GetTaskQueryVariables = {
   id: string,
 };
 
-export type GetPostQuery = {
-  getPost?:  {
-    __typename: "Post",
+export type GetTaskQuery = {
+  getTask?:  {
+    __typename: "Task",
     id: string,
-    title: string,
-    blog?:  {
-      __typename: "Blog",
+    name: string,
+    project?:  {
+      __typename: "Project",
       id: string,
       name: string,
-      posts?:  {
-        __typename: "ModelPostConnection",
+      tasks?:  {
+        __typename: "ModelTaskConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -725,18 +748,19 @@ export type GetPostQuery = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    comments?:  {
-      __typename: "ModelCommentConnection",
+    entries?:  {
+      __typename: "ModelEntryConnection",
       items:  Array< {
-        __typename: "Comment",
+        __typename: "Entry",
         id: string,
-        content: string,
+        startTime: number,
+        stopTime: number,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
+        taskEntriesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -746,25 +770,25 @@ export type GetPostQuery = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    blogPostsId?: string | null,
+    projectTasksId?: string | null,
   } | null,
 };
 
-export type ListPostsQueryVariables = {
-  filter?: ModelPostFilterInput | null,
+export type ListTasksQueryVariables = {
+  filter?: ModelTaskFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListPostsQuery = {
-  listPosts?:  {
-    __typename: "ModelPostConnection",
+export type ListTasksQuery = {
+  listTasks?:  {
+    __typename: "ModelTaskConnection",
     items:  Array< {
-      __typename: "Post",
+      __typename: "Task",
       id: string,
-      title: string,
-      blog?:  {
-        __typename: "Blog",
+      name: string,
+      project?:  {
+        __typename: "Project",
         id: string,
         name: string,
         createdAt: string,
@@ -773,8 +797,8 @@ export type ListPostsQuery = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      comments?:  {
-        __typename: "ModelCommentConnection",
+      entries?:  {
+        __typename: "ModelEntryConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -783,29 +807,29 @@ export type ListPostsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      blogPostsId?: string | null,
+      projectTasksId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
   } | null,
 };
 
-export type SyncPostsQueryVariables = {
-  filter?: ModelPostFilterInput | null,
+export type SyncTasksQueryVariables = {
+  filter?: ModelTaskFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
   lastSync?: number | null,
 };
 
-export type SyncPostsQuery = {
-  syncPosts?:  {
-    __typename: "ModelPostConnection",
+export type SyncTasksQuery = {
+  syncTasks?:  {
+    __typename: "ModelTaskConnection",
     items:  Array< {
-      __typename: "Post",
+      __typename: "Task",
       id: string,
-      title: string,
-      blog?:  {
-        __typename: "Blog",
+      name: string,
+      project?:  {
+        __typename: "Project",
         id: string,
         name: string,
         createdAt: string,
@@ -814,8 +838,8 @@ export type SyncPostsQuery = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      comments?:  {
-        __typename: "ModelCommentConnection",
+      entries?:  {
+        __typename: "ModelEntryConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -824,27 +848,27 @@ export type SyncPostsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      blogPostsId?: string | null,
+      projectTasksId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
   } | null,
 };
 
-export type GetCommentQueryVariables = {
+export type GetEntryQueryVariables = {
   id: string,
 };
 
-export type GetCommentQuery = {
-  getComment?:  {
-    __typename: "Comment",
+export type GetEntryQuery = {
+  getEntry?:  {
+    __typename: "Entry",
     id: string,
-    post?:  {
-      __typename: "Post",
+    task?:  {
+      __typename: "Task",
       id: string,
-      title: string,
-      blog?:  {
-        __typename: "Blog",
+      name: string,
+      project?:  {
+        __typename: "Project",
         id: string,
         name: string,
         createdAt: string,
@@ -853,8 +877,8 @@ export type GetCommentQuery = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      comments?:  {
-        __typename: "ModelCommentConnection",
+      entries?:  {
+        __typename: "ModelEntryConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -863,108 +887,111 @@ export type GetCommentQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      blogPostsId?: string | null,
+      projectTasksId?: string | null,
     } | null,
-    content: string,
+    startTime: number,
+    stopTime: number,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
+    taskEntriesId?: string | null,
   } | null,
 };
 
-export type ListCommentsQueryVariables = {
-  filter?: ModelCommentFilterInput | null,
+export type ListEntriesQueryVariables = {
+  filter?: ModelEntryFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListCommentsQuery = {
-  listComments?:  {
-    __typename: "ModelCommentConnection",
+export type ListEntriesQuery = {
+  listEntries?:  {
+    __typename: "ModelEntryConnection",
     items:  Array< {
-      __typename: "Comment",
+      __typename: "Entry",
       id: string,
-      post?:  {
-        __typename: "Post",
+      task?:  {
+        __typename: "Task",
         id: string,
-        title: string,
+        name: string,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        blogPostsId?: string | null,
+        projectTasksId?: string | null,
       } | null,
-      content: string,
+      startTime: number,
+      stopTime: number,
       createdAt: string,
       updatedAt: string,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
+      taskEntriesId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
   } | null,
 };
 
-export type SyncCommentsQueryVariables = {
-  filter?: ModelCommentFilterInput | null,
+export type SyncEntriesQueryVariables = {
+  filter?: ModelEntryFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
   lastSync?: number | null,
 };
 
-export type SyncCommentsQuery = {
-  syncComments?:  {
-    __typename: "ModelCommentConnection",
+export type SyncEntriesQuery = {
+  syncEntries?:  {
+    __typename: "ModelEntryConnection",
     items:  Array< {
-      __typename: "Comment",
+      __typename: "Entry",
       id: string,
-      post?:  {
-        __typename: "Post",
+      task?:  {
+        __typename: "Task",
         id: string,
-        title: string,
+        name: string,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        blogPostsId?: string | null,
+        projectTasksId?: string | null,
       } | null,
-      content: string,
+      startTime: number,
+      stopTime: number,
       createdAt: string,
       updatedAt: string,
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      postCommentsId?: string | null,
+      taskEntriesId?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
   } | null,
 };
 
-export type OnCreateBlogSubscription = {
-  onCreateBlog?:  {
-    __typename: "Blog",
+export type OnCreateProjectSubscription = {
+  onCreateProject?:  {
+    __typename: "Project",
     id: string,
     name: string,
-    posts?:  {
-      __typename: "ModelPostConnection",
+    tasks?:  {
+      __typename: "ModelTaskConnection",
       items:  Array< {
-        __typename: "Post",
+        __typename: "Task",
         id: string,
-        title: string,
+        name: string,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        blogPostsId?: string | null,
+        projectTasksId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -977,23 +1004,23 @@ export type OnCreateBlogSubscription = {
   } | null,
 };
 
-export type OnUpdateBlogSubscription = {
-  onUpdateBlog?:  {
-    __typename: "Blog",
+export type OnUpdateProjectSubscription = {
+  onUpdateProject?:  {
+    __typename: "Project",
     id: string,
     name: string,
-    posts?:  {
-      __typename: "ModelPostConnection",
+    tasks?:  {
+      __typename: "ModelTaskConnection",
       items:  Array< {
-        __typename: "Post",
+        __typename: "Task",
         id: string,
-        title: string,
+        name: string,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        blogPostsId?: string | null,
+        projectTasksId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1006,23 +1033,23 @@ export type OnUpdateBlogSubscription = {
   } | null,
 };
 
-export type OnDeleteBlogSubscription = {
-  onDeleteBlog?:  {
-    __typename: "Blog",
+export type OnDeleteProjectSubscription = {
+  onDeleteProject?:  {
+    __typename: "Project",
     id: string,
     name: string,
-    posts?:  {
-      __typename: "ModelPostConnection",
+    tasks?:  {
+      __typename: "ModelTaskConnection",
       items:  Array< {
-        __typename: "Post",
+        __typename: "Task",
         id: string,
-        title: string,
+        name: string,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        blogPostsId?: string | null,
+        projectTasksId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1035,17 +1062,17 @@ export type OnDeleteBlogSubscription = {
   } | null,
 };
 
-export type OnCreatePostSubscription = {
-  onCreatePost?:  {
-    __typename: "Post",
+export type OnCreateTaskSubscription = {
+  onCreateTask?:  {
+    __typename: "Task",
     id: string,
-    title: string,
-    blog?:  {
-      __typename: "Blog",
+    name: string,
+    project?:  {
+      __typename: "Project",
       id: string,
       name: string,
-      posts?:  {
-        __typename: "ModelPostConnection",
+      tasks?:  {
+        __typename: "ModelTaskConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -1055,18 +1082,19 @@ export type OnCreatePostSubscription = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    comments?:  {
-      __typename: "ModelCommentConnection",
+    entries?:  {
+      __typename: "ModelEntryConnection",
       items:  Array< {
-        __typename: "Comment",
+        __typename: "Entry",
         id: string,
-        content: string,
+        startTime: number,
+        stopTime: number,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
+        taskEntriesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1076,21 +1104,21 @@ export type OnCreatePostSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    blogPostsId?: string | null,
+    projectTasksId?: string | null,
   } | null,
 };
 
-export type OnUpdatePostSubscription = {
-  onUpdatePost?:  {
-    __typename: "Post",
+export type OnUpdateTaskSubscription = {
+  onUpdateTask?:  {
+    __typename: "Task",
     id: string,
-    title: string,
-    blog?:  {
-      __typename: "Blog",
+    name: string,
+    project?:  {
+      __typename: "Project",
       id: string,
       name: string,
-      posts?:  {
-        __typename: "ModelPostConnection",
+      tasks?:  {
+        __typename: "ModelTaskConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -1100,18 +1128,19 @@ export type OnUpdatePostSubscription = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    comments?:  {
-      __typename: "ModelCommentConnection",
+    entries?:  {
+      __typename: "ModelEntryConnection",
       items:  Array< {
-        __typename: "Comment",
+        __typename: "Entry",
         id: string,
-        content: string,
+        startTime: number,
+        stopTime: number,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
+        taskEntriesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1121,21 +1150,21 @@ export type OnUpdatePostSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    blogPostsId?: string | null,
+    projectTasksId?: string | null,
   } | null,
 };
 
-export type OnDeletePostSubscription = {
-  onDeletePost?:  {
-    __typename: "Post",
+export type OnDeleteTaskSubscription = {
+  onDeleteTask?:  {
+    __typename: "Task",
     id: string,
-    title: string,
-    blog?:  {
-      __typename: "Blog",
+    name: string,
+    project?:  {
+      __typename: "Project",
       id: string,
       name: string,
-      posts?:  {
-        __typename: "ModelPostConnection",
+      tasks?:  {
+        __typename: "ModelTaskConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -1145,18 +1174,19 @@ export type OnDeletePostSubscription = {
       _deleted?: boolean | null,
       _lastChangedAt: number,
     } | null,
-    comments?:  {
-      __typename: "ModelCommentConnection",
+    entries?:  {
+      __typename: "ModelEntryConnection",
       items:  Array< {
-        __typename: "Comment",
+        __typename: "Entry",
         id: string,
-        content: string,
+        startTime: number,
+        stopTime: number,
         createdAt: string,
         updatedAt: string,
         _version: number,
         _deleted?: boolean | null,
         _lastChangedAt: number,
-        postCommentsId?: string | null,
+        taskEntriesId?: string | null,
       } | null >,
       nextToken?: string | null,
       startedAt?: number | null,
@@ -1166,20 +1196,20 @@ export type OnDeletePostSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    blogPostsId?: string | null,
+    projectTasksId?: string | null,
   } | null,
 };
 
-export type OnCreateCommentSubscription = {
-  onCreateComment?:  {
-    __typename: "Comment",
+export type OnCreateEntrySubscription = {
+  onCreateEntry?:  {
+    __typename: "Entry",
     id: string,
-    post?:  {
-      __typename: "Post",
+    task?:  {
+      __typename: "Task",
       id: string,
-      title: string,
-      blog?:  {
-        __typename: "Blog",
+      name: string,
+      project?:  {
+        __typename: "Project",
         id: string,
         name: string,
         createdAt: string,
@@ -1188,8 +1218,8 @@ export type OnCreateCommentSubscription = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      comments?:  {
-        __typename: "ModelCommentConnection",
+      entries?:  {
+        __typename: "ModelEntryConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -1198,28 +1228,29 @@ export type OnCreateCommentSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      blogPostsId?: string | null,
+      projectTasksId?: string | null,
     } | null,
-    content: string,
+    startTime: number,
+    stopTime: number,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
+    taskEntriesId?: string | null,
   } | null,
 };
 
-export type OnUpdateCommentSubscription = {
-  onUpdateComment?:  {
-    __typename: "Comment",
+export type OnUpdateEntrySubscription = {
+  onUpdateEntry?:  {
+    __typename: "Entry",
     id: string,
-    post?:  {
-      __typename: "Post",
+    task?:  {
+      __typename: "Task",
       id: string,
-      title: string,
-      blog?:  {
-        __typename: "Blog",
+      name: string,
+      project?:  {
+        __typename: "Project",
         id: string,
         name: string,
         createdAt: string,
@@ -1228,8 +1259,8 @@ export type OnUpdateCommentSubscription = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      comments?:  {
-        __typename: "ModelCommentConnection",
+      entries?:  {
+        __typename: "ModelEntryConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -1238,28 +1269,29 @@ export type OnUpdateCommentSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      blogPostsId?: string | null,
+      projectTasksId?: string | null,
     } | null,
-    content: string,
+    startTime: number,
+    stopTime: number,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
+    taskEntriesId?: string | null,
   } | null,
 };
 
-export type OnDeleteCommentSubscription = {
-  onDeleteComment?:  {
-    __typename: "Comment",
+export type OnDeleteEntrySubscription = {
+  onDeleteEntry?:  {
+    __typename: "Entry",
     id: string,
-    post?:  {
-      __typename: "Post",
+    task?:  {
+      __typename: "Task",
       id: string,
-      title: string,
-      blog?:  {
-        __typename: "Blog",
+      name: string,
+      project?:  {
+        __typename: "Project",
         id: string,
         name: string,
         createdAt: string,
@@ -1268,8 +1300,8 @@ export type OnDeleteCommentSubscription = {
         _deleted?: boolean | null,
         _lastChangedAt: number,
       } | null,
-      comments?:  {
-        __typename: "ModelCommentConnection",
+      entries?:  {
+        __typename: "ModelEntryConnection",
         nextToken?: string | null,
         startedAt?: number | null,
       } | null,
@@ -1278,14 +1310,15 @@ export type OnDeleteCommentSubscription = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
-      blogPostsId?: string | null,
+      projectTasksId?: string | null,
     } | null,
-    content: string,
+    startTime: number,
+    stopTime: number,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
-    postCommentsId?: string | null,
+    taskEntriesId?: string | null,
   } | null,
 };

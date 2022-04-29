@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "Blog": {
-            "name": "Blog",
+        "Project": {
+            "name": "Project",
             "fields": {
                 "id": {
                     "name": "id",
@@ -17,18 +17,18 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "posts": {
-                    "name": "posts",
+                "tasks": {
+                    "name": "tasks",
                     "isArray": true,
                     "type": {
-                        "model": "Post"
+                        "model": "Task"
                     },
                     "isRequired": false,
                     "attributes": [],
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "blogPostsId"
+                        "associatedWith": "projectTasksId"
                     }
                 },
                 "createdAt": {
@@ -49,7 +49,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Blogs",
+            "pluralName": "Projects",
             "attributes": [
                 {
                     "type": "model",
@@ -73,8 +73,8 @@ export const schema = {
                 }
             ]
         },
-        "Post": {
-            "name": "Post",
+        "Task": {
+            "name": "Task",
             "fields": {
                 "id": {
                     "name": "id",
@@ -83,38 +83,38 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "title": {
-                    "name": "title",
+                "name": {
+                    "name": "name",
                     "isArray": false,
                     "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
-                "blog": {
-                    "name": "blog",
+                "project": {
+                    "name": "project",
                     "isArray": false,
                     "type": {
-                        "model": "Blog"
+                        "model": "Project"
                     },
                     "isRequired": false,
                     "attributes": [],
                     "association": {
                         "connectionType": "BELONGS_TO",
-                        "targetName": "blogPostsId"
+                        "targetName": "projectTasksId"
                     }
                 },
-                "comments": {
-                    "name": "comments",
+                "entries": {
+                    "name": "entries",
                     "isArray": true,
                     "type": {
-                        "model": "Comment"
+                        "model": "Entry"
                     },
                     "isRequired": false,
                     "attributes": [],
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "postCommentsId"
+                        "associatedWith": "taskEntriesId"
                     }
                 },
                 "createdAt": {
@@ -135,7 +135,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Posts",
+            "pluralName": "Tasks",
             "attributes": [
                 {
                     "type": "model",
@@ -159,8 +159,8 @@ export const schema = {
                 }
             ]
         },
-        "Comment": {
-            "name": "Comment",
+        "Entry": {
+            "name": "Entry",
             "fields": {
                 "id": {
                     "name": "id",
@@ -169,23 +169,30 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "post": {
-                    "name": "post",
+                "task": {
+                    "name": "task",
                     "isArray": false,
                     "type": {
-                        "model": "Post"
+                        "model": "Task"
                     },
                     "isRequired": false,
                     "attributes": [],
                     "association": {
                         "connectionType": "BELONGS_TO",
-                        "targetName": "postCommentsId"
+                        "targetName": "taskEntriesId"
                     }
                 },
-                "content": {
-                    "name": "content",
+                "startTime": {
+                    "name": "startTime",
                     "isArray": false,
-                    "type": "String",
+                    "type": "AWSTimestamp",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "stopTime": {
+                    "name": "stopTime",
+                    "isArray": false,
+                    "type": "AWSTimestamp",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -207,7 +214,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "Comments",
+            "pluralName": "Entries",
             "attributes": [
                 {
                     "type": "model",
@@ -234,5 +241,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "165944a36979cd395e3b22145bbfeff0"
+    "version": "df2402d9403a178e493c7ced8bd973e1"
 };
