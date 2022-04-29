@@ -10,6 +10,7 @@ import awsExports from './aws-exports';
 import Navbar from './components/Navbar';
 import Projects from './components/projects/Projects';
 import Categories from './components/categories/Categories';
+import Tasks from './components/tasks/Tasks';
 Amplify.configure(awsExports);
 
 
@@ -22,6 +23,7 @@ root.render(
   <Routes>
   <Route path="/" element={<App />}>
   <Route path="/projects" element={<Projects/>}/>
+  <Route path="/tasks" element={<Tasks/>}/>
   <Route path="/categories" element={<Categories/>}/>
       <Route
         path="*"

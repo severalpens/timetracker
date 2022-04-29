@@ -25,11 +25,6 @@ function Navbar(props) {
             </NavLink>
           </div>
           <div className="p-6">
-            <NavLink className="" to="/categories">
-              Categories
-            </NavLink>
-          </div>
-          <div className="p-6">
             <NavLink className="" to="/tasks">
               Tasks
             </NavLink>
