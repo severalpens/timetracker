@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-
+import './Navbar.css';
 function Navbar(props) {
 
 
@@ -11,43 +11,25 @@ function Navbar(props) {
   }, [])
 
   return (
-    <>
-      <div className="container flex justify-between mx-auto  border m-4 border-black px-4">
-        <div className="p-6 columns-2  flex ">
-          <div className="p-6 ">
-            <NavLink className="font-bold" to="/">
-              Time Tracker
-            </NavLink>
-          </div>
-          <div className="p-6">
-            <NavLink className="" to="/projects">
-              Projects
-            </NavLink>
-          </div>
-          <div className="p-6">
-            <NavLink className="" to="/tasks">
-              Tasks
-            </NavLink>
-          </div>
-          <div className="p-6">
-            <NavLink className="" to="/entries">
-              Entries
-            </NavLink>
-          </div>
-        </div>
-        <div className="p-6 columns-2">
-        </div>
+    <div id="navbar" className="border border-black  flex justify-between  m-4  px-4  rounded-lg mx-10">
+      <div id="navbar-main-menu" className="columns-2 p-6 flex">
+        <NavLink id="navlink-home" className="font-bold p-6 navlink" to="/">
+          Time Tracker
+        </NavLink>
+        <NavLink id="navlink-projects" className="p-6" to="/projects">
+          Projects
+        </NavLink>
+        <NavLink id="navlink-tasks" className="p-6" to="/tasks">
+          Tasks
+        </NavLink>
+        <NavLink id="navlink-entries" className="p-6" to="/entries">
+          Entries
+        </NavLink>
       </div>
-      <div className="container flex mx-auto">
-        <div className="p-6">
-        </div>
-        <div className="p-6">
-        </div>
-        <div className="p-6">
-        </div>
+      <div id="navbar-auth-menu" className="p-6 columns-2">
       </div>
-    </>
-       );
+    </div>
+  );
 }
 
 export default Navbar;

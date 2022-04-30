@@ -3,7 +3,7 @@ import ProjectRowDisplayMode from './ProjectRowDisplayMode';
 import ProjectRowEditMode from './ProjectRowEditMode';
 
 export default function ProjectRow(props) {
-    const {project, setProject} = props;
+    const {project, setProject, deleteProject} = props;
     const [inEditMode, setInEditMode] = useState(false)
     if (inEditMode) {
         return (
@@ -11,6 +11,6 @@ export default function ProjectRow(props) {
         )
     }
     return (
-        <ProjectRowDisplayMode  project={project} setInEditMode={setInEditMode}  setProject={setProject} />
+        <ProjectRowDisplayMode  project={project} setInEditMode={setInEditMode}  setProject={setProject} deleteProject={deleteProject}/>
     )
 }

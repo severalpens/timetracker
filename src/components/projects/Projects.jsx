@@ -18,8 +18,8 @@ export default function Projects(props) {
 
   async function fetchData() {
     let graphqlResult = await API.graphql({ query: queries.listProjects });
-    let ts = graphqlResult.data.listProjects.items.filter(x => !x._deleted);
-    setProjects(ts);
+    let ps = graphqlResult.data.listProjects.items.filter(x => !x._deleted);
+    setProjects(ps);
 
   }
 
@@ -50,20 +50,23 @@ export default function Projects(props) {
   }
 
 
+  async function fetchData(){
+    let graphqlResult = await API.graphql({ query: queries.listProjects });
+    let ts = graphqlResult.data.listProjects.items.filter(x => !x._deleted);
+    setProjects(ts);
+  }
+
   const cancelEdit = (t) => {
 
   }
 
 
   return (
-    <div className="flex">
       <div className="ml-16 my-16 ">
-        <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600">Projects</h2>
-        <div className="flex">
-
-        <ProjectsTable />
-        <ProjectForm/>
-        </div>
+        <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 pb-10">Projects</h2>
+        <div className="flex flex-wrap-reverse">
+        <ProjectsTable fetchData={fetchData} projects={projects} setProjects={setProjects} />
+        <ProjectForm  fetchData={fetchData}  projects={projects} setProjects={setProjects}/>
         </div>
     </div>
 

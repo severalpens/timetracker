@@ -5,21 +5,11 @@ import * as mutations from '../../graphql/mutations';
 import ProjectRow from './ProjectRow';
 
 export default function ProjectsTable(props) {
-  const [projects, setProjects] = useState([]);
+  const {fetchData, projects, setProjects} = props;
   const [project, setProject] = useState('');
   const [projectName, setProjectName] = useState('');
   const [description, setDescription] = useState('');
 
-
-  useEffect(() => {
-    fetchData();
-  }, [])
-  
-  async function fetchData(){
-    let graphqlResult = await API.graphql({ query: queries.listProjects });
-    let ts = graphqlResult.data.listProjects.items.filter(x => !x._deleted);
-    setProjects(ts);
-  }
 
 
   const editTask = async (t)  => {
@@ -48,15 +38,18 @@ export default function ProjectsTable(props) {
   }
 
 
-  const cancelEdit = (t)  => {
-    
+  const deleteProject = async (project)  => {
+    const  {id, _version} = project;
+    const input = {id, _version};
+    console.log(input)
+    await API.graphql({ query: mutations.deleteProject, variables: { input } });
+    await fetchData();
   }
 
 
   return (
-    <div>
-      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table className="table-auto min-w-full divide-y divide-gray-200">
+      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-1/2 min-w-min">
+        <table className="table-auto min-w-full divide-y divide-gray-200 ">
           <thead className="bg-gray-50">
             <tr>
               <th
@@ -65,17 +58,16 @@ export default function ProjectsTable(props) {
               >
                 Name
               </th>
-              <th scope="col" className="relative px-6 py-3"><span className="sr-only"></span></th>
+              <th scope="col" className="relative px-6 py-3"></th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {projects.map((project) => {
+            {projects ? projects.map((project) => {
               return (
-              <ProjectRow key={project.id} project={project} setProject={setProject}/>
-            )})}
+              <ProjectRow key={project.id} project={project} setProject={setProject} deleteProject={deleteProject}/>
+            )}): null}
           </tbody>
         </table>
       </div>
-    </div>
-  );
+    );
 }
