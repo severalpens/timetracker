@@ -3,7 +3,7 @@ import EntryRowDisplayMode from './EntryRowDisplayMode';
 import EntryRowEditMode from './EntryRowEditMode';
 
 export default function EntryRow(props) {
-    const {entry, setEntry} = props;
+    const {entry, setEntry, deleteEntry} = props;
     const [inEditMode, setInEditMode] = useState(false)
     if (inEditMode) {
         return (
@@ -11,6 +11,6 @@ export default function EntryRow(props) {
         )
     }
     return (
-        <EntryRowDisplayMode  entry={entry} setInEditMode={setInEditMode}  setEntry={setEntry} />
+        <EntryRowDisplayMode  entry={entry} setInEditMode={setInEditMode}  setEntry={setEntry} deleteEntry={deleteEntry}/>
     )
 }

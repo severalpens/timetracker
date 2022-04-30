@@ -11,6 +11,7 @@ import Navbar from './components/Navbar';
 import Projects from './components/projects/Projects';
 import Tasks from './components/tasks/Tasks';
 import Entries from './components/entries/Entries';
+
 Amplify.configure(awsExports);
 
 

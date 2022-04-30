@@ -18,8 +18,8 @@ export default function Entries(props) {
 
   async function fetchData() {
     let graphqlResult = await API.graphql({ query: queries.listEntries });
-    let ts = graphqlResult.data.listEntries.items.filter(x => !x._deleted);
-    setEntries(ts);
+    let ps = graphqlResult.data.listEntries.items.filter(x => !x._deleted);
+    setEntries(ps);
 
   }
 
@@ -50,20 +50,23 @@ export default function Entries(props) {
   }
 
 
+  async function fetchData(){
+    let graphqlResult = await API.graphql({ query: queries.listEntries });
+    let ts = graphqlResult.data.listEntries.items.filter(x => !x._deleted);
+    setEntries(ts);
+  }
+
   const cancelEdit = (t) => {
 
   }
 
 
   return (
-    <div className="flex">
       <div className="ml-16 my-16 ">
-        <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600">Entries</h2>
-        <div className="flex">
-
-        <EntriesTable />
-        <EntryForm/>
-        </div>
+        <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 pb-10">Entries</h2>
+        <div className="flex flex-wrap-reverse">
+        <EntriesTable fetchData={fetchData} entries={entries} setEntries={setEntries} />
+        <EntryForm  fetchData={fetchData}  entries={entries} setEntries={setEntries}/>
         </div>
     </div>
 

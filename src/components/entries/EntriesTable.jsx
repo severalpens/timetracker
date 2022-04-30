@@ -5,21 +5,11 @@ import * as mutations from '../../graphql/mutations';
 import EntryRow from './EntryRow';
 
 export default function EntriesTable(props) {
-  const [entries, setEntries] = useState([]);
+  const {fetchData, entries, setEntries} = props;
   const [entry, setEntry] = useState('');
   const [entryName, setEntryName] = useState('');
   const [description, setDescription] = useState('');
 
-
-  useEffect(() => {
-    fetchData();
-  }, [])
-  
-  async function fetchData(){
-    let graphqlResult = await API.graphql({ query: queries.listEntries });
-    let ts = graphqlResult.data.listEntries.items.filter(x => !x._deleted);
-    setEntries(ts);
-  }
 
 
   const editTask = async (t)  => {
@@ -48,15 +38,18 @@ export default function EntriesTable(props) {
   }
 
 
-  const cancelEdit = (t)  => {
-    
+  const deleteEntry = async (entry)  => {
+    const  {id, _version} = entry;
+    const input = {id, _version};
+    console.log(input)
+    await API.graphql({ query: mutations.deleteEntry, variables: { input } });
+    await fetchData();
   }
 
 
   return (
-    <div>
-      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table className="table-auto min-w-full divide-y divide-gray-200">
+      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-1/2 min-w-min">
+        <table className="table-auto min-w-full divide-y divide-gray-200 ">
           <thead className="bg-gray-50">
             <tr>
               <th
@@ -65,17 +58,16 @@ export default function EntriesTable(props) {
               >
                 Name
               </th>
-              <th scope="col" className="relative px-6 py-3"><span className="sr-only"></span></th>
+              <th scope="col" className="relative px-6 py-3"></th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {entries.map((entry) => {
+            {entries ? entries.map((entry) => {
               return (
-              <EntryRow key={entry.id} entry={entry} setEntry={setEntry}/>
-            )})}
+              <EntryRow key={entry.id} entry={entry} setEntry={setEntry} deleteEntry={deleteEntry}/>
+            )}): null}
           </tbody>
         </table>
       </div>
-    </div>
-  );
+    );
 }
