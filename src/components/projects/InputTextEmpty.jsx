@@ -1,6 +1,6 @@
 
 export default function InputTextEmpty(props) {
-const { setProjectName} = props;
+const { projectName, setProjectName} = props;
 
 const handleChange = (e) => {
   setProjectName(e.target.value);
@@ -26,6 +26,7 @@ const handleChange = (e) => {
                     focus:border-blue-600 
                     focus:outline-none
                   "
+                  defaultValue={projectName}
               onChange={handleChange}
             />
   )
