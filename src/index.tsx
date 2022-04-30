@@ -9,7 +9,6 @@ import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
 import Navbar from './components/Navbar';
 import Projects from './components/projects/Projects';
-import Categories from './components/categories/Categories';
 import Tasks from './components/tasks/Tasks';
 import Entries from './components/entries/Entries';
 Amplify.configure(awsExports);
