@@ -1,10 +1,9 @@
 
-export default function InputText(props) {
-const {task, setTask} = props;
+export default function InputTextEmpty(props) {
+const { taskName, setTaskName} = props;
 
 const handleChange = (e) => {
-  task.name = e.target.value;
-  setTask(task);
+  setTaskName(e.target.value);
 }
   return (
             <input type="text" className="
@@ -26,9 +25,8 @@ const handleChange = (e) => {
                     focus:bg-white 
                     focus:border-blue-600 
                     focus:outline-none
-                    min-w-min
                   "
-                  defaultValue={task ? task.name : null}
+                  defaultValue={taskName}
               onChange={handleChange}
             />
   )

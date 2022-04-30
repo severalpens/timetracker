@@ -3,7 +3,7 @@ import TaskRowDisplayMode from './TaskRowDisplayMode';
 import TaskRowEditMode from './TaskRowEditMode';
 
 export default function TaskRow(props) {
-    const {task, setTask} = props;
+    const {task, setTask, deleteTask} = props;
     const [inEditMode, setInEditMode] = useState(false)
     if (inEditMode) {
         return (
@@ -11,6 +11,6 @@ export default function TaskRow(props) {
         )
     }
     return (
-        <TaskRowDisplayMode  task={task} setInEditMode={setInEditMode}  setTask={setTask} />
+        <TaskRowDisplayMode  task={task} setInEditMode={setInEditMode}  setTask={setTask} deleteTask={deleteTask}/>
     )
 }

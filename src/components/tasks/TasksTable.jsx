@@ -5,21 +5,11 @@ import * as mutations from '../../graphql/mutations';
 import TaskRow from './TaskRow';
 
 export default function TasksTable(props) {
-  const [tasks, setTasks] = useState([]);
+  const {fetchData, tasks, setTasks} = props;
   const [task, setTask] = useState('');
   const [taskName, setTaskName] = useState('');
   const [description, setDescription] = useState('');
 
-
-  useEffect(() => {
-    fetchData();
-  }, [])
-  
-  async function fetchData(){
-    let graphqlResult = await API.graphql({ query: queries.listTasks });
-    let ts = graphqlResult.data.listTasks.items.filter(x => !x._deleted);
-    setTasks(ts);
-  }
 
 
   const editTask = async (t)  => {
@@ -48,15 +38,18 @@ export default function TasksTable(props) {
   }
 
 
-  const cancelEdit = (t)  => {
-    
+  const deleteTask = async (task)  => {
+    const  {id, _version} = task;
+    const input = {id, _version};
+    console.log(input)
+    await API.graphql({ query: mutations.deleteTask, variables: { input } });
+    await fetchData();
   }
 
 
   return (
-    <div>
-      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-        <table className="table-auto min-w-full divide-y divide-gray-200">
+      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-1/2 min-w-min">
+        <table className="table-auto min-w-full divide-y divide-gray-200 ">
           <thead className="bg-gray-50">
             <tr>
               <th
@@ -65,17 +58,16 @@ export default function TasksTable(props) {
               >
                 Name
               </th>
-              <th scope="col" className="relative px-6 py-3"><span className="sr-only"></span></th>
+              <th scope="col" className="relative px-6 py-3"></th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {tasks.map((task) => {
+            {tasks ? tasks.map((task) => {
               return (
-              <TaskRow key={task.id} task={task} setTask={setTask}/>
-            )})}
+              <TaskRow key={task.id} task={task} setTask={setTask} deleteTask={deleteTask}/>
+            )}): null}
           </tbody>
         </table>
       </div>
-    </div>
-  );
+    );
 }

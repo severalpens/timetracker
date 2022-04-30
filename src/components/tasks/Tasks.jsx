@@ -18,8 +18,8 @@ export default function Tasks(props) {
 
   async function fetchData() {
     let graphqlResult = await API.graphql({ query: queries.listTasks });
-    let ts = graphqlResult.data.listTasks.items.filter(x => !x._deleted);
-    setTasks(ts);
+    let ps = graphqlResult.data.listTasks.items.filter(x => !x._deleted);
+    setTasks(ps);
 
   }
 
@@ -50,20 +50,23 @@ export default function Tasks(props) {
   }
 
 
+  async function fetchData(){
+    let graphqlResult = await API.graphql({ query: queries.listTasks });
+    let ts = graphqlResult.data.listTasks.items.filter(x => !x._deleted);
+    setTasks(ts);
+  }
+
   const cancelEdit = (t) => {
 
   }
 
 
   return (
-    <div className="flex">
       <div className="ml-16 my-16 ">
-        <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600">Tasks</h2>
-        <div className="flex">
-
-        <TasksTable />
-        <TaskForm/>
-        </div>
+        <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 pb-10">Tasks</h2>
+        <div className="flex flex-wrap-reverse">
+        <TasksTable fetchData={fetchData} tasks={tasks} setTasks={setTasks} />
+        <TaskForm  fetchData={fetchData}  tasks={tasks} setTasks={setTasks}/>
         </div>
     </div>
 
