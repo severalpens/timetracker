@@ -9,11 +9,17 @@ export default class Question extends Component {
     this.state = { answered: false, correctly: false }
   }
 
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
   render() {
     const { questionId, question, check } = this.props;
+    const options = question.options;
+    const randomNumberPairs = options.map((o,i) => { return {orig: i, rand: this.getRandomInt(100000)}});
+    const sorted = randomNumberPairs.sort((a,b) => a.rand - b.rand);
+    let renderedOptions = sorted.map((pair) => <Option key={pair.orig} questionId={questionId} optionId={pair.orig} option={options[pair.orig]} />)
 
-    let renderedOptions = question.options.map((option, optionId) => <Option key={optionId} questionId={questionId} optionId={optionId + 1} option={option} />)
     return (
       <div className="mb-16">
         <div className="mb-2">Question {questionId}</div>

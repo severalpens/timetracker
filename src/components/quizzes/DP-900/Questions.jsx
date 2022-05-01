@@ -22,7 +22,7 @@ export default class Questions extends React.Component {
   render() {
     return (
       <div className="ml-36 h-screen ">
-        <h1 className="text-2xl mb-8">AWS Developer Associate</h1>
+        <h1 className="text-2xl mb-8">DP-900 Azure Data Fundamentals</h1>
         <div className='flex h-screen '>
           <div className="overflow-y-scroll h-screen w-1/2 border">
             {this.renderedQuestions}

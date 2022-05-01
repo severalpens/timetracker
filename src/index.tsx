@@ -11,7 +11,7 @@ import Navbar from './components/Navbar';
 import Projects from './components/projects/Projects';
 import Tasks from './components/tasks/Tasks';
 import Entries from './components/entries/Entries';
-import Questions from './components/AWS/Developer Associate/Questions.jsx';
+import Questions from './components/quizzes/DP-900/Questions.jsx';
 
 Amplify.configure(awsExports);
 
@@ -26,7 +26,7 @@ root.render(
   <Route path="/projects" element={<Projects/>}/>
   <Route path="/tasks" element={<Tasks/>}/>
   <Route path="/entries" element={<Entries/>}/>
-  <Route path="/aws/questions" element={<Questions/>}/>
+  <Route path="/azure/questions" element={<Questions/>}/>
       <Route
         path="*"
         element={
