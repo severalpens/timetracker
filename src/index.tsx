@@ -11,10 +11,9 @@ import Navbar from './components/Navbar';
 import Projects from './components/projects/Projects';
 import Tasks from './components/tasks/Tasks';
 import Entries from './components/entries/Entries';
-import DVA_C01 from './components/AWS/Developer Associate/Questions';
+import Questions from './components/AWS/Developer Associate/Questions.jsx';
 
 Amplify.configure(awsExports);
-
 
 const root = createRoot(
   document.getElementById('root') as HTMLElement
@@ -27,7 +26,7 @@ root.render(
   <Route path="/projects" element={<Projects/>}/>
   <Route path="/tasks" element={<Tasks/>}/>
   <Route path="/entries" element={<Entries/>}/>
-  <Route path="/dva-c01" element={<DVA_C01/>}/>
+  <Route path="/aws/questions" element={<Questions/>}/>
       <Route
         path="*"
         element={

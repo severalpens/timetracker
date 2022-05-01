@@ -1,0 +1,45 @@
+ [
+    {
+      "text": "What does OLTP stand  for?",
+      "options": [
+        {  "text": "Online Transactional Processing", "isCorrect": true },
+        { "text": "Optional Length Typing", "isCorrect": false },
+        {  "text": "One Length Type Progression", "isCorrect": false }
+      ]
+    }
+    ,{
+      "text": "What does Azure Blob Storage store?",
+      "options": [
+        { "text": "Structured binary large objects", "isCorrect": false },
+        { "text": "BSON semi-structured data", "isCorrect": false },
+        { "text": "Unstructured binary large objects", "isCorrect": true }
+      ]
+    }
+    ,{
+      "text": "What level is read/write control implemented in the following path: AzureStorageAccount1/BlobContainer/folder1/blob1",
+      "options": [
+        { "text": "AzureStorageAccount1", "isCorrect": false },
+        { "text": "BlobContainer", "isCorrect": true },
+        { "text": "folder1", "isCorrect": false },
+        { "text": "blob1", "isCorrect": false }
+      ]
+    }
+    ,{
+      "text": "What is a block blob?",
+      "options": [
+        { "text": "Stores blocks up to 10MB, can contain up to 100,000 blocks, maximum size of 4.7GB", "isCorrect": false },
+        { "text": "Stores blocks up to 100MB, can contain up to 50,000 blocks, maximum size of 4.7TB", "isCorrect": true },
+        { "text": "Stores blocks up to 100MB, can contain up to 500 blocks, maximum size of 4.7MB", "isCorrect": false },
+        { "text": "Stores blocks up to 10GB, can contain up to 5,000 blocks, maximum size of 4.7TB", "isCorrect": false }
+      ]
+    }
+    ,{
+      "text": "What type of blob is best for storing discrete, large, binary objects that change infrequently?",
+      "options": [
+        { "text": "page", "isCorrect": false },
+        { "text": "block", "isCorrect": true },
+        { "text": "append", "isCorrect": false },
+        { "text": "none of the above", "isCorrect": false }
+      ]
+    }
+  ]

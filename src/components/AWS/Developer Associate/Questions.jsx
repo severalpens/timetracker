@@ -1,49 +1,41 @@
-import { Divider } from '@aws-amplify/ui-react';
 import React from 'react'
-
-const questions = [
-  {
-    id: "1",
-    text: "How long is a piece of string?",
-    options: [
-      { id: "0", text: "chair", isCorrect: true },
-      { id: "1", text: "book", isCorrect: false },
-      { id: "2", text: "table", isCorrect: false },
-    ],
-  },
-  {
-    id: "2",
-    text: "What does OLTP stand  for?",
-    options: [
-      { id: "0", text: "Online Transactional Processing", isCorrect: true },
-      { id: "1", text: "Optional Length Typing", isCorrect: false },
-      { id: "2", text: "One Length Type Progression", isCorrect: false },
-    ],
-  },
-];
-
-function Question(props) {
-  let renderedOptions = props.question.options.map(option => <div key={option.id}>{option.text}</div>)
- return (
-   <div>
-     <div>{props.question.text}</div>
-     {renderedOptions}
-   </div>
- )
-}
+import Question from './Question';
+import questionList from './questionList.json';
 
 
 export default class Questions extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { questions }
+    this.state = { questionList, score: 0, outOf: 0, question: {}, answer: '' }
+    this.check = this.check.bind(this);
   }
 
-  renderedQuestions = questions.map((question) =>  <Question key={question.id} question={question}/>)
+  
+  check = (id) =>{
+    console.log(id)
+    let q = questionList.find((x,i) => i == id-1);
+    let a = q.options.find(x => x.isCorrect == true)
+    this.setState({question: q, answer: a.text});
+  }
+  
+  renderedQuestions = questionList.map((q,id) => <Question key={id} question={q} questionId={id + 1} check={this.check} />);
+
   render() {
+    let id = this.state.question.id;
     return (
-      <div>
-        {this.renderedQuestions}
+      <div className="ml-36 h-screen ">
+        <h1 className="text-2xl mb-8">AWS Developer Associate</h1>
+        <div className='flex h-screen '>
+          <div className="overflow-y-scroll h-screen w-1/2 border">
+            {this.renderedQuestions}
+          </div>
+          <div className='w-1/2 '>
+            <div>
+              <h1>Question {id} Answer:</h1>
+            </div>
+            {this.state.answer}
+          </div>
+        </div>
       </div>
     )
   }
