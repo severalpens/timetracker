@@ -6,22 +6,20 @@ import questionList from './questionList.json';
 export default class Questions extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { questionList, score: 0, outOf: 0, question: {}, answer: '' }
+    this.state = { questionList, score: 0, outOf: 0, question: {},questionId: null, answer: '' }
     this.check = this.check.bind(this);
   }
 
   
   check = (id) =>{
-    console.log(id)
     let q = questionList.find((x,i) => i == id-1);
     let a = q.options.find(x => x.isCorrect == true)
-    this.setState({question: q, answer: a.text});
+    this.setState({questionId: id, question: q, answer: a.text});
   }
   
   renderedQuestions = questionList.map((q,id) => <Question key={id} question={q} questionId={id + 1} check={this.check} />);
 
   render() {
-    let id = this.state.question.id;
     return (
       <div className="ml-36 h-screen ">
         <h1 className="text-2xl mb-8">AWS Developer Associate</h1>
@@ -31,7 +29,7 @@ export default class Questions extends React.Component {
           </div>
           <div className='w-1/2 '>
             <div>
-              <h1>Question {id} Answer:</h1>
+              <h1>Question {this.state.questionId} Answer:</h1>
             </div>
             {this.state.answer}
           </div>

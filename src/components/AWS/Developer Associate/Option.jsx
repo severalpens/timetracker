@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export default function Option(props) {
   const {questionId, optionId, option} = props;
-  let id = `${questionId}_${optionId}`;
+  const id = `${questionId}_${optionId}`;
   const [checked, setChecked] = useState(false)
 
   const handleClick = (e) =>{

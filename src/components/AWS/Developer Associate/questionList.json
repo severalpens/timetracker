@@ -38,8 +38,54 @@
       "options": [
         { "text": "page", "isCorrect": false },
         { "text": "block", "isCorrect": true },
-        { "text": "append", "isCorrect": false },
-        { "text": "none of the above", "isCorrect": false }
+        { "text": "append", "isCorrect": false }
+      ]
+    }
+    ,{
+      "text": "What is an append blob?",
+      "options": [
+        { "text": "A push/pop only block blob with blocks up to 4MB and max size up to 195GB ", "isCorrect": true },
+        { "text": "A block blob with blocks up to 4MB and max size up to 195GB ", "isCorrect": false },
+        { "text": "A push/pop only block blob with blocks up to 100MB and max size up to 4.7TB ", "isCorrect": false },
+        { "text": "A block blob with blocks up to 100MB and max size up to 4.7TB ", "isCorrect": false },
+        { "text": "A push/pop only block blob with blocks up to 4MB and max size up to 195GB ", "isCorrect": false },
+        { "text": "A storage optimized append blob", "isCorrect": false }
+      ]
+    }
+    ,{
+      "text": "Which access tier(s) require(s) rehydrating before becoming accessible?",
+      "options": [
+        { "text": "hot tier", "isCorrect": false },
+        { "text": "cool tier", "isCorrect": false },
+        { "text": "archive tier", "isCorrect": true },
+        { "text": "cool and archive tiers", "isCorrect": false }
+      ]
+    }
+    ,{
+      "text": "How can you automatically move blobs between tiers as they age?",
+      "options": [
+        { "text": "grouping policy", "isCorrect": false },
+        { "text": "lifecycle management policy", "isCorrect": true },
+        { "text": "storage management service", "isCorrect": false },
+        { "text": "lifecycle management service", "isCorrect": false }
+      ]
+    }
+    ,{
+      "text": "Which service is integrated into Azure Storage?",
+      "options": [
+        { "text": "Azure Data Lake Storage (Gen2)", "isCorrect": true },
+        { "text": "Azure Blob Storage", "isCorrect": false },
+        { "text": "Azure Data Lake Store (Gen1)", "isCorrect": false },
+        { "text": "Azure File Storage", "isCorrect": false }
+      ]
+    }
+    ,{
+      "text": "What must you do to create an Azure Data Lake Store (Gen2) files system?",
+      "options": [
+        { "text": "Disable the Hierarchical Namespace option of an Azure Storage Account", "isCorrect": false },
+        { "text": "Create an Azure Blob Store in an Azure Storage Account", "isCorrect": false },
+        { "text": "Migrate blobs from Azure Data Lake Store (Gen1)", "isCorrect": false },
+        { "text": "Enable the Hierarchical Namespace option of an Azure Storage Account", "isCorrect": true }
       ]
     }
   ]
