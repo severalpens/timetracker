@@ -3,7 +3,7 @@ import InputText from "./InputText";
 import * as queries from '../../graphql/queries';
 import * as mutations from '../../graphql/mutations';
 import { API } from 'aws-amplify';
-import InputTextEmpty from "./InputTextEmpty";
+import InputTextEmpty from "./ProjectFormInputName";
 import { useNavigate } from "react-router-dom";
 
 export default class ProjectFormClass extends React.Component{

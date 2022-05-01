@@ -1,5 +1,5 @@
 
-export default function InputTextEmpty(props) {
+export default function ProjectFormInputName(props) {
 const { projectName, setProjectName} = props;
 
 const handleChange = (e) => {
