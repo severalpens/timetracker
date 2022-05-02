@@ -21,6 +21,10 @@ const cancelEdit = (t) => {
 }
   return (
             <tr key={task.id}>
+                              <td className="px-6 whitespace-nowrap w-82">
+                  <div className="text-sm text-gray-900">{task.name}</div>
+                </td>
+
                 <td id="input1" className="px-6 py-4 whitespace-nowrap w-96">
                   <InputText task={task} setTask={setTask}/>
                 </td>

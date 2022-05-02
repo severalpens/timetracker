@@ -2,9 +2,13 @@ import React from 'react'
 
 export default function TaskRowDisplayMode(props) {
   const {task,setInEditMode, deleteTask} = props;
+  console.log(task)
   return (
      
       <tr key={task.id}>
+                <td className="px-6 whitespace-nowrap w-82">
+                  <div className="text-sm text-gray-900">{task.project.name}</div>
+                </td>
                 <td className="px-6 whitespace-nowrap w-82">
                   <div className="text-sm text-gray-900">{task.name}</div>
                 </td>

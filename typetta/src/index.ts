@@ -46,7 +46,6 @@ const main = async () => {
 
   const users = await dao.user.findAll()
   users.forEach((user) => console.log(`${user.firstName} ${user.lastName}`))
-  console.log(result)
 }
 
 main()

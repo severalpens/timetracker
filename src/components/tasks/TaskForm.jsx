@@ -5,57 +5,45 @@ import * as mutations from '../../graphql/mutations';
 import { API } from 'aws-amplify';
 import InputTextEmpty from "./InputTextEmpty";
 import { useNavigate } from "react-router-dom";
+import InputProject from "./InputProject";
+import { IconPhoneBluetoothSpeaker } from "@aws-amplify/ui-react";
+import TaskInput from "./TaskInput";
 
 export default class TaskFormClass extends React.Component{
   constructor(props){
     super(props);
     this.props = props;
-    this.state =  {taskName:''};
+    this.state =  {projectTasksId: '',  name:''};
   }
 
 
    handleSubmit = async (event) => {
-    let input = { name: this.state.taskName }
+    const {name, projectTasksId}  = this.state;
+    const input = { name, projectTasksId };
+    console.log(input);
     event.preventDefault();
     await API.graphql({ query: mutations.createTask, variables: { input } });
     await this.props.fetchData();  
-    this.setState({taskName:''})
+    this.setState({name:''})
   }
 
    handleChange = (e) => {
-    this.setState({taskName: e.target.value})
+    this.setState({name: e.target.value})
+  }
+  
+  setProjectTasksId = (projectTasksId) => {
+    this.setState({projectTasksId});
   }
 
   render(){
     return(
       <div className="ml-16 my-16 ">
+        <h3 className="text-lg">Add new task:</h3>
         <form className="" onSubmit={this.handleSubmit}>
           <div className="mb-3 xl:w-96">
-            <label className="form-label inline-block mb-2 text-gray-700" htmlFor="contract-type">Add new task:</label>
-            
-            <input type="text" className="
-                      form-control
-                      block
-                      w-full
-                      px-3
-                      py-1.5
-                      text-base
-                      font-normal
-                      text-gray-700
-                      bg-white bg-clip-padding
-                      border border-solid border-gray-300
-                      rounded
-                      transition
-                      ease-in-out
-                      m-0
-                      focus:text-gray-700
-                      focus:bg-white 
-                      focus:border-blue-600 
-                      focus:outline-none
-                    "
-              value={this.state.taskName}
-              onChange={this.handleChange}
-            />
+            <InputProject projects={this.props.projects} setProjectTasksId={this.setProjectTasksId}/>
+            <TaskInput name={this.state.name}  handleChange={this.handleChange} />
+          
           </div>
           <button type="submit" className="border px-6 py-2.5 border-black rounded-md">Submit</button>
         </form>
@@ -82,7 +70,6 @@ export default class TaskFormClass extends React.Component{
 //     setTaskName('')
 //     navigate("/", { replace: true , });
 //     renderer();
-//     console.log('first')
 //   }
 
 //   const handleChange = (e) => {

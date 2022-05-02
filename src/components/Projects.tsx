@@ -57,7 +57,7 @@ const App = () => {
       setFormState(initialState)
       await API.graphql(graphqlOperation(createProject, {input: project}))
     } catch (err) {
-      console.log('error creating project:', err)
+      console.error('error creating project:', err);
     }
   }
 

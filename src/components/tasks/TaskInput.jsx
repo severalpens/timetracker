@@ -1,39 +1,32 @@
 export default function TaskInput(props) {
-    const { task, setTask , tasks} = props;
+    const { name, handleChange} = props;
     return (
-        <div className="mb-3 xl:w-96" >
+        <div className="mb-3 xl:w-96">
+                      <label className="form-label inline-block mb-2 text-gray-700" htmlFor="new-task-input">Task name:</label>
             <input type="text" className="
-                form-control
-                block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-gray-700
-                bg-white bg-clip-padding
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700
-                focus:bg-white 
-                focus:border-blue-600 
-                focus:outline-none
-                "
-                autoComplete="chrome-off"
-                id="task"
-                name="task"
-                defaultValue={task.task}
-                onChange={e => setTask(e.target.value)}
-                list="optionslist"
+                      form-control
+                      block
+                      w-full
+                      px-3
+                      py-1.5
+                      text-base
+                      font-normal
+                      text-gray-700
+                      bg-white bg-clip-padding
+                      border border-solid border-gray-300
+                      rounded
+                      transition
+                      ease-in-out
+                      m-0
+                      focus:text-gray-700
+                      focus:bg-white 
+                      focus:border-blue-600 
+                      focus:outline-none
+                    "
+              id="new-task-input"
+              value={name}
+              onChange={handleChange}
             />
-            <datalist id="optionslist">
-                {tasks ? tasks.map((task) =>  (
-                    <option key={task.id} value={task.task}>{task.cateogry}</option>
-                )) : ''}
-            </datalist>
-        </div>
+      </div>
     )
 }

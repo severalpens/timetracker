@@ -41,7 +41,6 @@ export default function EntriesTable(props) {
   const deleteEntry = async (entry)  => {
     const  {id, _version} = entry;
     const input = {id, _version};
-    console.log(input)
     await API.graphql({ query: mutations.deleteEntry, variables: { input } });
     await fetchData();
   }

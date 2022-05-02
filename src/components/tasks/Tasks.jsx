@@ -6,6 +6,7 @@ import TasksTable from './TasksTable';
 import TaskForm from './TaskForm';
 
 export default function Tasks(props) {
+  const [projects, setProjects] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState('');
   const [taskName, setTaskName] = useState('');
@@ -18,9 +19,12 @@ export default function Tasks(props) {
 
   async function fetchData() {
     let graphqlResult = await API.graphql({ query: queries.listTasks });
-    let ps = graphqlResult.data.listTasks.items.filter(x => !x._deleted);
-    setTasks(ps);
+    let ts = graphqlResult.data.listTasks.items.filter(x => !x._deleted);
+    setTasks(ts);
 
+     graphqlResult = await API.graphql({ query: queries.listProjects });
+     let ps = graphqlResult.data.listProjects.items.filter(x => !x._deleted);
+    setProjects(ps);
   }
 
 
@@ -50,12 +54,6 @@ export default function Tasks(props) {
   }
 
 
-  async function fetchData(){
-    let graphqlResult = await API.graphql({ query: queries.listTasks });
-    let ts = graphqlResult.data.listTasks.items.filter(x => !x._deleted);
-    setTasks(ts);
-  }
-
   const cancelEdit = (t) => {
 
   }
@@ -66,7 +64,7 @@ export default function Tasks(props) {
         <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 pb-10">Tasks</h2>
         <div className="flex flex-wrap-reverse">
         <TasksTable fetchData={fetchData} tasks={tasks} setTasks={setTasks} />
-        <TaskForm  fetchData={fetchData}  tasks={tasks} setTasks={setTasks}/>
+        <TaskForm projects={projects} fetchData={fetchData}  tasks={tasks} setTasks={setTasks}/>
         </div>
     </div>
 

@@ -20,7 +20,6 @@ export default function Projects(props) {
     let graphqlResult = await API.graphql({ query: queries.listProjects });
     let ps = graphqlResult.data.listProjects.items.filter(x => !x._deleted);
     setProjects(ps);
-
   }
 
 
@@ -49,12 +48,6 @@ export default function Projects(props) {
     // navigate("/elements/accounts", { replace: true });
   }
 
-
-  async function fetchData(){
-    let graphqlResult = await API.graphql({ query: queries.listProjects });
-    let ts = graphqlResult.data.listProjects.items.filter(x => !x._deleted);
-    setProjects(ts);
-  }
 
   const cancelEdit = (t) => {
 

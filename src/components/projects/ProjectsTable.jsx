@@ -41,7 +41,6 @@ export default function ProjectsTable(props) {
   const deleteProject = async (project)  => {
     const  {id, _version} = project;
     const input = {id, _version};
-    console.log(input)
     await API.graphql({ query: mutations.deleteProject, variables: { input } });
     await fetchData();
   }

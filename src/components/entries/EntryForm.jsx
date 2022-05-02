@@ -82,7 +82,6 @@ export default class EntryFormClass extends React.Component{
 //     setEntryName('')
 //     navigate("/", { replace: true , });
 //     renderer();
-//     console.log('first')
 //   }
 
 //   const handleChange = (e) => {

@@ -17,15 +17,6 @@ export default function TasksTable(props) {
     await fetchData();
   }
 
-
-  const saveTask = (t)  => {
-    
-  }
-
-  const addNew = ()  => {
-    
-  }
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -41,7 +32,6 @@ export default function TasksTable(props) {
   const deleteTask = async (task)  => {
     const  {id, _version} = task;
     const input = {id, _version};
-    console.log(input)
     await API.graphql({ query: mutations.deleteTask, variables: { input } });
     await fetchData();
   }
@@ -52,11 +42,17 @@ export default function TasksTable(props) {
         <table className="table-auto min-w-full divide-y divide-gray-200 ">
           <thead className="bg-gray-50">
             <tr>
+            <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                Project
+              </th>
               <th
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                Name
+                Task
               </th>
               <th scope="col" className="relative px-6 py-3"></th>
             </tr>
