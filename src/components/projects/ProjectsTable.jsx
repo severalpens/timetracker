@@ -5,45 +5,8 @@ import * as mutations from '../../graphql/mutations';
 import ProjectRow from './ProjectRow';
 
 export default function ProjectsTable(props) {
-  const {fetchData, projects, setProjects} = props;
+  const {fetchData, projects, setProjects, deleteProject} = props;
   const [project, setProject] = useState('');
-  const [projectName, setProjectName] = useState('');
-  const [description, setDescription] = useState('');
-
-
-
-  const editTask = async (t)  => {
-    await API.graphql({ query: mutations.updateProject, variables: {input:t}});
-    await fetchData();
-  }
-
-
-  const saveProject = (t)  => {
-    
-  }
-
-  const addNew = ()  => {
-    
-  }
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    let input = {
-      name:projectName
-    };
-
-    await API.graphql({ query: mutations.createProject, variables: { input } });
-   // navigate("/elements/accounts", { replace: true });
-  }
-
-
-  const deleteProject = async (project)  => {
-    const  {id, _version} = project;
-    const input = {id, _version};
-    await API.graphql({ query: mutations.deleteProject, variables: { input } });
-    await fetchData();
-  }
 
 
   return (
