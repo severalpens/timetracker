@@ -2,399 +2,66 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createProject = /* GraphQL */ `
-  mutation CreateProject(
-    $input: CreateProjectInput!
-    $condition: ModelProjectConditionInput
+export const createComponent = /* GraphQL */ `
+  mutation CreateComponent(
+    $input: CreateComponentInput!
+    $condition: ModelComponentConditionInput
   ) {
-    createProject(input: $input, condition: $condition) {
+    createComponent(input: $input, condition: $condition) {
       id
+      parentId
+      type
       name
-      tasks {
-        items {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          projectTasksId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const updateProject = /* GraphQL */ `
-  mutation UpdateProject(
-    $input: UpdateProjectInput!
-    $condition: ModelProjectConditionInput
-  ) {
-    updateProject(input: $input, condition: $condition) {
-      id
-      name
-      tasks {
-        items {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          projectTasksId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const deleteProject = /* GraphQL */ `
-  mutation DeleteProject(
-    $input: DeleteProjectInput!
-    $condition: ModelProjectConditionInput
-  ) {
-    deleteProject(input: $input, condition: $condition) {
-      id
-      name
-      tasks {
-        items {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          projectTasksId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const createCategory = /* GraphQL */ `
-  mutation CreateCategory(
-    $input: CreateCategoryInput!
-    $condition: ModelCategoryConditionInput
-  ) {
-    createCategory(input: $input, condition: $condition) {
-      id
-      name
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const updateCategory = /* GraphQL */ `
-  mutation UpdateCategory(
-    $input: UpdateCategoryInput!
-    $condition: ModelCategoryConditionInput
-  ) {
-    updateCategory(input: $input, condition: $condition) {
-      id
-      name
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const deleteCategory = /* GraphQL */ `
-  mutation DeleteCategory(
-    $input: DeleteCategoryInput!
-    $condition: ModelCategoryConditionInput
-  ) {
-    deleteCategory(input: $input, condition: $condition) {
-      id
-      name
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const createTask = /* GraphQL */ `
-  mutation CreateTask(
-    $input: CreateTaskInput!
-    $condition: ModelTaskConditionInput
-  ) {
-    createTask(input: $input, condition: $condition) {
-      id
-      name
-      project {
-        id
-        name
-        tasks {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      entries {
-        items {
-          id
-          startTime
-          stopTime
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          taskEntriesId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      projectTasksId
-    }
-  }
-`;
-export const updateTask = /* GraphQL */ `
-  mutation UpdateTask(
-    $input: UpdateTaskInput!
-    $condition: ModelTaskConditionInput
-  ) {
-    updateTask(input: $input, condition: $condition) {
-      id
-      name
-      project {
-        id
-        name
-        tasks {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      entries {
-        items {
-          id
-          startTime
-          stopTime
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          taskEntriesId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      projectTasksId
-    }
-  }
-`;
-export const deleteTask = /* GraphQL */ `
-  mutation DeleteTask(
-    $input: DeleteTaskInput!
-    $condition: ModelTaskConditionInput
-  ) {
-    deleteTask(input: $input, condition: $condition) {
-      id
-      name
-      project {
-        id
-        name
-        tasks {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      entries {
-        items {
-          id
-          startTime
-          stopTime
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          taskEntriesId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      projectTasksId
-    }
-  }
-`;
-export const createEntry = /* GraphQL */ `
-  mutation CreateEntry(
-    $input: CreateEntryInput!
-    $condition: ModelEntryConditionInput
-  ) {
-    createEntry(input: $input, condition: $condition) {
-      id
-      task {
-        id
-        name
-        project {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        entries {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        projectTasksId
-      }
+      description
       startTime
-      stopTime
+      endTime
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      taskEntriesId
     }
   }
 `;
-export const updateEntry = /* GraphQL */ `
-  mutation UpdateEntry(
-    $input: UpdateEntryInput!
-    $condition: ModelEntryConditionInput
+export const updateComponent = /* GraphQL */ `
+  mutation UpdateComponent(
+    $input: UpdateComponentInput!
+    $condition: ModelComponentConditionInput
   ) {
-    updateEntry(input: $input, condition: $condition) {
+    updateComponent(input: $input, condition: $condition) {
       id
-      task {
-        id
-        name
-        project {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        entries {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        projectTasksId
-      }
+      parentId
+      type
+      name
+      description
       startTime
-      stopTime
+      endTime
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      taskEntriesId
     }
   }
 `;
-export const deleteEntry = /* GraphQL */ `
-  mutation DeleteEntry(
-    $input: DeleteEntryInput!
-    $condition: ModelEntryConditionInput
+export const deleteComponent = /* GraphQL */ `
+  mutation DeleteComponent(
+    $input: DeleteComponentInput!
+    $condition: ModelComponentConditionInput
   ) {
-    deleteEntry(input: $input, condition: $condition) {
+    deleteComponent(input: $input, condition: $condition) {
       id
-      task {
-        id
-        name
-        project {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        entries {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        projectTasksId
-      }
+      parentId
+      type
+      name
+      description
       startTime
-      stopTime
+      endTime
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      taskEntriesId
     }
   }
 `;

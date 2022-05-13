@@ -1,0 +1,36 @@
+{
+    "components":[
+        {
+            "name":"projects",
+            "items":[
+                {
+                    "id":"p1",
+                    "name":"project1"
+                },
+                {
+                    "id":"p2",
+                    "name":"project2"
+                }
+            ]
+
+        },
+        {
+            "name":"tasks",
+            "items":[
+                {
+                    "id":"t1",
+                    "name":"task1",
+                    "parentId":"p1"
+                },
+                {
+                    "id":"t2",
+                    "name":"task2",
+                    "parentId":"p1"
+                }
+            ]
+
+        }
+
+        ]
+
+}

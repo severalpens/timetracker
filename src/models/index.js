@@ -4,11 +4,8 @@ import { schema } from './schema';
 
 
 
-const { Project, Task, Entry, Category } = initSchema(schema);
+const { Component } = initSchema(schema);
 
 export {
-  Project,
-  Task,
-  Entry,
-  Category
+  Component
 };

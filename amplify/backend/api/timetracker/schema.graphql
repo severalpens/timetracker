@@ -1,25 +1,9 @@
-type Project @model @auth(rules: [{allow: public}]) {
+type Component @model @auth(rules: [{allow: public}]) {
   id: ID!
+  parentId: String!
+  type: String!
   name: String!
-  tasks: [Task] @hasMany
-}
-
-type Category @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  name: String!
-}
-
-type Task @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  name: String!
-  project: Project @belongsTo
-  entries: [Entry] @hasMany
-}
-
-type Entry @model @auth(rules: [{allow: public}]) {
-  id: ID!
-  task: Task @belongsTo
-  startTime: AWSTimestamp!
-  stopTime: AWSTimestamp!
-}
- 
+  description: String!
+  startTime: AWSTimestamp
+  endTime: AWSTimestamp
+} 

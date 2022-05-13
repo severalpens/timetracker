@@ -1,7 +1,37 @@
 import { useEffect, useState } from 'react';
-import ProjectRow from './Row';
+import Row from './Row'
 
-export default function ProjectsTable(props) {
+const initialComponent = {
+  id:'',
+name:'',
+description:'',
+startTime: '',
+endTime: '',
+parentId: '',
+type:''
+}
+
+const initialComponents = [initialComponent]
+
+
+export default function Table(props) {
+  const [components,setComponents] = useState(initialComponents)
+  const [component,setComponent] = useState(initialComponent)
+
+  useEffect( () => {
+   fetchData();
+  }, [component])
+
+  const fetchData = async () => {
+
+    setComponents(props.components)
+    setComponent(props.components[0])
+    
+  }
+
+  console.log('table component')
+  console.log(component)
+  
 
   return (
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-1/2 min-w-min">
@@ -18,10 +48,7 @@ export default function ProjectsTable(props) {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {projects ? projects.map((project) => {
-              return (
-              <ProjectRow key={project.id} project={project} setProject={setProject} deleteProject={deleteProject}/>
-            )}): null}
+            <Row component={component}></Row>
           </tbody>
         </table>
       </div>

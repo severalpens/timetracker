@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
-import InputText from "../table/TextBox";
 import * as queries from '../../../graphql/queries';
 import * as mutations from '../../../graphql/mutations';
 import { API } from 'aws-amplify';
-import InputTextEmpty from "./TextBoxForName";
-import { useNavigate } from "react-router-dom";
 import ProjectInput from "./ProjectInput";
-import { Project } from "../../../API";
+import { Component } from "../../../API";
 
 type Props = {
   fetchData: Function;
@@ -25,7 +22,7 @@ export default class ProjectFormClass extends React.Component<Props, State>{
    handleSubmit = async (event: { preventDefault: () => void; }) => {
     let input = { name: this.state.projectName }
     event.preventDefault();
-    await API.graphql({ query: mutations.createProject, variables: { input } });
+    await API.graphql({ query: mutations.createComponent, variables: { input } });
     await this.props.fetchData();  
     this.setState({projectName:''})
   }

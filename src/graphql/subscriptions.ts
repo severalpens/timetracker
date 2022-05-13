@@ -2,363 +2,57 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateProject = /* GraphQL */ `
-  subscription OnCreateProject {
-    onCreateProject {
+export const onCreateComponent = /* GraphQL */ `
+  subscription OnCreateComponent {
+    onCreateComponent {
       id
+      parentId
+      type
       name
-      tasks {
-        items {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          projectTasksId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateProject = /* GraphQL */ `
-  subscription OnUpdateProject {
-    onUpdateProject {
-      id
-      name
-      tasks {
-        items {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          projectTasksId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteProject = /* GraphQL */ `
-  subscription OnDeleteProject {
-    onDeleteProject {
-      id
-      name
-      tasks {
-        items {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          projectTasksId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onCreateCategory = /* GraphQL */ `
-  subscription OnCreateCategory {
-    onCreateCategory {
-      id
-      name
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateCategory = /* GraphQL */ `
-  subscription OnUpdateCategory {
-    onUpdateCategory {
-      id
-      name
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteCategory = /* GraphQL */ `
-  subscription OnDeleteCategory {
-    onDeleteCategory {
-      id
-      name
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onCreateTask = /* GraphQL */ `
-  subscription OnCreateTask {
-    onCreateTask {
-      id
-      name
-      project {
-        id
-        name
-        tasks {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      entries {
-        items {
-          id
-          startTime
-          stopTime
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          taskEntriesId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      projectTasksId
-    }
-  }
-`;
-export const onUpdateTask = /* GraphQL */ `
-  subscription OnUpdateTask {
-    onUpdateTask {
-      id
-      name
-      project {
-        id
-        name
-        tasks {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      entries {
-        items {
-          id
-          startTime
-          stopTime
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          taskEntriesId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      projectTasksId
-    }
-  }
-`;
-export const onDeleteTask = /* GraphQL */ `
-  subscription OnDeleteTask {
-    onDeleteTask {
-      id
-      name
-      project {
-        id
-        name
-        tasks {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      entries {
-        items {
-          id
-          startTime
-          stopTime
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-          taskEntriesId
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      projectTasksId
-    }
-  }
-`;
-export const onCreateEntry = /* GraphQL */ `
-  subscription OnCreateEntry {
-    onCreateEntry {
-      id
-      task {
-        id
-        name
-        project {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        entries {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        projectTasksId
-      }
+      description
       startTime
-      stopTime
+      endTime
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      taskEntriesId
     }
   }
 `;
-export const onUpdateEntry = /* GraphQL */ `
-  subscription OnUpdateEntry {
-    onUpdateEntry {
+export const onUpdateComponent = /* GraphQL */ `
+  subscription OnUpdateComponent {
+    onUpdateComponent {
       id
-      task {
-        id
-        name
-        project {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        entries {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        projectTasksId
-      }
+      parentId
+      type
+      name
+      description
       startTime
-      stopTime
+      endTime
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      taskEntriesId
     }
   }
 `;
-export const onDeleteEntry = /* GraphQL */ `
-  subscription OnDeleteEntry {
-    onDeleteEntry {
+export const onDeleteComponent = /* GraphQL */ `
+  subscription OnDeleteComponent {
+    onDeleteComponent {
       id
-      task {
-        id
-        name
-        project {
-          id
-          name
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        entries {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-        projectTasksId
-      }
+      parentId
+      type
+      name
+      description
       startTime
-      stopTime
+      endTime
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      taskEntriesId
     }
   }
 `;
