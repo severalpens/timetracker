@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import InputText from "./InputText";
-import * as queries from '../../graphql/queries';
-import * as mutations from '../../graphql/mutations';
+import InputText from "../table/TextBox";
+import * as queries from '../../../graphql/queries';
+import * as mutations from '../../../graphql/mutations';
 import { API } from 'aws-amplify';
-import InputTextEmpty from "./ProjectFormInputName";
+import InputTextEmpty from "./TextBoxForName";
 import { useNavigate } from "react-router-dom";
 import ProjectInput from "./ProjectInput";
-import { Project } from "../../API";
+import { Project } from "../../../API";
 
 type Props = {
   fetchData: Function;

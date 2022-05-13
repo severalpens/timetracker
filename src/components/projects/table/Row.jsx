@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ProjectRowDisplayMode from './ProjectRowDisplayMode';
-import ProjectRowEditMode from './ProjectRowEditMode';
+import ProjectRowDisplayMode from './RowDisplayMode';
+import ProjectRowEditMode from './RowEditMode';
 
 export default function ProjectRow(props) {
     const {project, setProject, deleteProject} = props;

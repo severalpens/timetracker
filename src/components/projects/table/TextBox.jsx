@@ -1,9 +1,10 @@
 
-export default function InputTextEmpty(props) {
-const { taskName, setTaskName} = props;
+export default function TextBox(props) {
+const {project, setProject} = props;
 
 const handleChange = (e) => {
-  setTaskName(e.target.value);
+  project.name = e.target.value;
+  setProject(project);
 }
   return (
             <input type="text" className="
@@ -25,8 +26,9 @@ const handleChange = (e) => {
                     focus:bg-white 
                     focus:border-blue-600 
                     focus:outline-none
+                    min-w-min
                   "
-                  defaultValue={taskName}
+                  defaultValue={project ? project.name : null}
               onChange={handleChange}
             />
   )

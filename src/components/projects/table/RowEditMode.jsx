@@ -1,18 +1,18 @@
 import React from 'react'
-import InputTask from './TaskInput';
-import InputText from './InputText';
+import InputProject from '../form/ProjectInput';
+import InputText from './TextBox';
 import { API } from 'aws-amplify';
-import * as queries from '../../graphql/queries';
-import * as mutations from '../../graphql/mutations';
+import * as queries from '../../../graphql/queries';
+import * as mutations from '../../../graphql/mutations';
 
 
-export default function TaskRowEditMode(props) {
-const {task, setInEditMode,setTask} = props;
+export default function ProjectRowEditMode(props) {
+const {project, setInEditMode,setProject} = props;
 
 const saveTask = async () => {
-  let {id, name, _version}= task;
+  let {id, name, _version}= project;
   let p = {id, name, _version};
-  await API.graphql({ query: mutations.updateTask, variables: { input: p } });
+  await API.graphql({ query: mutations.updateProject, variables: { input: p } });
 
   setInEditMode(false)
 }
@@ -20,13 +20,9 @@ const cancelEdit = (t) => {
   setInEditMode(false)
 }
   return (
-            <tr key={task.id}>
-                              <td className="px-6 whitespace-nowrap w-82">
-                  <div className="text-sm text-gray-900">{task.name}</div>
-                </td>
-
+            <tr key={project.id}>
                 <td id="input1" className="px-6 py-4 whitespace-nowrap w-96">
-                  <InputText task={task} setTask={setTask}/>
+                  <InputText project={project} setProject={setProject}/>
                 </td>
                 <td id="input2" className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <button type="submit" className="border m-4  px-6 py-2.5 border-black rounded-md"
@@ -35,7 +31,7 @@ const cancelEdit = (t) => {
                     }}>Save</button>
                   <button type="submit" className="border m-4  px-6 py-2.5 border-black rounded-md"
                     onClick={e => {
-                      cancelEdit(task);
+                      cancelEdit(project);
                     }}>Cancel</button>
                 </td>
               </tr>

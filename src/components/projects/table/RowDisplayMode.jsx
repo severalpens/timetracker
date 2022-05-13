@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ProjectRowDisplayMode(props) {
+export default function RowDisplayMode(props) {
   const {project,setInEditMode, deleteProject} = props;
   return (
      

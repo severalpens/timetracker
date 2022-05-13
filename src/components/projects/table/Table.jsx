@@ -1,13 +1,7 @@
 import { useEffect, useState } from 'react';
-import { API } from 'aws-amplify';
-import * as queries from '../../graphql/queries';
-import * as mutations from '../../graphql/mutations';
-import ProjectRow from './ProjectRow';
+import ProjectRow from './Row';
 
 export default function ProjectsTable(props) {
-  const {fetchData, projects, setProjects, deleteProject} = props;
-  const [project, setProject] = useState('');
-
 
   return (
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-1/2 min-w-min">

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { API } from 'aws-amplify';
 import * as queries from '../../graphql/queries';
 import * as mutations from '../../graphql/mutations';
-import ProjectsTable from './ProjectsTable';
-import ProjectForm from './ProjectForm';
-import Modal from './Modal';
+import ProjectsTable from './table/Table';
+import ProjectForm from './form/Form';
+import Modal from './modal/Modal';
 import './modal.css';
 
 
