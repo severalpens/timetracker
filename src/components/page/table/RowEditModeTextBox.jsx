@@ -1,13 +1,9 @@
 
-export default function TextBox(props) {
-const {project, setProject} = props;
+export default function RowEditModeTextBox({ component, handleChange }) {
 
-const handleChange = (e) => {
-  project.name = e.target.value;
-  setProject(project);
-}
+  
   return (
-            <input type="text" className="
+    <input type="text" className="
                     form-control
                     block
                     w-full
@@ -28,8 +24,8 @@ const handleChange = (e) => {
                     focus:outline-none
                     min-w-min
                   "
-                  defaultValue={project ? project.name : null}
-              onChange={handleChange}
-            />
+      defaultValue={component.name}
+      onChange={handleChange}
+    />
   )
 }

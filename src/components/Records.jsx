@@ -16,20 +16,16 @@ export default function Projects() {
   const fetchData = async () => {
     let c = await getComponents();
     let cc = c.filter(x => x.type === "record")
-    console.log(cc)
     setComponents(cc);
     setRender(true);
   }
 
   if (render) {
-    console.log('render', render)
-    console.log('projects', components)
     return (
       <Page components={components} name="Records" />
     )
   }
   else {
-    console.log('render', render)
 
     return (
       <div></div>

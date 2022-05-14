@@ -16,7 +16,6 @@ export default function Projects() {
   const fetchData = async () => {
     let c = await getComponents();
     let cc = c.filter(x => x.type === "task")
-    console.log(cc)
     setComponents(cc);
     setRender(true);
   }
@@ -26,8 +25,6 @@ export default function Projects() {
   }
 
   if (render) {
-    console.log('render', render)
-    console.log('projects', components)
     return (
 
       <div>
@@ -41,8 +38,6 @@ export default function Projects() {
     )
   }
   else {
-    console.log('render', render)
-
     return (
       <div></div>
     )

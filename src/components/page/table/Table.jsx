@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import Row from './Row'
 
 
-export default function Table({components}) {
+export default function Table({components,  mutationRequest}) {
+  
+  
 
   return (
-      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-1/2 min-w-min">
+      <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-full">
         <table className="table-auto min-w-full divide-y divide-gray-200 ">
           <thead className="bg-gray-50">
             <tr>
@@ -19,7 +21,7 @@ export default function Table({components}) {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {components.map((x) => <Row key={x.id}  component={x}/>)}
+            {components.map((x) => <Row key={x.id}  component={x} mutationRequest={mutationRequest}/>)}
           </tbody>
         </table>
       </div>
