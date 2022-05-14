@@ -8,8 +8,14 @@ import { useContext, useEffect, useState } from 'react';
 
 
 export default function Projects() {
-
+  const [render, setRender] = useState(false);
+  const cType = "project";
+  const props = {
+    render,
+    setRender,
+    cType
+  }
     return (
-      <Page  cType="Project"/>
+      <Page  props={props}/>
     )
 }

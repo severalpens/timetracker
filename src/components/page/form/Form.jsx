@@ -7,6 +7,7 @@ export default function Form({mutationRequest}) {
   const [component, setComponent] = useState({})
 
   const submitHandler = async (e) => {
+   // e.preventDefault();
     await mutationRequest(component, "create");
     setComponent({})
     setInEditMode(!inEditMode);
