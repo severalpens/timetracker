@@ -1,37 +1,8 @@
 import { useEffect, useState } from 'react';
 import Row from './Row'
 
-const initialComponent = {
-  id:'',
-name:'',
-description:'',
-startTime: '',
-endTime: '',
-parentId: '',
-type:''
-}
 
-const initialComponents = [initialComponent]
-
-
-export default function Table(props) {
-  const [components,setComponents] = useState(initialComponents)
-  const [component,setComponent] = useState(initialComponent)
-
-  useEffect( () => {
-   fetchData();
-  }, [component])
-
-  const fetchData = async () => {
-
-    setComponents(props.components)
-    setComponent(props.components[0])
-    
-  }
-
-  console.log('table component')
-  console.log(component)
-  
+export default function Table({components}) {
 
   return (
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-1/2 min-w-min">
@@ -48,7 +19,7 @@ export default function Table(props) {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            <Row component={component}></Row>
+            {components.map((x) => <Row key={x.id}  component={x}/>)}
           </tbody>
         </table>
       </div>

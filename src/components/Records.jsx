@@ -15,7 +15,7 @@ export default function Projects() {
 
   const fetchData = async () => {
     let c = await getComponents();
-    let cc = c.filter(x => x.type === "project")
+    let cc = c.filter(x => x.type === "record")
     console.log(cc)
     setComponents(cc);
     setRender(true);
@@ -25,7 +25,7 @@ export default function Projects() {
     console.log('render', render)
     console.log('projects', components)
     return (
-      <Page components={components} name="Projects" />
+      <Page components={components} name="Records" />
     )
   }
   else {

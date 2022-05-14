@@ -12,7 +12,7 @@ import { ModelComponentConnection } from '../API';
     const allComponents: GraphQLResult<any> = await API.graphql({ query: queries.listComponents });
     const data = allComponents.data;
     const listComponents = data.listComponents;
-    const items = listComponents.items;
+    const items = listComponents.items.filter((x: types.Component) => x._deleted == null);
     return items;
 }
 

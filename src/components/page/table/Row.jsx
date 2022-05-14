@@ -1,31 +1,15 @@
 import React, { useState , useEffect} from 'react';
 import RowDisplayMode from './RowDisplayMode';
 import RowEditMode from './RowEditMode';
-const initialComponent = {
-    
-      id:'',
-  name:'',
-  description:'',
-  startTime: '',
-  endTime: '',
-  parentId: '',
-  type:''
-  }
 
-export default function Row(props) {
+export default function Row({component}) {
     const [inEditMode, setInEditMode] = useState(false)
-const [component,setComponent] = useState(initialComponent)
 
-    useEffect(() => {
-      setComponent(props.component)
-      return () => {
-        
-      }
-    }, [])
-  
+    console.log("Row",component)
+
 return(
 
-    <RowDisplayMode  component={props.component} />
+    <RowDisplayMode component={component} />
 )
 
     // if (inEditMode) {
