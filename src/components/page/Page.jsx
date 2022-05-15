@@ -1,44 +1,13 @@
-import React from 'react'
-import getComponents from '../../db/getComponents.tsx';
-import createComponent from '../../db/createComponent.tsx';
-import updateComponent from '../../db/updateComponent.tsx';
-import deleteComponent from '../../db/deleteComponent.tsx';
-
-
-import { useContext, useEffect, useState } from 'react'
+import getComponents from '../../db/getComponents.ts';
+import mutationRequest from '../../db/processMutation.ts';
+import { useEffect, useState } from 'react'
 import Table from './table/Table';
 import Form from './form/Form';
-import { stringify } from 'querystring';
 
 
 export default function Page(props) {
-const {render, setRender, cType } = props.props;
+  const { render, setRender, cType } = props.props;
   const [components, setComponents] = useState([]);
-
-  const mutationRequest = async (component, mType) => {
-    if (mType === "update") {
-      await updateComponent(component);
-      await fetchData();
-      return true;
-    }
-    if (mType === "delete") {
-      await deleteComponent(component);
-      await fetchData();
-      setRender(false);
-      setRender(true);
-    }
-    if (mType === "cancel") {
-      await fetchData();
-    }
-    if (mType === "create") {
-      component.parentId = "app";
-      component.type = cType;
-      component.description = "";
-      await createComponent(component);
-      await fetchData();
-      return true;
-    }
-  }
 
   useEffect(() => {
     fetchData();

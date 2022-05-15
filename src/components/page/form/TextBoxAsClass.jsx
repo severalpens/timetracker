@@ -1,11 +1,30 @@
 
+import React from 'react';
+
+export default class TextBox extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = { component: {} }
+    this.props = props;
+
+  }
 
 
-export default function TextBox({ component, handleChange }) {
+  async componentDidMount() {
+    this.setState({ component: {} })
+  }
 
-  
-  return (
-    <input type="text" className="
+
+
+
+  render() {
+
+
+    return (
+      <input 
+      id="inputName"
+      type="text" 
+      className="
                     form-control
                     block
                     w-full
@@ -26,8 +45,12 @@ export default function TextBox({ component, handleChange }) {
                     focus:outline-none
                     min-w-min
                   "
-      defaultValue={component.name}
-      onChange={handleChange}
-    />
-  )
+        onChange={this.props.handleChange}
+      />
+    )
+
+  }
+
 }
+
+
