@@ -1,11 +1,11 @@
 import { getAll, getByCType, getParentSet } from '../../db/queries.ts';
 import { create, update, deleteOne, cancel } from '../../db/mutations.ts';
 import Table from './table/Table';
-import Form from './form/Form';
+import Table2 from './table2/Table2';
 import React from 'react';
 
 
-export default class Page extends React.PureComponent {
+export default class Timer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,8 +73,15 @@ export default class Page extends React.PureComponent {
             </div>
             <Table components={this.state.components} mutationRequest={this.mutation}></Table>
           </div>
+        </div>       
+         <div className="ml-16 my-16 w-1/2">
+          <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 capitalize">Records</h2>
+          <div className="w-full">
+            <div hidden={true} className="flex pb-10" >
+            </div>
+            <Table2 components={this.state.components} mutationRequest={this.mutation}></Table2>
+          </div>
         </div>
-        <Form mutationRequest={this.mutation} cType={cType} ></Form>
       </div>
     )
   }
