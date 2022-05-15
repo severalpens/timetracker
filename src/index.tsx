@@ -8,7 +8,6 @@ import awsExports from './aws-exports';
 import Projects from './components/Projects';
 import Tasks from './components/Tasks';
 import Records from './components/Records';
-import Form from './components/page/form/Form.jsx'
 
 Amplify.configure(awsExports);
 
