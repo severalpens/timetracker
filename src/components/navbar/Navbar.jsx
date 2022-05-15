@@ -25,6 +25,9 @@ function Navbar(props) {
         <NavLink id="navlink-entries" className="p-6" to="/records">
           Records
         </NavLink>
+        <NavLink id="navlink-entries" className="p-6" to="/timer">
+          Timer
+        </NavLink>
       </div>
       <div id="navbar-auth-menu" className="p-6 columns-2">
       </div>

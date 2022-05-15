@@ -8,6 +8,7 @@ import awsExports from './aws-exports';
 import Projects from './components/Projects';
 import Tasks from './components/Tasks';
 import Records from './components/Records';
+import Timer from './components/Timer';
 
 Amplify.configure(awsExports);
 
@@ -22,6 +23,7 @@ root.render(
         <Route path="/projects" element={<Projects />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/records" element={<Records />} />
+        <Route path="/timer" element={<Timer />} />
         <Route
           path="*"
           element={
