@@ -14,12 +14,7 @@ export default class TextBox extends React.PureComponent {
     this.setState({ component: {} })
   }
 
-
-
-
   render() {
-
-
     return (
       <input 
       id="inputName"
@@ -45,7 +40,7 @@ export default class TextBox extends React.PureComponent {
                     focus:outline-none
                     min-w-min
                   "
-        onChange={this.props.handleChange}
+        ref={this.input}
       />
     )
 
