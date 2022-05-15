@@ -5,6 +5,6 @@ import {  useState } from 'react';
 
 export default function Projects() {
     return (
-      <Page  cType={"project"}/>
+      <Page  cType={"project"} pType={"app"}/>
     )
 }

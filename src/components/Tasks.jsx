@@ -1,17 +1,10 @@
-import Page from './page/Page.jsx';
+import Page from './page/Page';
 
 import {  useState } from 'react';
 
 
-export default function Tasks() {
-  const [render, setRender] = useState(false);
-  const cType = "task";
-  const props = {
-    render,
-    setRender,
-    cType
-  }
+export default function Projects() {
     return (
-      <Page  props={props}/>
+      <Page  cType={"task"} pType={"project"}/>
     )
 }
