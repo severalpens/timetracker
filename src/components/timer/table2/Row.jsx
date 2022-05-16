@@ -1,11 +1,11 @@
-import React, { useState , useEffect} from 'react';
-import RowDisplayMode from './RowDisplayMode';
 
-export default function Row({component,  mutationRequest}) {
-    const [inEditMode, setInEditMode] = useState(false)
-
+export default function Row({ record }) {
 
     return (
-        <RowDisplayMode  component={component} setInEditMode={setInEditMode} mutationRequest={mutationRequest}/>
+        <tr key={record.id}>
+            <td className=" px-6 whitespace-nowrap  text-sm text-gray-900">{record.parentId}</td>
+            <td className=" px-6 whitespace-nowrap  text-sm text-gray-900">{record.startTime}</td>
+            <td className=" px-6 whitespace-nowrap  text-sm text-gray-900">{record.endTime}</td>
+        </tr>
     )
 }

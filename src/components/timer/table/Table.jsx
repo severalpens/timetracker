@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React, { useEffect, useState } from 'react';
 import Row from './Row'
-import { getAll, getByCType, getByParentId} from '../../../db/db.ts';
+import { getAll, getByCType, getByParentId} from '../../../db/db.js';
 
 
 export default class Table extends React.PureComponent{
@@ -13,8 +13,13 @@ export default class Table extends React.PureComponent{
   }
   
   render(){
-    const { mutationRequest, components} = this.props;
-    const rows =  components.map((x) => <Row key={x.id}  component={x} mutationRequest={mutationRequest}/>)
+    const {       
+      startTask,
+      stopTask,
+      tasks
+} = this.props.table1;
+
+    const rows =  tasks.map((x) => <Row key={x.id}  task={x} startTask={startTask} stopTask={stopTask} />)
   return (
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-full">
         <table className="table-auto min-w-full divide-y divide-gray-200 ">
@@ -25,18 +30,6 @@ export default class Table extends React.PureComponent{
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 ParentId
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                Name
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                Name
               </th>
               <th scope="col" className="relative px-6 py-3"></th>
             </tr>

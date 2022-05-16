@@ -58,11 +58,6 @@ export const getParentSet = async (cType: string, strict?: boolean) => {
 
     const parentIdSet = [... new Set(parentIds)];
 
-    console.log('parentIdSet.length === 0')
-    console.log(parentIdSet.length)
-    console.log('cType === "project"')
-    console.log(cType)
-
     if (parentIdSet.length === 0 && cType === "project") {
         parentIdSet.push("app")
     }
@@ -76,32 +71,42 @@ export const getParentSet = async (cType: string, strict?: boolean) => {
 
 
 export const create = async (component: Component) => {
-    console.log("create",component)
-    let result: GraphQLResult<any>;
+    let graphQLResult: GraphQLResult<any>;
     const input: CreateComponentInput = {
         parentId: component.parentId || "",
         type: component.type || "",
         name: component.name || "",
+        startTime: component.startTime || new Date().getTime(),
+        endTime: component.endTime || null,
         description: component.description || "",
     }
-    result = await API.graphql({
+    graphQLResult = await API.graphql({
         query: mutations.createComponent,
         variables: { input },
     })
+    const data = graphQLResult.data;
+    const result = data.createComponent;
     return result;
 }
 
 
 export const update = async (component: Component) => {
-    let result: GraphQLResult<any>;
+    let graphQLResult: GraphQLResult<any>;
     const input: UpdateComponentInput = {
         id: component.id,
+        parentId: component.parentId || "",
+        type: component.type || "",
         name: component.name || "",
+        startTime: component.startTime || new Date().getTime(),
+        endTime: component.endTime || null,
+        description: component.description || "",
         _version: component._version,
     }
-    result = await API.graphql(
+    graphQLResult = await API.graphql(
         graphqlOperation(mutations.updateComponent, { input }),
     )
+    const data = graphQLResult.data;
+    const result = data.updateComponent;
     return result;
 }
 

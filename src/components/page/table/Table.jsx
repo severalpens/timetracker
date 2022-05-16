@@ -13,25 +13,12 @@ export default class Table extends React.PureComponent {
                 scope="col"
                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
-                
+
               </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                
-              </th>
-              <th
-                scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-              >
-                
-              </th>
-              <th scope="col" className="relative px-6 py-3"></th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-          {components.map((x) => <Row key={x.id} component={x} update={update} deleteOne={deleteOne} cancel={cancel} />)}
+            {components.map((x) => <Row key={x.id} component={x} update={update} deleteOne={deleteOne} cancel={cancel} />)}
           </tbody>
         </table>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as db from '../../db/db.ts';
+import * as db from '../../db/db';
 import Table from './table/Table';
 import Form from './form/Form';
 
