@@ -31,6 +31,17 @@ export const getByCType = async (cType: string) => {
     const filtered: Array<Component> = listComponents.items
         .filter((c: types.Component) => c._deleted == null)
         .filter((c: types.Component) => c.type === cType)
+        .sort((a: types.Component, b: types.Component) => {
+            if (a.parentId > b.parentId) {
+                return 1;
+            }
+        
+            if (a.parentId < b.parentId) {
+                return -1;
+            }
+        
+            return 0;
+        });
     return filtered;
 }
 
