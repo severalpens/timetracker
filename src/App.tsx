@@ -12,10 +12,10 @@ Amplify.configure(awsExports);
 
 const App = () => {
   return (
-    <>
+    <Authenticator>
       <Navbar />
       <Outlet />
-    </>
+    </Authenticator>
   )
 }
 
