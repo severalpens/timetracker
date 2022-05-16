@@ -1,8 +1,8 @@
 
-export default function RowDisplayMode({ component, setInEditMode, mutationRequest }) {
+export default function RowDisplayMode({ component, setInEditMode, deleteOne }) {
 
   const deleteBtnClickHandler = (e) => {
-    mutationRequest(component, "delete")
+    deleteOne(component)
   }
 
   return (

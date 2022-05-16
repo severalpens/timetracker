@@ -1,14 +1,7 @@
 import React from 'react';
 import * as db from '../../db/db.ts';
-import {getParentSet} from './utils'
 import Table from './table/Table';
 import Form from './form/Form';
-const typeMap = [
-  {cType:"project",pType:"app"},
-  {cType:"task",pType:"project"},
-  {cType:"record",pType:"task"}
-];
-
 
 
 export default class Page extends React.PureComponent {
@@ -17,16 +10,38 @@ export default class Page extends React.PureComponent {
     this.props = props;
     this.state = {
       components: [],
+      filtered: [],
       parentSet: [],
-      parentSetStrict: []
+      toggleReload: true,
+      parentFilterValue: "All"
     }
 
-    this.mutation.bind(this);
+    this.create.bind(this);
+    this.update.bind(this);
+    this.deleteOne.bind(this);
+    this.cancel.bind(this);
+    this.getComponents.bind(this);
+    this.getParents.bind(this);
+    this.reload.bind(this);
+    this.cancel.bind(this);
 
   }
 
   async componentDidMount() {
+    await this.getParents();
     await this.getComponents();
+  }
+
+  reload = () => {
+    this.render()
+  }
+
+  getParents = async () => {
+    const { cType } = this.props;
+    const p = await db.getParentSet(cType, false);
+    this.setState({
+      parentSet: p
+    })
   }
 
   getComponents = async () => {
@@ -36,10 +51,7 @@ export default class Page extends React.PureComponent {
       components: c
     })
     this.setState({
-      parentSet: await getParentSet(c,cType,false)
-    })
-    this.setState({
-      parentSetStrict: await getParentSet(c,cType,true)
+      filtered: c.filter(x => x.parentId === this.state.parentFilterValue)
     })
   }
 
@@ -62,39 +74,83 @@ export default class Page extends React.PureComponent {
     await this.getComponents();
   }
 
+  handleParentSeletChange = (e) => {
+    this.setState(
+      {
+        parentFilterValue: e.target.value
+      }
+    )
+  }
+
 
   render() {
     const { cType, pType } = this.props;
-    let p = this.state.parentSet.map(x => <option key={x} value={x}>{x}</option>)
+    const { components, parentSet, filtered } = this.state;
+    const { create, update, deleteOne, cancel, reload } = this;
+    const tableProps = {
+      components,
+      filtered,
+      update,
+      deleteOne,
+      cancel
+    }
+
+    const formProps = {
+      create,
+      cType,
+      pType,
+      reload
+    }
 
     return (
       <div className="flex">
         <div className="ml-16 my-16 w-1/2">
-          <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 capitalize">{cType + "s"}</h2>
+          <h2 className="font-medium leading-tight text-4xl mt-0 mb-10 text-blue-600 capitalize">{cType + "s"}</h2>
           <div className="w-full">
-            <div hidden={true} className="flex pb-10" >
-              <label htmlFor="parent" className="align-bottom  border font-medium leading-tight text-xl  text-blue-600 capitalize">{pType}:</label>
-              <select id='parent' name='parent' className="border mx-4 px-6 border-black rounded-md form-select"
-                aria-label="Default select example" onChange={this.handleParentChange}>
-                {this.state.parentSet.map(o => <option key={o} value={o}>{o}</option>)}
-              </select>
-            </div>
-            <Table components={this.state.components} mutationRequest={this.mutation}></Table>
+            <Table tableProps={tableProps}></Table>
           </div>
         </div>
         <div className="ml-16 my-16 w-1/3">
           <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 pb-10">Add New:</h2>
-          <div className="flex pb-10 " >
-            <label htmlFor="parent" className="align-bottom  border font-medium leading-tight text-xl  text-blue-600 capitalize">{this.getParentType()}:</label>
-            <select id='parent' name='parent' className="border mx-4 px-6 border-black rounded-md form-select"
-              aria-label="Default select example" onChange={this.handleParentChange}>
-              {p}
-            </select>
-          </div>
-          <Form mutationRequest={this.mutation} cType={cType} ></Form>
+          <Form formProps={formProps} ></Form>
         </div>
       </div>
     )
   }
 }
 
+
+  function TableFilterDD({pType, parentSet}) {
+  return (
+    <div hidden={true} className="flex pb-10" >
+    <label htmlFor="parent" className="align-bottom  border font-medium leading-tight text-xl  text-blue-600 capitalize">{pType}:</label>
+    <select className="
+      form-control
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700
+      focus:bg-white 
+      focus:border-blue-600 
+      focus:outline-none
+      "
+      id="transactionId"
+      name="transactionId"
+      value={this.state.parentFilterValue}
+      onChange={this.handleParentSeletChange}
+    >
+      {parentSet.map(x => <option key={x} value={x}>{x}</option>)}
+    </select>
+  </div>
+  )
+}

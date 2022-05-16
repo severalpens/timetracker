@@ -40,17 +40,17 @@ export const getParentSet = async (cType: string, strict?: boolean) => {
         {cType:"task",pType:"project"},
         {cType:"record",pType:"task"}
     ];
-    let pType = typeMap.find(x => x.cType === cType)?.pType;
 
-    const allComponents: GraphQLResult<any> = await API.graphql({ query: queries.listComponents });
-    const data = allComponents.data;
-    const cList = data.listComponents;
-    const pIdArray: Array<string> = cList.items
-        .filter((c: types.Component) => c._deleted == null)
-        .filter((c: types.Component) => c.type === pType)
-        .map((x: any) => x.name);
+    const pType = typeMap.find(x => x.cType === cType)?.pType || "";
+    const allComponents: Array<Component> = await getByCType(pType);
+    const parentIds =   allComponents.map((x: any) => x.name);
 
-    const parentIdSet = [... new Set(pIdArray)];
+    const parentIdSet = [... new Set(parentIds)];
+
+    console.log('parentIdSet.length === 0')
+    console.log(parentIdSet.length)
+    console.log('cType === "project"')
+    console.log(cType)
 
     if (parentIdSet.length === 0 && cType === "project") {
         parentIdSet.push("app")
@@ -65,6 +65,7 @@ export const getParentSet = async (cType: string, strict?: boolean) => {
 
 
 export const create = async (component: Component) => {
+    console.log("create",component)
     let result: GraphQLResult<any>;
     const input: CreateComponentInput = {
         parentId: component.parentId || "",

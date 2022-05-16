@@ -1,47 +1,90 @@
 
 import React from 'react';
-import * as db from '../../../db/db.ts';
-
+import * as db from '../../../db/db'
 
 export default class Form extends React.PureComponent {
   constructor(props) {
     super(props);
     this.props = props;
     this.state = {
+      parentSetStrict: [],
       components: [],
       parentSet: [],
-      type: props.cType,
+      type: props.formProps.cType,
       name: "",
       parentId: ""
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleParentChange = this.handleParentChange.bind(this);
   }
 
-  handleSubmit = async (e) => {
-    await this.props.mutationRequest({
-      type: this.props.cType,
-      name: this.input.current.value,
+  async componentDidMount(){
+   const parentSet =  await db.getParentSet(this.props.formProps.cType,true);
+   this.setState({
+    parentSetStrict: parentSet
+  })  
+   this.setState({
+    parentId: parentSet[0]
+  })
+  }
+
+ handleSubmit = async (e) => {
+    e.preventDefault()
+    await this.props.formProps.create({
+      type: this.props.formProps.cType,
+      name: this.state.name,
       parentId: this.state.parentId
-    }, "create");
+    });
   }
 
-  handleChange = async (e) => {
+  handleChange = (e) => {
+    this.setState({
+      name: e.target.value
+    })
+  }
 
+  handleParentChange = (e) => {
+    this.setState({
+      parentId: e.target.value
+    })
   }
 
 
   render() {
-    const { cType, pType } = this.props;
-    let p = this.state.parentSet.map(x => <option key={x} value={x}>{x}</option>)
+    const {parentSetStrict} = this.state;
+    const parentOptions = parentSetStrict.map((x) =>  <option key={x} value={x}>{x}</option>)
 
     return (
-      <form className="width-full flex" onSubmit={this.handleSubmit} >
-        <select id='parent' name='parent' className="border mx-4 px-6 border-black rounded-md form-select"
-          aria-label="Default select example" onChange={this.handleParentChange}>
-          {p}
-        </select>
+      <form className="flex flex-col gap-8 w-96" onSubmit={this.handleSubmit} >
+          <select className="
+                form-control
+                block
+                w-full
+                px-3
+                py-1.5
+                text-base
+                font-normal
+                text-gray-700
+                bg-white bg-clip-padding
+                border border-solid border-gray-300
+                rounded
+                transition
+                ease-in-out
+                m-0
+                focus:text-gray-700
+                focus:bg-white 
+                focus:border-blue-600 
+                focus:outline-none
+                "
+            id="selectParent"
+            name="selectParent"
+            value={this.state.parentId}
+            onChange={this.handleParentChange}
+          >
+              {parentOptions}
+          </select>
         <input
           id="inputName"
           type="text"
@@ -68,7 +111,9 @@ export default class Form extends React.PureComponent {
                   "
           onChange={this.handleChange}
         />
-        <button type="submit" className=" ml-5 border px-6 py-2.5 border-black rounded-md">Submit</button>
+        <button type="submit" className="border px-3 w-32
+                    py-1.5 border-black rounded-md">Submit</button>
+
       </form>
     )
   }

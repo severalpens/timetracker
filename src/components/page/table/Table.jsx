@@ -1,12 +1,9 @@
 import React from 'react';
 import Row from './Row'
-import * as db from '../../../db/db.ts';
-
 
 export default class Table extends React.PureComponent {
   render() {
-    const { mutationRequest, components } = this.props;
-    const rows = components.map((x) => <Row key={x.id} component={x} mutationRequest={mutationRequest} />)
+    const { update, deleteOne, cancel, components } = this.props.tableProps;
     return (
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-full">
         <table className="table-auto min-w-full divide-y divide-gray-200 ">
@@ -34,7 +31,7 @@ export default class Table extends React.PureComponent {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {rows}
+          {components.map((x) => <Row key={x.id} component={x} update={update} deleteOne={deleteOne} cancel={cancel} />)}
           </tbody>
         </table>
       </div>
