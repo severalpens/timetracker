@@ -1,4 +1,4 @@
-import { getAll, getByCType } from '../../db/db.js';
+import { getAll, getByCType } from '../../db/db.ts';
 import Table from './table/Table';
 import Table2 from './table2/Table2';
 import React from 'react';

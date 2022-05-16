@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React, { useEffect, useState } from 'react';
 import Row from './Row'
-import { getAll, getByCType, getByParentId} from '../../../db/db.js';
+import { getAll, getByCType, getByParentId} from '../../../db/db.ts';
 
 
 export default class Table extends React.PureComponent{
