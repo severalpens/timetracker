@@ -1,64 +1,72 @@
-import { getAll, getByCType, getParentSet } from '../../db/queries.ts';
-import { create, update, deleteOne, cancel } from '../../db/mutations.ts';
+import React from 'react';
+import * as db from '../../db/db.ts';
+import {getParentSet} from './utils'
 import Table from './table/Table';
 import Form from './form/Form';
-import React from 'react';
+const typeMap = [
+  {cType:"project",pType:"app"},
+  {cType:"task",pType:"project"},
+  {cType:"record",pType:"task"}
+];
+
 
 
 export default class Page extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.props = props;
     this.state = {
       components: [],
-      parentSet: []
+      parentSet: [],
+      parentSetStrict: []
     }
 
-    this.props = props;
     this.mutation.bind(this);
 
   }
+
   async componentDidMount() {
     await this.getComponents();
   }
+
   getComponents = async () => {
-    const {cType} = this.props;
-    const c = await getByCType(cType)
+    const { cType } = this.props;
+    const c = await db.getByCType(cType)
     this.setState({
       components: c
     })
     this.setState({
-      parentSet: await getParentSet(cType)
+      parentSet: await getParentSet(c,cType,false)
     })
     this.setState({
-      mntFinished: true
+      parentSetStrict: await getParentSet(c,cType,true)
     })
   }
 
+  create = async (c) => {
+    await db.create(c)
+    await this.getComponents();
+  }
 
-  mutation = async (component, mType) => {
-    switch (mType) {
-      case 'create':
-        await create(component)
-        break;
-      case 'update':
-        await update(component)
-        break;
-      case 'delete':
-        await deleteOne(component)
-        break;
-      case 'cancel':
-        await cancel(component)
-        break;
+  update = async (c) => {
+    await db.update(c)
+    await this.getComponents();
+  }
 
-      default:
-        break;
-    }
+  deleteOne = async (c) => {
+    await db.deleteOne(c)
+    await this.getComponents();
+  }
+
+  cancel = async (c) => {
     await this.getComponents();
   }
 
 
   render() {
     const { cType, pType } = this.props;
+    let p = this.state.parentSet.map(x => <option key={x} value={x}>{x}</option>)
+
     return (
       <div className="flex">
         <div className="ml-16 my-16 w-1/2">
@@ -74,7 +82,17 @@ export default class Page extends React.PureComponent {
             <Table components={this.state.components} mutationRequest={this.mutation}></Table>
           </div>
         </div>
-        <Form mutationRequest={this.mutation} cType={cType} ></Form>
+        <div className="ml-16 my-16 w-1/3">
+          <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 pb-10">Add New:</h2>
+          <div className="flex pb-10 " >
+            <label htmlFor="parent" className="align-bottom  border font-medium leading-tight text-xl  text-blue-600 capitalize">{this.getParentType()}:</label>
+            <select id='parent' name='parent' className="border mx-4 px-6 border-black rounded-md form-select"
+              aria-label="Default select example" onChange={this.handleParentChange}>
+              {p}
+            </select>
+          </div>
+          <Form mutationRequest={this.mutation} cType={cType} ></Form>
+        </div>
       </div>
     )
   }

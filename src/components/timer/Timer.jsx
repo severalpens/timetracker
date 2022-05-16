@@ -1,4 +1,4 @@
-import { getAll, getByCType, getParentSet } from '../../db/queries.ts';
+import { getAll, getByCType, getParentSet } from '../../db/db.ts';
 import { create, update, deleteOne, cancel } from '../../db/mutations.ts';
 import Table from './table/Table';
 import Table2 from './table2/Table2';

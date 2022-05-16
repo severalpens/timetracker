@@ -1,7 +1,5 @@
 
 export default function RowEditModeTextBox({ component, handleChange }) {
-
-  
   return (
     <input type="text" className="
                     form-control

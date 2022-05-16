@@ -1,0 +1,5 @@
+[
+    {"child":"project","parent":"app"},
+    {"child":"task","parent":"project"},
+    {"child":"record","parent":"task"}
+]
