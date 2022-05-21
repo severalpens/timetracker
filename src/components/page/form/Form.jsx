@@ -10,7 +10,7 @@ export default class Form extends React.PureComponent {
       parentSetStrict: [],
       components: [],
       parentSet: [],
-      type: props.formProps.cType,
+      type: props.cType,
       name: "",
       parentId: ""
     }
@@ -21,7 +21,7 @@ export default class Form extends React.PureComponent {
   }
 
   async componentDidMount(){
-   const parentSet =  await db.getParentSet(this.props.formProps.cType,true);
+   const parentSet =  await db.getParentSet(this.props.cType,true);
    this.setState({
     parentSetStrict: parentSet
   })  
@@ -32,11 +32,13 @@ export default class Form extends React.PureComponent {
 
  handleSubmit = async (e) => {
     e.preventDefault()
-    await this.props.formProps.create({
-      type: this.props.formProps.cType,
+    const newComponent = {
+      type: this.props.cType,
       name: this.state.name,
       parentId: this.state.parentId
-    });
+    }
+    console.log(newComponent)
+    await this.props.create(newComponent);
   }
 
   handleChange = (e) => {
@@ -111,8 +113,7 @@ export default class Form extends React.PureComponent {
                   "
           onChange={this.handleChange}
         />
-        <button type="submit" className="border px-3 w-32
-                    py-1.5 border-black rounded-md">Submit</button>
+        <button type="submit" className="border px-3 w-32 py-1.5 border-black rounded-md">Submit</button>
 
       </form>
     )

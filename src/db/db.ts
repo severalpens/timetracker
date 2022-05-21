@@ -71,6 +71,7 @@ export const getParentSet = async (cType: string, strict?: boolean) => {
 
 
 export const create = async (component: Component) => {
+    console.log("create component",component)
     let graphQLResult: GraphQLResult<any>;
     const input: CreateComponentInput = {
         parentId: component.parentId || "",
@@ -86,6 +87,7 @@ export const create = async (component: Component) => {
     })
     const data = graphQLResult.data;
     const result = data.createComponent;
+    console.log("result",result);
     return result;
 }
 

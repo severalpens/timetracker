@@ -33,6 +33,21 @@ root.render(
           }
         />
       </Route>
+      <Route path="/loggedin" element={<App />}>
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/records" element={<Records />} />
+        <Route path="/timer" element={<TimerWrapper />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: '1rem' }}>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+      </Route>
+
     </Routes>
   </BrowserRouter>
 );

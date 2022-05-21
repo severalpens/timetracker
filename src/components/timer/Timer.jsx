@@ -12,7 +12,6 @@ export default class Timer extends React.PureComponent {
     this.state = {
       tasks: [],
       records: [],
-      activeRecord: {}
     }
 
     this.props = props;
@@ -40,7 +39,13 @@ export default class Timer extends React.PureComponent {
 
   startTask = async (t) => {
     await this.stopTask(t);
-    const ar = this.state.activeRecord;
+    await db.update({
+      id: t.id,
+      _version: t._version,
+      description: "running",
+      startTime: new Date().getTime()
+    });
+    
     await this.newRecord(t);
     await this.setRecords();
     this.render();
@@ -58,16 +63,19 @@ export default class Timer extends React.PureComponent {
   }
 
   
-  stopTask = async () => {
-    const ar = this.state.activeRecord;
-    if(ar.startTime){
+  stopTask = async (t) => {
+      t.endTime = new Date().getTime();
+      t.description = "";
+      await db.update(t);
+      let ar = this.state.activeRecord;
       ar.endTime = new Date().getTime();
-      ar.name = ar.endTime - ar.startTime;
-      const saved_ar = await db.update(ar);
+      ar.name = ar.endTime -ar.startTime;
+      await db.update(ar);
       this.setState({
-        activeRecord: saved_ar
+        activeRecord: ar
       })
-    }
+
+    await this.Tasks();
     await this.setRecords();
     this.render();
 }

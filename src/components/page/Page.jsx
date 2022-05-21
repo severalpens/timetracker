@@ -56,6 +56,7 @@ export default class Page extends React.PureComponent {
   }
 
   create = async (c) => {
+    console.log("create")
     await db.create(c)
     await this.getComponents();
   }
@@ -95,12 +96,6 @@ export default class Page extends React.PureComponent {
       cancel
     }
 
-    const formProps = {
-      create,
-      cType,
-      pType,
-      reload
-    }
 
     return (
       <div className="flex">
@@ -112,45 +107,10 @@ export default class Page extends React.PureComponent {
         </div>
         <div className="ml-16 my-16 w-1/3">
           <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 pb-10">Add New:</h2>
-          <Form formProps={formProps} ></Form>
+          <Form create={create}  cType={cType} pType={pType} reload={reload} ></Form>
         </div>
       </div>
     )
   }
 }
 
-
-  function TableFilterDD({pType, parentSet}) {
-  return (
-    <div hidden={true} className="flex pb-10" >
-    <label htmlFor="parent" className="align-bottom  border font-medium leading-tight text-xl  text-blue-600 capitalize">{pType}:</label>
-    <select className="
-      form-control
-      block
-      w-full
-      px-3
-      py-1.5
-      text-base
-      font-normal
-      text-gray-700
-      bg-white bg-clip-padding
-      border border-solid border-gray-300
-      rounded
-      transition
-      ease-in-out
-      m-0
-      focus:text-gray-700
-      focus:bg-white 
-      focus:border-blue-600 
-      focus:outline-none
-      "
-      id="transactionId"
-      name="transactionId"
-      value={this.state.parentFilterValue}
-      onChange={this.handleParentSeletChange}
-    >
-      {parentSet.map(x => <option key={x} value={x}>{x}</option>)}
-    </select>
-  </div>
-  )
-}
