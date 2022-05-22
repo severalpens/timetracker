@@ -2,9 +2,10 @@ import React from 'react';
 import * as db from '../../db/db';
 import Table from './table/Table';
 import Form from './form/Form';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 
 
-export default class Page extends React.PureComponent {
+class Page extends React.PureComponent {
   constructor(props) {
     super(props);
     this.props = props;
@@ -46,7 +47,7 @@ export default class Page extends React.PureComponent {
 
   getComponents = async () => {
     const { cType } = this.props;
-    const c = await db.getByCType(cType)
+    const c = await  db.getByCType(cType)
     this.setState({
       components: c
     })
@@ -96,7 +97,7 @@ export default class Page extends React.PureComponent {
       cancel
     }
 
-
+  
     return (
       <div className="flex">
         <div className="ml-16 my-16 w-1/2">
@@ -114,3 +115,4 @@ export default class Page extends React.PureComponent {
   }
 }
 
+export default withAuthenticator(Page);

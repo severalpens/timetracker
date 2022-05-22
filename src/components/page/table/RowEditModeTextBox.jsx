@@ -1,5 +1,6 @@
+import { withAuthenticator } from "@aws-amplify/ui-react"
 
-export default function RowEditModeTextBox({ component, handleChange }) {
+const RowEditModeTextBox = ({ component, handleChange })  => {
   return (
     <input type="text" className="
                     form-control
@@ -27,3 +28,5 @@ export default function RowEditModeTextBox({ component, handleChange }) {
     />
   )
 }
+
+export default withAuthenticator(RowEditModeTextBox)

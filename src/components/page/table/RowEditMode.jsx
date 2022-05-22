@@ -2,9 +2,10 @@
 import RowEditModeTextBox from './RowEditModeTextBox';
 import { useState, useEffect } from 'react';
 import RowEditForRecord from './RowEditForRecord';
+import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
 
 
-export default function RowEditMode({ component, update, deleteOne, cancel, setInEditMode }) {
+const RowEditMode = ({ component, update, deleteOne, cancel, setInEditMode }) => {
 	const [updatedComponent, setUpdatedComponent] = useState(component)
 	const handleChange = (e) => {
 		updatedComponent.name = e.target.value;
@@ -32,7 +33,10 @@ export default function RowEditMode({ component, update, deleteOne, cancel, setI
 		<tr key={component.id}>
 			<td id="input1" className="px-6 py-4 whitespace-nowrap w-full">
 				<form className="flex justify-between" onSubmit={submitHandler} onReset={resetHandler}>
+					<Authenticator>
 					<RowEditModeInputBoxes component={component} handleChange={handleChange} handleStartTimeChange={handleStartTimeChange} handleEndTimeChange={handleEndTimeChange} />
+
+					</Authenticator>
 					<div className="flex">
 						<button type="submit" className="ml-5 border px-6 py-2.5 border-black rounded-md">Submit</button>
 						<button type="reset" className="ml-5 border px-6 py-2.5 border-black rounded-md">Cancel</button>
@@ -49,15 +53,23 @@ function RowEditModeInputBoxes({ component, handleChange,handleStartTimeChange,h
 	if (component.type === "record") {
 		return (
 			<div>
+				<Authenticator>
 				<RowEditForRecord component={component} handleStartTimeChange={handleStartTimeChange} handleEndTimeChange={handleEndTimeChange} />
+
+				</Authenticator>
 
 			</div>
 		)
 	}
 	return (
 		<div>
+			<Authenticator>
 			<RowEditModeTextBox component={component} handleChange={handleChange} />
+
+			</Authenticator>
 
 		</div>
 	)
 }
+
+export default withAuthenticator(RowEditMode)

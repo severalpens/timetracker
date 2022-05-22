@@ -1,8 +1,9 @@
 
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import React from 'react';
 import * as db from '../../../db/db'
 
-export default class Form extends React.PureComponent {
+class Form extends React.PureComponent {
   constructor(props) {
     super(props);
     this.props = props;
@@ -120,3 +121,4 @@ export default class Form extends React.PureComponent {
   }
 }
 
+export default withAuthenticator(Form);

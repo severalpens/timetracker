@@ -1,8 +1,9 @@
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import React, { useState } from 'react';
 import RowDisplayMode from './RowDisplayMode';
 import RowEditMode from './RowEditMode';
 
-export default function Row({component,  update, deleteOne, cancel}) {
+const Row = ({component,  update, deleteOne, cancel}) => {
     const [inEditMode, setInEditMode] = useState(false)
 
 
@@ -15,3 +16,5 @@ export default function Row({component,  update, deleteOne, cancel}) {
         <RowDisplayMode  component={component} setInEditMode={setInEditMode} deleteOne={deleteOne}  />
     )
 }
+
+export default withAuthenticator(Row);

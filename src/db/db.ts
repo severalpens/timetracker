@@ -1,6 +1,6 @@
 import { API } from 'aws-amplify'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
-import { graphqlOperation } from 'aws-amplify'
+import { graphqlOperation,Hub, Auth } from 'aws-amplify'
 import {
     CreateComponentInput,
     UpdateComponentInput,
@@ -13,6 +13,7 @@ import {  Component } from '../API';
 
 
 export const getAll = async () => {
+    const user = await Auth.currentAuthenticatedUser();
     const allComponents: GraphQLResult<any> = await API.graphql({ query: queries.listComponents });
     const data = allComponents.data;
     const listComponents = data.listComponents;

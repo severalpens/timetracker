@@ -17,6 +17,7 @@ import TimerWrapper from './components/TimerWrapper';
 import './index.css';
 import SignOut from './SignOut';
 import Navbar from './components/navbar/Navbar';
+import Landing from './components/Landing';
 
 Amplify.configure(awsExports);
 
@@ -28,7 +29,8 @@ const root = createRoot(
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<App />} >
+        <Route path="/" element={<Landing />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/records" element={<Records />} />
@@ -42,6 +44,7 @@ root.render(
             </main>
           }
         />
+      </Route>
     </Routes>
   </BrowserRouter>
 );

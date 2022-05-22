@@ -1,7 +1,8 @@
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import React from 'react';
 import Row from './Row'
 
-export default class Table extends React.PureComponent {
+class Table extends React.PureComponent {
   render() {
     const { update, deleteOne, cancel, components } = this.props.tableProps;
     return (
@@ -25,3 +26,5 @@ export default class Table extends React.PureComponent {
     );
   }
 }
+
+export default withAuthenticator(Table)

@@ -1,5 +1,6 @@
+import { withAuthenticator } from "@aws-amplify/ui-react"
 
-export default function RowDisplayMode({ component, setInEditMode, deleteOne }) {
+const RowDisplayMode = ({ component, setInEditMode, deleteOne }) => {
 
   const deleteBtnClickHandler = (e) => {
     deleteOne(component)
@@ -18,3 +19,5 @@ export default function RowDisplayMode({ component, setInEditMode, deleteOne }) 
     </tr>
   )
 }
+
+export default withAuthenticator(RowDisplayMode);
