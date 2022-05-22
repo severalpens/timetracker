@@ -5,9 +5,8 @@
     "serviceName": "AppSync",
     "gqlSchemaPath": "/home/severalpens/Documents/github/timetracker/amplify/backend/api/timetracker/schema.graphql",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "keyDescription": "api key description",
-      "expirationTime": 30
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authtimetracker8fe81cf6"
     },
     "conflictResolution": {
       "defaultResolutionStrategy": {
@@ -17,10 +16,6 @@
     "additionalAuthTypes": [
       {
         "mode": "AWS_IAM"
-      },
-      {
-        "mode": "AMAZON_COGNITO_USER_POOLS",
-        "cognitoUserPoolId": "authtimetracker8fe81cf6"
       }
     ]
   }
