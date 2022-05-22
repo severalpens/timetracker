@@ -1,4 +1,3 @@
-import { withAuthenticator } from "@aws-amplify/ui-react"
 
 const RowEditModeTextBox = ({ component, handleChange })  => {
   return (
@@ -29,4 +28,4 @@ const RowEditModeTextBox = ({ component, handleChange })  => {
   )
 }
 
-export default withAuthenticator(RowEditModeTextBox)
+export default RowEditModeTextBox

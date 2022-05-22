@@ -13,13 +13,8 @@ export default class Table extends React.PureComponent{
   }
   
   render(){
-    const {       
-      startTask,
-      stopTask,
-      tasks
-} = this.props.table1;
 
-    const rows =  tasks.map((x) => <Row key={x.id}  task={x} startTask={startTask} stopTask={stopTask} />)
+    const rows =  this.props.tasks.map((x) => <Row key={x.id}  task={x} startTask={this.props.startTask} stopTask={this.props.stopTask} />)
   return (
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-full">
         <table className="table-auto min-w-full divide-y divide-gray-200 ">

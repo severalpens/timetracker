@@ -2,7 +2,11 @@ import React from 'react';
 import * as db from '../../db/db';
 import Table from './table/Table';
 import Form from './form/Form';
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import { API } from 'aws-amplify';
+import { graphqlOperation,Hub, Auth } from 'aws-amplify';
+import * as queries from '../../graphql/queries';
+import * as subscriptions from '../../graphql/subscriptions';
+import * as mutations from '../../graphql/mutations';
 
 
 class Page extends React.PureComponent {
@@ -56,10 +60,10 @@ class Page extends React.PureComponent {
     })
   }
 
-  create = async (c) => {
-    console.log("create")
-    await db.create(c)
-    await this.getComponents();
+  create = async (input) => {
+    console.log("create",input)
+    await db.create(input)
+  await this.getComponents();
   }
 
   update = async (c) => {
@@ -115,4 +119,4 @@ class Page extends React.PureComponent {
   }
 }
 
-export default withAuthenticator(Page);
+export default Page

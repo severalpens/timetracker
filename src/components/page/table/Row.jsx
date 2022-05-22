@@ -1,4 +1,3 @@
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import React, { useState } from 'react';
 import RowDisplayMode from './RowDisplayMode';
 import RowEditMode from './RowEditMode';
@@ -17,4 +16,4 @@ const Row = ({component,  update, deleteOne, cancel}) => {
     )
 }
 
-export default withAuthenticator(Row);
+export default Row;

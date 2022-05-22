@@ -1,4 +1,3 @@
-import { withAuthenticator } from "@aws-amplify/ui-react"
 
 const RowEditModeTextBox = ({ component, handleStartTimeChange, handleEndTimeChange }) => {
   return (
@@ -55,4 +54,4 @@ const RowEditModeTextBox = ({ component, handleStartTimeChange, handleEndTimeCha
   )
 }
 
-export default withAuthenticator(RowEditModeTextBox)
+export default RowEditModeTextBox

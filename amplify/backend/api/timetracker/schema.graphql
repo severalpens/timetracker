@@ -1,4 +1,5 @@
-type Component @model @auth(rules: [{ allow: owner }]) {
+type Component @model @auth(rules: [{ allow: owner }]) 
+@aws_cognito_user_pools {
   id: ID!
   parentId: String!
   type: String!

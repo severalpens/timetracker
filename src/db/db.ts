@@ -10,10 +10,10 @@ import * as queries from '../graphql/queries';
 import * as mutations from '../graphql/mutations';
 import * as types from '../API';
 import {  Component } from '../API';
-
+import { AnyRecord } from 'dns';
+    
 
 export const getAll = async () => {
-    const user = await Auth.currentAuthenticatedUser();
     const allComponents: GraphQLResult<any> = await API.graphql({ query: queries.listComponents });
     const data = allComponents.data;
     const listComponents = data.listComponents;
@@ -24,14 +24,15 @@ export const getAll = async () => {
     return filtered;
 }
 
+
 export const getByCType = async (cType: string) => {
-    const allComponents: GraphQLResult<any> = await API.graphql({ query: queries.listComponents });
+    const allComponents: GraphQLResult<any> = await API.graphql({ query: queries.listComponents, authMode:"AMAZON_COGNITO_USER_POOLS"});
     const data = allComponents.data;
     const listComponents = data.listComponents;
 
     const filtered: Array<Component> = listComponents.items
-        .filter((c: types.Component) => c._deleted == null)
-        .filter((c: types.Component) => c.type === cType)
+       .filter((c:any) => c._deleted == null)
+       .filter((c: types.Component) => c.type === cType)
         .sort((a: types.Component, b: types.Component) => {
             if (a.parentId > b.parentId) {
                 return 1;
@@ -85,6 +86,7 @@ export const create = async (component: Component) => {
     graphQLResult = await API.graphql({
         query: mutations.createComponent,
         variables: { input },
+        authMode: 'AMAZON_COGNITO_USER_POOLS'
     })
     const data = graphQLResult.data;
     const result = data.createComponent;
@@ -92,24 +94,28 @@ export const create = async (component: Component) => {
     return result;
 }
 
-
 export const update = async (component: Component) => {
+    console.log("component",component)
     let graphQLResult: GraphQLResult<any>;
     const input: UpdateComponentInput = {
         id: component.id,
         parentId: component.parentId || "",
         type: component.type || "",
         name: component.name || "",
-        startTime: component.startTime || new Date().getTime(),
-        endTime: component.endTime || null,
+        startTime: component.startTime,
+        endTime: component.endTime,
         description: component.description || "",
         _version: component._version,
     }
-    graphQLResult = await API.graphql(
-        graphqlOperation(mutations.updateComponent, { input }),
-    )
+    console.log("input",input)
+    graphQLResult = await API.graphql({
+        query: mutations.updateComponent,
+        variables: { input },
+        authMode: 'AMAZON_COGNITO_USER_POOLS'
+    })
     const data = graphQLResult.data;
     const result = data.updateComponent;
+    console.log("result",result)
     return result;
 }
 

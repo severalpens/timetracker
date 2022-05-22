@@ -1,5 +1,4 @@
 
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import React from 'react';
 import * as db from '../../../db/db'
 
@@ -121,4 +120,4 @@ class Form extends React.PureComponent {
   }
 }
 
-export default withAuthenticator(Form);
+export default Form

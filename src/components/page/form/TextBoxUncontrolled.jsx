@@ -1,5 +1,4 @@
 
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import React from 'react';
 
 class TextBoxUncontrolled extends React.PureComponent {
@@ -57,4 +56,4 @@ class TextBoxUncontrolled extends React.PureComponent {
 }
 
 
-export default withAuthenticator(TextBoxUncontrolled);
+export default TextBoxUncontrolled

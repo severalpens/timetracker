@@ -1,4 +1,3 @@
-import { withAuthenticator } from '@aws-amplify/ui-react';
 import React from 'react';
 import Row from './Row'
 
@@ -27,4 +26,4 @@ class Table extends React.PureComponent {
   }
 }
 
-export default withAuthenticator(Table)
+export default Table

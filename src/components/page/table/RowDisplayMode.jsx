@@ -1,4 +1,3 @@
-import { withAuthenticator } from "@aws-amplify/ui-react"
 
 const RowDisplayMode = ({ component, setInEditMode, deleteOne }) => {
 
@@ -20,4 +19,4 @@ const RowDisplayMode = ({ component, setInEditMode, deleteOne }) => {
   )
 }
 
-export default withAuthenticator(RowDisplayMode);
+export default RowDisplayMode;

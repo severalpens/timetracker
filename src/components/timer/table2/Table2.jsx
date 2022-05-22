@@ -15,8 +15,8 @@ export default class Table2 extends React.PureComponent{
     const r = records.sort((x,y) => x.updatedAt - y.updatedAt)
     const rows =  r.map((x) => <Row key={x.id}  record={x} />)
   return (
-      <div className="shadow w-80 border-b border-gray-200 sm:rounded-lg w-full">
-        <table className="table-auto w-80 divide-y divide-gray-200 ">
+      <div className="shadow  border-b border-gray-200 sm:rounded-lg">
+        <table className="table-auto divide-y divide-gray-200 w-full">
           <thead className="bg-gray-50">
             <tr>
             <th
@@ -27,9 +27,10 @@ export default class Table2 extends React.PureComponent{
               </th>
               <th scope="col" className="relative px-6 py-3">Start</th>
               <th scope="col" className="relative px-6 py-3">Stop</th>
+              <th scope="col" className="relative px-6 py-3"></th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-white divide-y divide-gray-200 px-6">
             {rows}
           </tbody>
         </table>
