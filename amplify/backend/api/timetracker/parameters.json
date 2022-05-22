@@ -2,5 +2,11 @@
   "AppSyncApiName": "timetracker",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2022-04-29T05:09:59.540Z"
+  "AuthModeLastUpdated": "2022-04-29T05:09:59.540Z",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authtimetracker8fe81cf6",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

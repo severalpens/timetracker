@@ -91,6 +91,7 @@ export type Component = {
   _version: number,
   _deleted?: boolean | null,
   _lastChangedAt: number,
+  owner?: string | null,
 };
 
 export type UpdateComponentInput = {
@@ -165,6 +166,7 @@ export type CreateComponentMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };
 
@@ -188,6 +190,7 @@ export type UpdateComponentMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };
 
@@ -211,6 +214,7 @@ export type DeleteComponentMutation = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };
 
@@ -233,6 +237,7 @@ export type GetComponentQuery = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };
 
@@ -259,6 +264,7 @@ export type ListComponentsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
+      owner?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
@@ -289,10 +295,15 @@ export type SyncComponentsQuery = {
       _version: number,
       _deleted?: boolean | null,
       _lastChangedAt: number,
+      owner?: string | null,
     } | null >,
     nextToken?: string | null,
     startedAt?: number | null,
   } | null,
+};
+
+export type OnCreateComponentSubscriptionVariables = {
+  owner?: string | null,
 };
 
 export type OnCreateComponentSubscription = {
@@ -310,7 +321,12 @@ export type OnCreateComponentSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
+};
+
+export type OnUpdateComponentSubscriptionVariables = {
+  owner?: string | null,
 };
 
 export type OnUpdateComponentSubscription = {
@@ -328,7 +344,12 @@ export type OnUpdateComponentSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
+};
+
+export type OnDeleteComponentSubscriptionVariables = {
+  owner?: string | null,
 };
 
 export type OnDeleteComponentSubscription = {
@@ -346,5 +367,6 @@ export type OnDeleteComponentSubscription = {
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+    owner?: string | null,
   } | null,
 };

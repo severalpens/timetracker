@@ -3,8 +3,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateComponent = /* GraphQL */ `
-  subscription OnCreateComponent {
-    onCreateComponent {
+  subscription OnCreateComponent($owner: String) {
+    onCreateComponent(owner: $owner) {
       id
       parentId
       type
@@ -17,12 +17,13 @@ export const onCreateComponent = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      owner
     }
   }
 `;
 export const onUpdateComponent = /* GraphQL */ `
-  subscription OnUpdateComponent {
-    onUpdateComponent {
+  subscription OnUpdateComponent($owner: String) {
+    onUpdateComponent(owner: $owner) {
       id
       parentId
       type
@@ -35,12 +36,13 @@ export const onUpdateComponent = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      owner
     }
   }
 `;
 export const onDeleteComponent = /* GraphQL */ `
-  subscription OnDeleteComponent {
-    onDeleteComponent {
+  subscription OnDeleteComponent($owner: String) {
+    onDeleteComponent(owner: $owner) {
       id
       parentId
       type
@@ -53,6 +55,7 @@ export const onDeleteComponent = /* GraphQL */ `
       _version
       _deleted
       _lastChangedAt
+      owner
     }
   }
 `;
