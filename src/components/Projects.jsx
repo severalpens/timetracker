@@ -1,10 +1,13 @@
 import Page from './page/Page';
 import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
-
+import Navbar from './navbar/Navbar'
 
  function Projects() {
     return (
+      <>
+      <Navbar/>
       <Page  cType={"project"} pType={"app"}/>
+      </>
     )
 }
 

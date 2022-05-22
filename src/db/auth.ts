@@ -1,5 +1,29 @@
-import { Auth } from 'aws-amplify';
+import React, { useEffect, useState } from 'react';
+import Amplify, { Auth, Hub } from 'aws-amplify';
+import { NavLink } from 'react-router-dom';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import {
+  useParams,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 
+
+export const useSignOut = async() =>{
+    const navigate = useNavigate();
+    try {
+        navigate('/');
+        await Auth.signOut();
+    } catch (error) {
+        console.log('error signing out: ', error);
+    }
+  }
+  
+    function getUser() {
+      return Auth.currentAuthenticatedUser()
+        .then(userData => userData)
+        .catch(() => console.log('Not signed in'));
+    }
 
 export async function signUp(props:any) {
     let {username, password, email} = props;
@@ -52,7 +76,7 @@ export async function resendConfirmationCode(props:any) {
 }
 
 
-export async function signOut(props:any) {
+export async function signOut2(props:any) {
 
     try {
         //await Auth.signOut();
