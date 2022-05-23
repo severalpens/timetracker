@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "paths": {
+    "/components": {
+      "name": "/components",
+      "lambdaFunction": "ttlambda",
+      "permissions": {
+        "setting": "private",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    }
+  }
+}

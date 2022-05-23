@@ -3,6 +3,11 @@ export type AmplifyDependentResourcesAttributes = {
         "timetracker": {
             "GraphQLAPIIdOutput": "string",
             "GraphQLAPIEndpointOutput": "string"
+        },
+        "apib32043b4": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
         }
     },
     "auth": {
@@ -17,6 +22,14 @@ export type AmplifyDependentResourcesAttributes = {
         },
         "userPoolGroups": {
             "timetrackerGroupRole": "string"
+        }
+    },
+    "function": {
+        "ttlambda": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     }
 }

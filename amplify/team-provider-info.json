@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-timetracker-dev-151632-unauthRole",
       "StackName": "amplify-timetracker-dev-151632",
       "StackId": "arn:aws:cloudformation:ap-southeast-2:105565668989:stack/amplify-timetracker-dev-151632/34b56e00-c5e9-11ec-b0ed-0246fc31f5a6",
-      "AmplifyAppId": "d2s8o25jfk2qs7"
+      "AmplifyAppId": "d2s8o25jfk2qs7",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-timetracker-dev-151632-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
@@ -19,6 +20,12 @@
         "amplifyhosting": {
           "appId": "d2s8o25jfk2qs7",
           "type": "cicd"
+        }
+      },
+      "function": {
+        "ttlambda": {
+          "deploymentBucketName": "amplify-timetracker-dev-151632-deployment",
+          "s3Key": "amplify-builds/ttlambda-4c485a4a624d2f62386b-build.zip"
         }
       }
     }

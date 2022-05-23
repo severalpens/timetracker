@@ -27,6 +27,20 @@
           ]
         }
       }
+    },
+    "apib32043b4": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "ttlambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "auth": {
@@ -75,6 +89,13 @@
     "amplifyhosting": {
       "service": "amplifyhosting",
       "type": "cicd"
+    }
+  },
+  "function": {
+    "ttlambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   }
 }
