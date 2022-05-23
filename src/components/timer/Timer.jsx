@@ -53,7 +53,7 @@ export default class Timer extends React.PureComponent {
           <div className="ml-16 my-16 w-1/2">
             <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 capitalize">{this.props.cType + "s"}</h2>
             <div className="w-full">
-              <Table tasks={this.state.tasks} setComponents={this.setComponents}></Table>
+              <Table tasks={this.state.tasks} records={this.state.records} setComponents={this.setComponents}></Table>
             </div>
           </div>
           <div className="ml-16 my-16 w-1/2">

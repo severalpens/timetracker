@@ -14,7 +14,7 @@ export default class Table extends React.PureComponent{
   
   render(){
 
-    const rows =  this.props.tasks.map((x) => <Row key={x.id}  task={x} setComponents={this.props.setComponents} />)
+    const rows =  this.props.tasks.map((x) => <Row key={x.id}  task={x} records={this.props.records} setComponents={this.props.setComponents} />)
   return (
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
         <table className="table-auto divide-y w-full divide-gray-200 ">

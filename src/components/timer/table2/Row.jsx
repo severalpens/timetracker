@@ -14,13 +14,15 @@ export default class Row extends React.PureComponent {
         }
     }
  render(){
-    const {id,parentId, startTime, endTime, strStartTime, strEndTime} = this.state;
+    const {id,parentId, startTime, endTime, isActive} = this.props.record;
      
      return (
          <tr  className=" px-6" key={id}>
+            <td className=" px-6 whitespace-nowrap  text-sm text-gray-900">{id}</td>
             <td className=" px-6 whitespace-nowrap  text-sm text-gray-900">{parentId}</td>
-            <td className=" px-6 whitespace-nowrap  text-sm text-gray-900">{strStartTime}</td>
-            <td className=" px-6 whitespace-nowrap  text-sm text-gray-900">{strEndTime}</td>
+            <td className=" px-6 whitespace-nowrap  text-sm text-gray-900">{isActive?"true":"false"}</td>
+            <td className=" px-6 whitespace-nowrap  text-sm text-gray-900">{new Date(startTime).toLocaleString('en-AU', {  })}</td>
+            <td className=" px-6 whitespace-nowrap  text-sm text-gray-900">{new Date(endTime).toLocaleString('en-AU', {  })}</td>
             <td className=" px-6 whitespace-nowrap  text-sm text-gray-900">{}</td>
         </tr>
     )
