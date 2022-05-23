@@ -45,7 +45,6 @@ const RowEditMode = ({ component, update, deleteOne, cancel, setInEditMode }) =>
 
 
 function RowEditModeInputBoxes({ component, handleChange,handleStartTimeChange,handleEndTimeChange }) {
-	console.log("updatedComponent",component)
 	if (component.type === "record") {
 		return (
 			<div>
@@ -56,8 +55,6 @@ function RowEditModeInputBoxes({ component, handleChange,handleStartTimeChange,h
 	return (
 		<div>
 			<RowEditModeTextBox component={component} handleChange={handleChange} />
-
-
 		</div>
 	)
 }

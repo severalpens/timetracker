@@ -1,13 +1,15 @@
 import Page from './page/Page';
-import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator } from '@aws-amplify/ui-react';
 
 
 
-  function Projects() {
+  function Records() {
     return (
-      <Page  cType={"record"} pType={"task"}/>
+      <Authenticator>
+        <Page  cType={"record"} pType={"task"}/>
+      </Authenticator>
     )
 }
 
 
-export default withAuthenticator(Projects)
+export default Records

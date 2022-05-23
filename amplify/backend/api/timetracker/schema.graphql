@@ -4,7 +4,9 @@ type Component @model @auth(rules: [{ allow: owner }])
   parentId: String!
   type: String!
   name: String!
-  description: String!
+  description: String
+  isActive: Boolean
   startTime: AWSTimestamp
   endTime: AWSTimestamp
+
 } 

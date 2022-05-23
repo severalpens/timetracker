@@ -1,13 +1,15 @@
 import Page from './page/Page';
 import Timer from './timer/Timer'
 import {  useState } from 'react';
-import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react';
+import { Authenticator } from '@aws-amplify/ui-react';
 
 
  function TimerWrapper() {
     return (
-      <Timer  cType={"task"} pType={"project"}/>
+      <Authenticator>
+        <Timer  cType={"task"} pType={"project"}/>
+      </Authenticator>
     )
 }
 
-export default withAuthenticator(TimerWrapper)
+export default TimerWrapper

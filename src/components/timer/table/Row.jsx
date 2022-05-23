@@ -3,26 +3,17 @@ import React, { useState, useEffect } from 'react';
 export default class Row extends React.PureComponent {
   constructor(props) {
     super(props);
-
     this.state = {
-      isRunning: props.task.description !== "",
-      task: {...this.props.task}
+      buttonText: this.props.task.description
     }
-
-    this.handleStartStop.bind(this);
     
+    this.handleStartStop = this.handleStartStop.bind(this);
   }
 
+handleStartStop = (e) => {
+e.preventDefault();
 
-  handleStartStop = (e) => {    
-    if (!this.state.isRunning) {
-      this.props.startTask(this.props.task)
-    }
-    else {
-      this.props.stopTask(this.props.task)
-    }
-  }
-
+}
 
   render() {
     return (
@@ -31,7 +22,7 @@ export default class Row extends React.PureComponent {
           <div className=" px-6 whitespace-nowrap w-82 text-sm text-gray-900">{this.props.task.parentId}</div>
           <div className=" px-6 whitespace-nowrap w-82 text-sm text-gray-900">{this.props.task.name}</div>
           <div className="flex">
-            <ToggleButton isRunning={this.state.isRunning} handleStartStop={this.handleStartStop} />
+          <button onClick={this.handleStartStop} className="border m-4  px-6 py-2.5 border-black rounded-md">Start</button>
           </div>
 
         </td>

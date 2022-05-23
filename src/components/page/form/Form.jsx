@@ -1,6 +1,9 @@
 
 import React from 'react';
 import * as db from '../../../db/db'
+import { API } from 'aws-amplify';
+import * as mutations from '../../../graphql/mutations';
+import { Authenticator } from '@aws-amplify/ui-react';
 
 class Form extends React.PureComponent {
   constructor(props) {
@@ -32,13 +35,18 @@ class Form extends React.PureComponent {
 
  handleSubmit = async (e) => {
     e.preventDefault()
-    const newComponent = {
+    const input = {
       type: this.props.cType,
       name: this.state.name,
+      description: "",
       parentId: this.state.parentId
     }
-    console.log(newComponent)
-    await this.props.create(newComponent);
+     await API.graphql({
+      query: mutations.createComponent,
+      variables: { input },
+      authMode: 'AMAZON_COGNITO_USER_POOLS'
+  })
+  this.props.setComponents();
   }
 
   handleChange = (e) => {
@@ -59,6 +67,7 @@ class Form extends React.PureComponent {
     const parentOptions = parentSetStrict.map((x) =>  <option key={x} value={x}>{x}</option>)
 
     return (
+      <Authenticator>
       <form className="flex flex-col gap-8 w-96" onSubmit={this.handleSubmit} >
           <select className="
                 form-control
@@ -116,6 +125,7 @@ class Form extends React.PureComponent {
         <button type="submit" className="border px-3 w-32 py-1.5 border-black rounded-md">Submit</button>
 
       </form>
+      </Authenticator>
     )
   }
 }

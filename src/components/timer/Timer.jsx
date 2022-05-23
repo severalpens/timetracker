@@ -16,11 +16,8 @@ export default class Timer extends React.PureComponent {
     }
 
 
-    this.setTasks.bind(this);
-    this.setRecords.bind(this);
-    this.startTask.bind(this);
-    this.stopTask.bind(this);
-    this.newRecord.bind(this);
+this.setTasks = this.setTasks.bind(this);
+this.setRecords = this.setRecords.bind(this);
   }
 
   async componentDidMount() {
@@ -37,59 +34,11 @@ export default class Timer extends React.PureComponent {
   }
 
   setRecords = async () => {
+    const unsorted = await getByCType("record");
+    const records = unsorted.sort((x, y) => y.startTime - x.startTime);
     this.setState({
-      records: await getByCType("record")
+      records: records
     })
-  }
-
-
-  startTask = async (t) => {
-    //  await db.stopAllTasks();
-    console.log("startTask",t);
-    let t2 = { ...t };
-    t2.description = "running";
-    t2.startTime = new Date().getTime();
-
-      await db.update(t2);
-
-    await this.newRecord(t2);
-    await this.setTasks();
-    await this.setRecords();
-  }
-
-  newRecord = async (t) => {
-   let result =  await db.create({
-      type: "record",
-      parentId: t.name,
-      startTime: new Date().getTime()
-    });
-    this.setState({
-      currentRecord: result
-    })
-  }
-
-
-  oldRecord = async () => {
-    let r = this.state.currentRecord;
-    r.endTime = new Date().getTime();
-    this.setState({
-      currentRecord: r
-    })
-    await db.update(r);
-  }
-
-
-
-  stopTask = async (t) => {
-    console.log("stopTask",t)
-    let t2 = { ...t };
-    t2.description = "";
-    t2.endTime = new Date().getTime();
-
-      await db.update(t2);
-
-    await this.oldRecord();
-    await this.setRecords();
   }
 
 
@@ -99,7 +48,7 @@ export default class Timer extends React.PureComponent {
         <div className="ml-16 my-16 w-1/2">
           <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 capitalize">{this.props.cType + "s"}</h2>
           <div className="w-full">
-            <Table tasks={this.state.tasks} startTask={this.startTask} stopTask={this.stopTask}></Table>
+            <Table tasks={this.state.tasks} setTasks={this.setTasks}></Table>
           </div>
         </div>
         <div className="ml-16 my-16 w-1/2">
@@ -107,7 +56,7 @@ export default class Timer extends React.PureComponent {
           <div className="w-full">
             <div hidden={true} className="flex pb-10" >
             </div>
-            <Table2 records={this.state.records}></Table2>
+            <Table2 records={this.state.records} setRecords={this.setRecords}></Table2>
           </div>
         </div>
       </div>

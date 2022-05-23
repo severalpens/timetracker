@@ -3,11 +3,13 @@ import * as db from '../../db/db';
 import Table from './table/Table';
 import Form from './form/Form';
 import { API } from 'aws-amplify';
-import { graphqlOperation,Hub, Auth } from 'aws-amplify';
+import { graphqlOperation, Hub, Auth } from 'aws-amplify';
 import * as queries from '../../graphql/queries';
 import * as subscriptions from '../../graphql/subscriptions';
 import * as mutations from '../../graphql/mutations';
-
+import { Authenticator } from '@aws-amplify/ui-react';
+import { GraphQLResult } from '@aws-amplify/api-graphql'
+    
 
 class Page extends React.PureComponent {
   constructor(props) {
@@ -21,20 +23,19 @@ class Page extends React.PureComponent {
       parentFilterValue: "All"
     }
 
-    this.create.bind(this);
-    this.update.bind(this);
-    this.deleteOne.bind(this);
-    this.cancel.bind(this);
-    this.getComponents.bind(this);
-    this.getParents.bind(this);
-    this.reload.bind(this);
-    this.cancel.bind(this);
+    this.update = this.update.bind(this);
+    this.deleteOne = this.deleteOne.bind(this);
+    this.cancel = this.cancel.bind(this);
+    this.setComponents = this.setComponents.bind(this);
+    this.getParents = this.getParents.bind(this);
+    this.reload = this.reload.bind(this);
+    this.cancel = this.cancel.bind(this);
 
   }
 
   async componentDidMount() {
     await this.getParents();
-    await this.getComponents();
+    await this.setComponents();
   }
 
   reload = () => {
@@ -49,9 +50,9 @@ class Page extends React.PureComponent {
     })
   }
 
-  getComponents = async () => {
+  setComponents = async () => {
     const { cType } = this.props;
-    const c = await  db.getByCType(cType)
+    const c = await db.getByCType(cType)
     this.setState({
       components: c
     })
@@ -60,34 +61,19 @@ class Page extends React.PureComponent {
     })
   }
 
-  create = async (input) => {
-    console.log("create",input)
-    await db.create(input)
-  await this.getComponents();
-  }
-
   update = async (c) => {
     await db.update(c)
-    await this.getComponents();
+    await this.setComponents();
   }
 
   deleteOne = async (c) => {
     await db.deleteOne(c)
-    await this.getComponents();
+    await this.setComponents();
   }
 
   cancel = async (c) => {
-    await this.getComponents();
+    await this.setComponents();
   }
-
-  handleParentSeletChange = (e) => {
-    this.setState(
-      {
-        parentFilterValue: e.target.value
-      }
-    )
-  }
-
 
   render() {
     const { cType, pType } = this.props;
@@ -101,8 +87,9 @@ class Page extends React.PureComponent {
       cancel
     }
 
-  
+
     return (
+      <Authenticator>
       <div className="flex">
         <div className="ml-16 my-16 w-1/2">
           <h2 className="font-medium leading-tight text-4xl mt-0 mb-10 text-blue-600 capitalize">{cType + "s"}</h2>
@@ -112,9 +99,10 @@ class Page extends React.PureComponent {
         </div>
         <div className="ml-16 my-16 w-1/3">
           <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 pb-10">Add New:</h2>
-          <Form create={create}  cType={cType} pType={pType} reload={reload} ></Form>
+          <Form  cType={cType} pType={pType} setComponents={this.setComponents} ></Form>
         </div>
       </div>
+      </Authenticator>
     )
   }
 }
