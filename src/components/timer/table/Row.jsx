@@ -7,7 +7,11 @@ export default class Row extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      task: {}
+      id: props.task.id,
+      isActive: props.task.isActive,
+      startTime: props.task.startTime,
+      endTime: props.task.endTime,
+      _version: props.task._version
     }
 
     this.handleStartStop = this.handleStartStop.bind(this);
@@ -17,8 +21,125 @@ export default class Row extends React.PureComponent {
 
   }
 
+  componentDidUpdate(){
+    let t = {};
+    t.id = this.state.id;
+    t.isActive = this.state.isActive;
+    t.startTime = this.state.startTime;
+    t.endTime = this.state.endTime;
+    t._version = this.state._version;
+
+    let r = {};
+    r.type = "record"
+    r.name = ""
+    r.description = ""
+    r.parentId = this.props.task.name
+    r.isActive = this.state.isActive;
+    r.startTime = this.state.startTime;
+    r.endTime = this.state.endTime;
+
+
+    if(!t.isActive){
+       API.graphql({
+        query: mutations.updateComponent,
+        variables: { input:t },
+        authMode: 'AMAZON_COGNITO_USER_POOLS'
+      })
+
+       API.graphql({
+        query: mutations.createComponent,
+        variables: { input: r },
+        authMode: 'AMAZON_COGNITO_USER_POOLS'
+      })
+    }else{
+      API.graphql({
+        query: mutations.updateComponent,
+        variables: { input:t },
+        authMode: 'AMAZON_COGNITO_USER_POOLS'
+      })
+    }
+
+  }
+
   handleStartStop = async (e) => {
-    e.preventDefault();
+    let t = {};
+    t.id = this.state.id;
+    t.isActive = this.state.isActive;
+    t.startTime = this.state.startTime;
+    t.endTime = this.state.endTime;
+    t._version = this.state._version;
+
+    let r = {};
+    r.type = "record"
+    r.name = ""
+    r.description = ""
+    r.parentId = this.props.task.name
+    r.isActive = this.state.isActive;
+    r.startTime = this.state.startTime;
+    r.endTime = this.state.endTime;
+
+
+    if(t.isActive){
+      this.setState({
+        isActive: false,
+        endTime: new Date().getTime()
+      })
+      let t = {};
+      t.id = this.state.id;
+      t.isActive = this.state.isActive;
+      t.startTime = this.state.startTime;
+      t.endTime = this.state.endTime;
+      t._version = this.state._version;
+  
+      let r = {};
+      r.type = "record"
+      r.name = ""
+      r.description = ""
+      r.parentId = this.props.task.name
+      r.isActive = this.state.isActive;
+      r.startTime = this.state.startTime;
+      r.endTime = this.state.endTime;
+      
+       API.graphql({
+        query: mutations.updateComponent,
+        variables: { input:t },
+        authMode: 'AMAZON_COGNITO_USER_POOLS'
+      })
+
+       API.graphql({
+        query: mutations.createComponent,
+        variables: { input: r },
+        authMode: 'AMAZON_COGNITO_USER_POOLS'
+      })
+    }else{
+      this.setState({
+        isActive: true,
+        startTime: new Date().getTime(),
+        endTime: null
+      })
+
+      let t = {};
+      t.id = this.state.id;
+      t.isActive = this.state.isActive;
+      t.startTime = this.state.startTime;
+      t.endTime = this.state.endTime;
+      t._version = this.state._version;
+
+            
+      API.graphql({
+        query: mutations.updateComponent,
+        variables: { input:t },
+        authMode: 'AMAZON_COGNITO_USER_POOLS'
+      })
+
+
+  
+    }
+
+  }
+
+    handleStartStop2 = async (e) => {
+      e.preventDefault();
     const t = this.props.task
 
     const input = {
@@ -45,14 +166,10 @@ export default class Row extends React.PureComponent {
         authMode: 'AMAZON_COGNITO_USER_POOLS'
       })
 
-       API.graphql({
+      await API.graphql({
         query: mutations.createComponent,
         variables: { input: r },
         authMode: 'AMAZON_COGNITO_USER_POOLS'
-      }).then(() => {
-        console.log("success")
-      }).catch(() => {
-        console.log("error");
       })
 
     } else {
@@ -72,7 +189,7 @@ export default class Row extends React.PureComponent {
     }
 
 
-    await this.props.setComponents()
+   // await this.props.setComponents()
 
   }
 
@@ -84,11 +201,11 @@ export default class Row extends React.PureComponent {
           <tr key={this.props.task.id} className="">
             <td className=" px-2 whitespace-nowrap text-sm text-gray-900">{this.props.task.parentId}</td>
             <td className=" px-2 whitespace-nowrap text-sm text-gray-900">{this.props.task.name}</td>
-            <td className=" px-2 whitespace-nowrap text-sm text-gray-900">{new Date(this.props.task.startTime).toLocaleString('en-AU', {})}</td>
-            <td className=" px-2 whitespace-nowrap text-sm text-gray-900">{new Date(this.props.task.endTime).toLocaleString('en-AU', {})}</td>
-            <td className=" px-2 whitespace-nowrap text-sm text-gray-900">{this.props.task.isActive ? "true" : "false"}</td>
+            <td className=" px-2 whitespace-nowrap text-sm text-gray-900">{new Date(this.state.startTime).toLocaleString('en-AU', {})}</td>
+            <td className=" px-2 whitespace-nowrap text-sm text-gray-900">{new Date(this.state.endTime).toLocaleString('en-AU', {})}</td>
+            <td className=" px-2 whitespace-nowrap text-sm text-gray-900">{this.state.isActive ? "true" : "false"}</td>
             <td>
-              <button onClick={this.handleStartStop} className="border m-4  px-2 py-2.5 border-black rounded-md">{this.props.task.isActive ? "Running" : "Start"}</button>
+              <button onClick={this.handleStartStop} className="border m-4  px-2 py-2.5 border-black rounded-md">{this.state.isActive ? "Running" : "Start"}</button>
             </td>
           </tr>
         </Authenticator>
