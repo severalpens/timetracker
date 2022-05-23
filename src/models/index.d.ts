@@ -13,7 +13,8 @@ export declare class Component {
   readonly parentId: string;
   readonly type: string;
   readonly name: string;
-  readonly description: string;
+  readonly description?: string | null;
+  readonly isActive?: boolean | null;
   readonly startTime?: number | null;
   readonly endTime?: number | null;
   readonly createdAt?: string | null;

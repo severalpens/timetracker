@@ -10,6 +10,7 @@ export const getComponent = /* GraphQL */ `
       type
       name
       description
+      isActive
       startTime
       endTime
       createdAt
@@ -34,6 +35,7 @@ export const listComponents = /* GraphQL */ `
         type
         name
         description
+        isActive
         startTime
         endTime
         createdAt
@@ -67,6 +69,7 @@ export const syncComponents = /* GraphQL */ `
         type
         name
         description
+        isActive
         startTime
         endTime
         createdAt

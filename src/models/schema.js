@@ -35,7 +35,14 @@ export const schema = {
                     "name": "description",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "isActive": {
+                    "name": "isActive",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "startTime": {
@@ -77,6 +84,10 @@ export const schema = {
                     "properties": {}
                 },
                 {
+                    "type": "aws_cognito_user_pools",
+                    "properties": {}
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
@@ -100,5 +111,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "2bba867632d437e9a02fdf4ce88d8d97"
+    "version": "5d1e8141143641c8da0e0b6566ea03b7"
 };

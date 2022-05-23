@@ -10,6 +10,7 @@ export const onCreateComponent = /* GraphQL */ `
       type
       name
       description
+      isActive
       startTime
       endTime
       createdAt
@@ -29,6 +30,7 @@ export const onUpdateComponent = /* GraphQL */ `
       type
       name
       description
+      isActive
       startTime
       endTime
       createdAt
@@ -48,6 +50,7 @@ export const onDeleteComponent = /* GraphQL */ `
       type
       name
       description
+      isActive
       startTime
       endTime
       createdAt
