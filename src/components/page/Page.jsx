@@ -78,12 +78,12 @@ class Page extends React.PureComponent {
   render() {
     const { cType, pType } = this.props;
     const { components, parentSet, filtered } = this.state;
-    const { create, update, deleteOne, cancel, reload } = this;
+    const { create, update, deleteOne, cancel, reload,setComponents } = this;
     const tableProps = {
       components,
       filtered,
       update,
-      deleteOne,
+      setComponents,
       cancel
     }
 

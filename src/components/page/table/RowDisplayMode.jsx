@@ -1,11 +1,23 @@
+import { API } from 'aws-amplify';
+import * as mutations from '../../../graphql/mutations';
+import { Authenticator } from '@aws-amplify/ui-react';
 
-const RowDisplayMode = ({ component, setInEditMode, deleteOne }) => {
+const RowDisplayMode = ({ component, setInEditMode, setComponents }) => {
 
-  const deleteBtnClickHandler = (e) => {
-    deleteOne(component)
+  const deleteBtnClickHandler = async (e) => {
+    const input = {
+      id: component.id,
+      _version: component._version
+  }
+    await API.graphql({
+      query: mutations.deleteComponent,
+      variables: { input },
+      authMode: 'AMAZON_COGNITO_USER_POOLS'
+  })
   }
 
   return (
+    <Authenticator>
     <tr key={component.id}>
       <td className="flex justify-between px-6 whitespace-nowrap w-82">
         <div className=" px-6 whitespace-nowrap w-82 text-sm text-gray-900">{component.parentId}</div>
@@ -16,6 +28,7 @@ const RowDisplayMode = ({ component, setInEditMode, deleteOne }) => {
         </div>
       </td>
     </tr>
+    </Authenticator>
   )
 }
 

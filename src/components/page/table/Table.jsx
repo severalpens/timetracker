@@ -3,7 +3,7 @@ import Row from './Row'
 
 class Table extends React.PureComponent {
   render() {
-    const { update, deleteOne, cancel, components } = this.props.tableProps;
+    const { update, setComponents, cancel, components } = this.props.tableProps;
     return (
       <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg w-full">
         <table className="table-auto min-w-full divide-y divide-gray-200 ">
@@ -18,7 +18,7 @@ class Table extends React.PureComponent {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {components.map((x) => <Row key={x.id} component={x} update={update} deleteOne={deleteOne} cancel={cancel} />)}
+            {components.map((x) => <Row key={x.id} component={x} update={update} setComponents={setComponents} cancel={cancel} />)}
           </tbody>
         </table>
       </div>

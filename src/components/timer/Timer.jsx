@@ -15,14 +15,18 @@ export default class Timer extends React.PureComponent {
       currentRecord: {}
     }
 
+    this.setComponents();
 
-this.setTasks = this.setTasks.bind(this);
-this.setRecords = this.setRecords.bind(this);
+    this.setTasks = this.setTasks.bind(this);
+    this.setRecords = this.setRecords.bind(this);
   }
 
   async componentDidMount() {
-    await this.setTasks();
-    await this.setRecords();
+  }
+
+  setComponents =  () => {
+     this.setTasks();
+     this.setRecords();
   }
 
   setTasks = async () => {
@@ -43,24 +47,26 @@ this.setRecords = this.setRecords.bind(this);
 
 
   render() {
-    return (
-      <div className="flex">
-        <div className="ml-16 my-16 w-1/2">
-          <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 capitalize">{this.props.cType + "s"}</h2>
-          <div className="w-full">
-            <Table tasks={this.state.tasks} setTasks={this.setTasks}></Table>
-          </div>
-        </div>
-        <div className="ml-16 my-16 w-1/2">
-          <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 capitalize">Records</h2>
-          <div className="w-full">
-            <div hidden={true} className="flex pb-10" >
+    if (this.state.tasks && this.state.records) {
+      return (
+        <div className="flex">
+          <div className="ml-16 my-16 w-1/2">
+            <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 capitalize">{this.props.cType + "s"}</h2>
+            <div className="w-full">
+              <Table tasks={this.state.tasks} setComponents={this.setComponents}></Table>
             </div>
-            <Table2 records={this.state.records} setRecords={this.setRecords}></Table2>
+          </div>
+          <div className="ml-16 my-16 w-1/2">
+            <h2 className="font-medium leading-tight text-4xl mt-0 text-blue-600 capitalize">Records</h2>
+            <div className="w-full">
+              <div hidden={true} className="flex pb-10" >
+              </div>
+              <Table2 records={this.state.records} setRecords={this.setRecords}></Table2>
+            </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
 }
 
