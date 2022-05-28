@@ -16,6 +16,7 @@ export const createComponent = /* GraphQL */ `
       isActive
       startTime
       endTime
+      children
       createdAt
       updatedAt
       _version
@@ -39,6 +40,7 @@ export const updateComponent = /* GraphQL */ `
       isActive
       startTime
       endTime
+      children
       createdAt
       updatedAt
       _version
@@ -62,6 +64,7 @@ export const deleteComponent = /* GraphQL */ `
       isActive
       startTime
       endTime
+      children
       createdAt
       updatedAt
       _version

@@ -53,12 +53,11 @@ export const getParentSet = async (cType: string, strict?: boolean) => {
         {cType:"task",pType:"project"},
         {cType:"record",pType:"task"}
     ];
-
     const pType = typeMap.find(x => x.cType === cType)?.pType || "";
     const allComponents: Array<Component> = await getByCType(pType);
     const parentIds =   allComponents.map((x: any) => x.name);
 
-    const parentIdSet = [... new Set(parentIds)];
+    const parentIdSet = [...new Set(parentIds)];
 
     if (parentIdSet.length === 0 && cType === "project") {
         parentIdSet.push("app")
@@ -73,7 +72,6 @@ export const getParentSet = async (cType: string, strict?: boolean) => {
 
 
 export const create = async (component: Component) => {
-    console.log("create component",component)
     let graphQLResult: GraphQLResult<any>;
     const input: CreateComponentInput = {
         parentId: component.parentId || "",
@@ -90,12 +88,10 @@ export const create = async (component: Component) => {
     })
     const data = graphQLResult.data;
     const result = data.createComponent;
-    console.log("result",result);
     return result;
 }
 
 export const update = async (component: Component) => {
-    console.log("component",component)
     let graphQLResult: GraphQLResult<any>;
     const input: UpdateComponentInput = {
         id: component.id,
@@ -104,10 +100,11 @@ export const update = async (component: Component) => {
         name: component.name || "",
         startTime: component.startTime,
         endTime: component.endTime,
+        isActive: component.isActive,
+        children: component.children || "[]",
         description: component.description || "",
         _version: component._version,
     }
-    console.log("input",input)
     graphQLResult = await API.graphql({
         query: mutations.updateComponent,
         variables: { input },
@@ -115,7 +112,6 @@ export const update = async (component: Component) => {
     })
     const data = graphQLResult.data;
     const result = data.updateComponent;
-    console.log("result",result)
     return result;
 }
 

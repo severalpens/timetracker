@@ -1,12 +1,12 @@
-type Component @model @auth(rules: [{ allow: owner }]) 
-@aws_cognito_user_pools {
+type Component @model @auth(rules: [{allow: owner}]) {
   id: ID!
   parentId: String!
   type: String!
-  name: String!
+  name: String
   description: String
   isActive: Boolean
   startTime: AWSTimestamp
   endTime: AWSTimestamp
-
-} 
+  children: AWSJSON
+}
+ 

@@ -28,7 +28,7 @@ export const schema = {
                     "name": "name",
                     "isArray": false,
                     "type": "String",
-                    "isRequired": true,
+                    "isRequired": false,
                     "attributes": []
                 },
                 "description": {
@@ -59,6 +59,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "children": {
+                    "name": "children",
+                    "isArray": false,
+                    "type": "AWSJSON",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -81,10 +88,6 @@ export const schema = {
             "attributes": [
                 {
                     "type": "model",
-                    "properties": {}
-                },
-                {
-                    "type": "aws_cognito_user_pools",
                     "properties": {}
                 },
                 {
@@ -111,5 +114,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "5d1e8141143641c8da0e0b6566ea03b7"
+    "version": "27dd0cc3ee04f69c0922b83a2691a28c"
 };

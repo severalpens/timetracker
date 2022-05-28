@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "timetracker",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/home/severalpens/Documents/github/timetracker/amplify/backend/api/timetracker/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-f34898c7-7425-436e-99d7-8d75dfe41598/amplify/backend/api/timetracker/schema.graphql",
     "defaultAuthType": {
       "mode": "AMAZON_COGNITO_USER_POOLS",
       "cognitoUserPoolId": "authtimetracker8fe81cf6"

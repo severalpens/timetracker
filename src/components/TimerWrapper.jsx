@@ -7,7 +7,7 @@ import { Authenticator } from '@aws-amplify/ui-react';
  function TimerWrapper() {
     return (
       <Authenticator>
-        <Timer  cType={"task"} pType={"project"}/>
+        <Timer/>
       </Authenticator>
     )
 }

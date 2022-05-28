@@ -14,7 +14,8 @@
     },
     "categories": {
       "auth": {
-        "timetracker8fe81cf6": {}
+        "timetracker8fe81cf6": {},
+        "userPoolGroups": {}
       },
       "hosting": {
         "amplifyhosting": {
@@ -25,7 +26,7 @@
       "function": {
         "ttlambda": {
           "deploymentBucketName": "amplify-timetracker-dev-151632-deployment",
-          "s3Key": "amplify-builds/ttlambda-4c485a4a624d2f62386b-build.zip"
+          "s3Key": "amplify-builds/ttlambda-484d443771766e534765-build.zip"
         }
       }
     }

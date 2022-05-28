@@ -13,6 +13,7 @@ export const getComponent = /* GraphQL */ `
       isActive
       startTime
       endTime
+      children
       createdAt
       updatedAt
       _version
@@ -38,6 +39,7 @@ export const listComponents = /* GraphQL */ `
         isActive
         startTime
         endTime
+        children
         createdAt
         updatedAt
         _version
@@ -72,6 +74,7 @@ export const syncComponents = /* GraphQL */ `
         isActive
         startTime
         endTime
+        children
         createdAt
         updatedAt
         _version
