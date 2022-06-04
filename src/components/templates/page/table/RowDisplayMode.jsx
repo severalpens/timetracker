@@ -1,5 +1,5 @@
 import { API } from 'aws-amplify';
-import * as mutations from '../../../graphql/mutations';
+import * as mutations from '../../../../graphql/mutations';
 import { Authenticator } from '@aws-amplify/ui-react';
 
 const RowDisplayMode = ({ component, setInEditMode, setComponents }) => {

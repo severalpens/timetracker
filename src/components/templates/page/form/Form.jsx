@@ -1,8 +1,8 @@
 
 import React from 'react';
-import * as db from '../../../db/db'
+import * as db from '../../../../db/db'
 import { API } from 'aws-amplify';
-import * as mutations from '../../../graphql/mutations';
+import * as mutations from '../../../../graphql/mutations';
 import { Authenticator } from '@aws-amplify/ui-react';
 
 class Form extends React.PureComponent {

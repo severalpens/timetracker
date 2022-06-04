@@ -1,12 +1,12 @@
 import React from 'react';
-import * as db from '../../db/db';
+import * as db from '../../../db/db';
 import Table from './table/Table';
 import Form from './form/Form';
 import { API } from 'aws-amplify';
 import { graphqlOperation, Hub, Auth } from 'aws-amplify';
-import * as queries from '../../graphql/queries';
-import * as subscriptions from '../../graphql/subscriptions';
-import * as mutations from '../../graphql/mutations';
+import * as queries from '../../../graphql/queries';
+import * as subscriptions from '../../../graphql/subscriptions';
+import * as mutations from '../../../graphql/mutations';
 import { Authenticator } from '@aws-amplify/ui-react';
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 

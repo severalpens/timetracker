@@ -1,6 +1,5 @@
 import Page from './page/Page';
 import {  Authenticator } from '@aws-amplify/ui-react';
-import FormPage from './formPage/FormPage';
 
  function Projects() {
    

@@ -2,7 +2,7 @@
 import RowEditModeTextBox from './RowEditModeTextBox';
 import { useState, useEffect } from 'react';
 import RowEditForRecord from './RowEditForRecord';
-import * as db from '../../../db/db';
+import * as db from '../../../../db/db';
 
 
 const RowEditMode = ({ component, update, deleteOne, cancel, setInEditMode }) => {

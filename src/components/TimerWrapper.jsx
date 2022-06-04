@@ -1,4 +1,4 @@
-import Page from './page/Page';
+import Page from './templates/page/Page';
 import Timer from './timer/Timer'
 import {  useState } from 'react';
 import { Authenticator } from '@aws-amplify/ui-react';

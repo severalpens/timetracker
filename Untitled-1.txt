@@ -1,0 +1,27 @@
+  npm install  @aws-amplify/api-graphql
+  npm install  @aws-amplify/ui-react
+  npm install  @testing-library/jest-dom
+  npm install  @testing-library/react
+  npm install  @testing-library/user-event
+  npm install  @types/jest
+  npm install  @types/node
+  npm install  @types/react
+  npm install  @types/react-dom
+  npm install  aws-amplify
+  npm install  class-validator
+  npm install  dotenv
+  npm install  graphql
+  npm install  react
+  npm install  react-dom
+  npm install  react-map-gl
+  npm install  react-router-dom
+  npm install  react-scripts
+  npm install  reflect-metadata
+  npm install  sequelize
+  npm install  tedious
+  npm install  type-graphql
+  npm install  typescript
+  npm install  web-vitals
+  npm install  autoprefixer -D
+  npm install  postcss -D
+  npm install  tailwindcss -D
