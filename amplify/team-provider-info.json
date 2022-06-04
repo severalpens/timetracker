@@ -26,7 +26,7 @@
       "function": {
         "ttlambda": {
           "deploymentBucketName": "amplify-timetracker-dev-151632-deployment",
-          "s3Key": "amplify-builds/ttlambda-484d443771766e534765-build.zip"
+          "s3Key": "amplify-builds/ttlambda-2f446f5952457a315241-build.zip"
         }
       }
     }
