@@ -9,7 +9,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Amplify } from 'aws-amplify';
 import awsExports from './aws-exports';
-import Projects from './components/templates/Projects';
+import Projects from './components/projects/Projects';
 import Tasks from './components/templates/Tasks';
 import Protected from './SignOut';
 import Records from './components/templates/Records';
