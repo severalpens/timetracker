@@ -1,9 +1,8 @@
-
-import React from 'react';
-import * as db from '../../../../db/db'
-import { API } from 'aws-amplify';
-import * as mutations from '../../../../graphql/mutations';
-import { Authenticator } from '@aws-amplify/ui-react';
+import React from "react";
+import * as db from "../../../../db/db";
+import { API } from "aws-amplify";
+import * as mutations from "../../../../graphql/mutations";
+import { Authenticator } from "@aws-amplify/ui-react";
 
 class Form extends React.PureComponent {
   constructor(props) {
@@ -15,61 +14,65 @@ class Form extends React.PureComponent {
       parentSet: [],
       type: props.cType,
       name: "",
-      parentId: ""
-    }
+      parentId: "",
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleParentChange = this.handleParentChange.bind(this);
   }
 
-  async componentDidMount(){
-   const parentSet =  await db.getParentSet(this.props.cType,true);
-   this.setState({
-    parentSetStrict: parentSet
-  })  
-   this.setState({
-    parentId: parentSet[0]
-  })
+  async componentDidMount() {
+    const parentSet = await db.getParentSet(this.props.cType, true);
+    this.setState({
+      parentSetStrict: parentSet,
+    });
+    this.setState({
+      parentId: parentSet[0],
+    });
   }
 
- handleSubmit = async (e) => {
-    e.preventDefault()
+  handleSubmit = async (e) => {
+    e.preventDefault();
     const input = {
       type: this.props.cType,
       name: this.state.name,
       description: "",
-      parentId: this.state.parentId
-    }
-     await API.graphql({
+      parentId: this.state.parentId,
+    };
+    await API.graphql({
       query: mutations.createComponent,
       variables: { input },
-      authMode: 'AMAZON_COGNITO_USER_POOLS'
-  })
-  this.props.setComponents();
-  }
+      authMode: "AMAZON_COGNITO_USER_POOLS",
+    });
+    this.props.setComponents();
+  };
 
   handleChange = (e) => {
     this.setState({
-      name: e.target.value
-    })
-  }
+      name: e.target.value,
+    });
+  };
 
   handleParentChange = (e) => {
     this.setState({
-      parentId: e.target.value
-    })
-  }
-
+      parentId: e.target.value,
+    });
+  };
 
   render() {
-    const {parentSetStrict} = this.state;
-    const parentOptions = parentSetStrict.map((x) =>  <option key={x} value={x}>{x}</option>)
+    const { parentSetStrict } = this.state;
+    const parentOptions = parentSetStrict.map((x) => (
+      <option key={x} value={x}>
+        {x}
+      </option>
+    ));
 
     return (
       <Authenticator>
-      <form className="flex flex-col gap-8 w-96" onSubmit={this.handleSubmit} >
-          <select className="
+        <form className="flex flex-col gap-8 w-96" onSubmit={this.handleSubmit}>
+          <select
+            className="
                 form-control
                 block
                 w-full
@@ -94,12 +97,12 @@ class Form extends React.PureComponent {
             value={this.state.parentId}
             onChange={this.handleParentChange}
           >
-              {parentOptions}
+            {parentOptions}
           </select>
-        <input
-          id="inputName"
-          type="text"
-          className="
+          <input
+            id="inputName"
+            type="text"
+            className="
                     form-control
                     block
                     w-full
@@ -120,14 +123,18 @@ class Form extends React.PureComponent {
                     focus:outline-none
                     min-w-min
                   "
-          onChange={this.handleChange}
-        />
-        <button type="submit" className="border px-3 w-32 py-1.5 border-black rounded-md">Submit</button>
-
-      </form>
+            onChange={this.handleChange}
+          />
+          <button
+            type="submit"
+            className="border px-3 w-32 py-1.5 border-black rounded-md"
+          >
+            Submit
+          </button>
+        </form>
       </Authenticator>
-    )
+    );
   }
 }
 
-export default Form
+export default Form;
